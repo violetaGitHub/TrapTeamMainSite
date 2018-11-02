@@ -1,1 +1,1 @@
-# TrapTeam Online by Trap Team nz. Powered by Github.
+# TrapTeam Online by Trap Team NZ. Powered by Github.
