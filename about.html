@@ -19,7 +19,75 @@
 <html lang="en">
   <head>
     <meta name="robots" content="index, follow" />
-
+<script type="application/ld+json">
+{
+  "@context":"http://schema.org",
+  "@type":"Book",
+  "name" : "Trap Team NZ",
+  "author": {
+    "@type":"Person",
+    "name":"Trap Team NZ"
+  },
+  "url" : "http://trapteam-cc.firebaseapp.com",
+  "workExample" : [{
+    "@type": "Book",
+    "isbn": "TTCCNZ",
+    "bookEdition": "Original",
+    "bookFormat": "http://schema.org/Hardcover",
+    "potentialAction":{
+    "@type":"ReadAction",
+    "target":
+      {
+        "@type":"EntryPoint",
+        "urlTemplate":"trapteam-cc.firebaseapp.com",
+        "actionPlatform":[
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/IOSPlatform",
+          "http://schema.org/AndroidPlatform"
+        ]
+      },
+      "expectsAcceptanceOf":{
+        "@type":"Offer",
+        "Price":6.99,
+        "priceCurrency":"USD",
+        "eligibleRegion" : {
+          "@type":"Country",
+          "name":"US"
+        },
+        "availability": "http://schema.org/InStock"
+      }
+    }
+  },{
+    "@type": "Book",
+    "isbn": "031676947",
+    "bookEdition": "Normal Edition",
+    "bookFormat": "http://schema.org/EBook",
+    "potentialAction":{
+    "@type":"ReadAction",
+    "target":
+      {
+        "@type":"EntryPoint",
+        "urlTemplate":"trapteam-cc.firebaseapp.com",
+        "actionPlatform":[
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/IOSPlatform",
+          "http://schema.org/AndroidPlatform"
+        ]
+      },
+      "expectsAcceptanceOf":{
+        "@type":"Offer",
+        "Price":100,
+        "priceCurrency":"Noon",
+        "eligibleRegion" : {
+          "@type":"Country",
+          "name":"NZ"
+        },
+        "availability": "http://schema.org/InStock"
+      }
+    }
+  }]
+}
+</script>
     <meta charset="utf-8">
     <!--FreshChat-->
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
@@ -37,22 +105,7 @@
 
   gtag('config', 'UA-125046720-1');
 </script>
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script>
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="150993996289-q353jt95d5tpqicjovael1qc8gp8s7qv.apps.googleusercontent.comm">
