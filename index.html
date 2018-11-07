@@ -90,6 +90,73 @@
     "https://plus.google.com/u/0/100029441012336904305"
   ]
 }
+},
+{
+  "@context":"http://schema.org",
+  "@type":"Book",
+  "name" : "Trap Team NZ",
+  "author": {
+    "@type":"Person",
+    "name":"Trap Team NZ"
+  },
+  "url" : "http://trapteam-cc.firebaseapp.com",
+  "workExample" : [{
+    "@type": "Book",
+    "isbn": "TTCCNZ",
+    "bookEdition": "Original",
+    "bookFormat": "http://schema.org/Hardcover",
+    "potentialAction":{
+    "@type":"ReadAction",
+    "target":
+      {
+        "@type":"EntryPoint",
+        "urlTemplate":"trapteam-cc.firebaseapp.com",
+        "actionPlatform":[
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/IOSPlatform",
+          "http://schema.org/AndroidPlatform"
+        ]
+      },
+      "expectsAcceptanceOf":{
+        "@type":"Offer",
+        "Price":6.99,
+        "priceCurrency":"USD",
+        "eligibleRegion" : {
+          "@type":"Country",
+          "name":"US"
+        },
+        "availability": "http://schema.org/InStock"
+      }
+    }
+  },{
+    "@type": "Book",
+    "isbn": "031676947",
+    "bookEdition": "Normal Edition",
+    "bookFormat": "http://schema.org/EBook",
+    "potentialAction":{
+    "@type":"ReadAction",
+    "target":
+      {
+        "@type":"EntryPoint",
+        "urlTemplate":"trapteam-cc.firebaseapp.com",
+        "actionPlatform":[
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/IOSPlatform",
+          "http://schema.org/AndroidPlatform"
+        ]
+      },
+      "expectsAcceptanceOf":{
+        "@type":"Offer",
+        "Price":0,
+        "priceCurrency":"Noon",
+        "eligibleRegion" : {
+          "@type":"Country",
+          "name":"NZ"
+        },
+        "availability": "http://schema.org/InStock"
+      }
+    }
+  }]
 }
 </script>
 <!--SEO-->
