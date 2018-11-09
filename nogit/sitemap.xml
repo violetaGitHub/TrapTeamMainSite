@@ -19,6 +19,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://trapteam-cc.firebaseapp.com/app/</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://trapteam-cc.firebaseapp.com/interaction/5ba09259d4b9a904b46fbc0f</loc>
     <changefreq>hourly</changefreq>
   </url>
