@@ -120,83 +120,83 @@ firebase.initializeApp(config);
             window.CHITIKA.units.push(unit);
             document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
           }());
-        </script>
-        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-      </nav>
-    </div>
-  </header>
-  
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading">Sign In!</h1>
+          </script>
+          <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+        </nav>
+      </div>
+    </header>
     
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    
-    <p class="lead">        </p>
-  </main>
-  
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Sign In!</h1>
       
-    </div>
-    <script type="text/javascript">
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    var uiConfig = {
-      callbacks: {
-        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-          // User successfully signed in.
-          // Return type determines whether we continue the redirect automatically
-          // or whether we leave that to developer to handle.
-          return true;
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+      
+      <p class="lead">        </p>
+    </main>
+    
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        
+      </div>
+      <script type="text/javascript">
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      var uiConfig = {
+        callbacks: {
+          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+            // User successfully signed in.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+          },
+          uiShown: function() {
+            // The widget is rendered.
+            // Hide the loader.
+            document.getElementById('loader').style.display = 'none';
+          }
         },
-        uiShown: function() {
-          // The widget is rendered.
-          // Hide the loader.
-          document.getElementById('loader').style.display = 'none';
-        }
-      },
-      // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-      signInFlow: 'popup',
-      signInSuccessUrl: '<url-to-redirect-to-on-success>',
-      signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-        //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.PhoneAuthProvider.PROVIDER_ID
-      ],
-      // Terms of service url.
-      tosUrl: '<your-tos-url>',
-      // Privacy policy url.
-      privacyPolicyUrl: '<your-privacy-policy-url>'
-    };
-    // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-  </footer>
-</div>
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../assets/js/vendor/popper.min.js"></script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-var vglnk = {key: 'f74e0f8b0c715ae067673451c039028f'};
-(function(d, t) {
-  var s = d.createElement(t);
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//cdn.viglink.com/api/vglnk.js';
-  var r = d.getElementsByTagName(t)[0];
-  r.parentNode.insertBefore(s, r);
-}(document, 'script'));
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: '/app',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url.
+        privacyPolicyUrl: '<your-privacy-policy-url>'
+      };
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+      </script>
+    </footer>
+  </div>
+  
+  
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  var vglnk = {key: 'f74e0f8b0c715ae067673451c039028f'};
+  (function(d, t) {
+    var s = d.createElement(t);
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = '//cdn.viglink.com/api/vglnk.js';
+    var r = d.getElementsByTagName(t)[0];
+    r.parentNode.insertBefore(s, r);
+  }(document, 'script'));
 </script>
 <script type="text/javascript">
 var uid = '216322';
