@@ -1,47 +1,50 @@
 <!doctype html>
 <!--
-Material Design Lite
-Copyright 2015 Google Inc. All rights reserved.
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-https://www.apache.org/licenses/LICENSE-2.0
+      https://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
 -->
-
-
-
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>Trap Team</title>
-  <meta name="robots" content="index, follow" />
-  <!-- Add to homescreen for Chrome on Android OS-->
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-  <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-  <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-  <meta name="msapplication-TileColor" content="#3372DF">
-  <link rel="shortcut icon" href="images/favicon.png">
-  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-  <!--<link rel="canonical" href="http://www.example.com/">-->
-  <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-  <script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Trap Team</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
@@ -53,235 +56,167 @@ limitations under the License
   };
   firebase.initializeApp(config);
 </script>
-
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script>
-
-<script>
-
-var defaultApp = firebase.initializeApp(defaultAppConfig);
-console.log(defaultApp.name);  // "[DEFAULT]"
-var defaultStorage = defaultApp.storage();
-var defaultDatabase = defaultApp.database();
-defaultStorage = firebase.storage();
-defaultDatabase = firebase.database();
-</script>
-<script type="text/javascript">
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
-  authDomain: "trapteam-cc.firebaseapp.com",
-  databaseURL: "https://trapteam-cc.firebaseio.com",
-  projectId: "trapteam-cc",
-  storageBucket: "trapteam-cc.appspot.com",
-  messagingSenderId: "150993996289"
-};
-firebase.initializeApp(config);
-
-function initapp() {
-  
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      displayName = user.displayName;
-      email = user.email;
-      emailVerified = user.emailVerified;
-      photoURL = user.photoURL;
-      uid = user.uid;
-      phoneNumber = user.phoneNumber;
-      providerData = user.providerData;
-      user.getIdToken().then(function(accessToken) {
-        document.getElementById('sign-in-status').textContent = 'Signed in';
-        document.getElementById('sign-in').textContent = 'Sign out';
-        document.getElementById('account-details').textContent = JSON.stringify({
-          displayName: displayName,
-          email: email,
-          emailVerified: emailVerified,
-          phoneNumber: phoneNumber,
-          photoURL: photoURL,
-          uid: uid,
-          accessToken: accessToken,
-          providerData: providerData
-        }, null, '  ');
-      });
-    } else {
-      // User is signed out.
-      document.getElementById('sign-in-status').textContent = 'Signed out';
-      document.getElementById('sign-in').textContent = 'Sign in';
-      document.getElementById('account-details').textContent = 'null';
-      document.location.href = "/auth.html";
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
     }
-  }, function(error) {
-    console.log(error);
-  });
-};
-window.onload = function() {
-  initapp();
-}
-</script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css">
-<link rel="stylesheet" href="styles.css">
+    </style>
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Home</span>
 
-</head>
-<body>
-  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
-      <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">Home</span>
-        <div class="mdl-layout-spacer"></div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-          <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-            <i class="material-icons">search</i>
-          </label>
-          <div class="mdl-textfield__expandable-holder">
-            <input class="mdl-textfield__input" type="text" id="search">
-            <label class="mdl-textfield__label" for="search">Enter your query...</label>
-          </div>
-        </div>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-          <i class="material-icons">more_vert</i>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-          <li class="mdl-menu__item">About</li>
-          <li class="mdl-menu__item">Contact</li>
-          <li class="mdl-menu__item">Legal information</li>
-        </ul>
-      </div>
-    </header>
-    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-      <header class="demo-drawer-header">
-        <img src="images/user.jpg" class="demo-avatar">
-        <div class="demo-avatar-dropdown">
-          <span>hello@example.com</span>
           <div class="mdl-layout-spacer"></div>
-          <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">arrow_drop_down</i>
-            <span class="visuallyhidden">Accounts</span>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
           </button>
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-            <!--firebase connection required-->
-            <li class="mdl-menu__item">hello@example.com</li>
-            <li class="mdl-menu__item">hi@example.com</li>
-            <!--firebase connection required--><!--extra ui required-->
-            <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">About</li>
+            <li class="mdl-menu__item">Contact</li>
+            <li class="mdl-menu__item">Legal information</li>
           </ul>
         </div>
       </header>
-      <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Traps</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Payments</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Store</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Payment Info</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>My Account</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Contact</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>About</a>
-        <div class="mdl-layout-spacer"></div>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-        <iframe src="/ad.html" class="demo-cards" height="250x" width="100%"></iframe>
-      </nav>
-    </div>
-    <main class="mdl-layout__content mdl-color--grey-100">
-      <div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-          <!--firebase connection required-->
-          <h1>App In Development!<h1>
-            <h3 style="margin-left: 20px;">Trap Status</h3>
-            <p style="visibility: hidden;">Hi</p>
-            <a href="/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Exit</button></a>
-            <a href="//plus.google.com/u/0/communities/105080353670726754173" class="mdl-button mdl-js-button mdl-js-ripple-effect"> Google Plus Community</a>
-          </div>
-          <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <!--firebase connection required-->
-            <h1>Hello, Geoff<h1>
-              <h3 style="margin-left: 20px;">Trap Status</h3>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/user.jpg" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>hello@example.com</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
               <!--firebase connection required-->
-              <ul style="list-style-type: none;">
-                <li style="display: inline;">1. Empty</li><li>2. Awaiting Empty</li><li>3. Error</li>
-              </ul>
-              <p style="visibility: hidden;">Hi</p>
-              <!--firebase connection required--><!--extra ui required-->
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Add Trap</button>
-            </div>
-            <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-              <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
-                <use xlink:href="#chart" />
-              </svg>
-              <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
-                <use xlink:href="#chart" />
-              </svg>
-              <div id="sign-in-status" style="display: none;"></div>
-              <div id="sign-in" style="display: none;"></div>
-              <div id="account-details" style="display: none;"></div>
-            </div>
-            
-            <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-              <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                  <!--firebase connection required-->
-                  <h2 class="mdl-card__title-text">Updates</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                  Non dolore elit adipisicing ea reprehenderit consectetur culpa.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                  <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
-                </div>
-              </div>
-              <div class="demo-separator mdl-cell--1-col"></div>
-              
-              <iframe src="/ad.html" class="demo-cards" height="250x"></iframe>
-              
-              <div class="demo-separator mdl-cell--1-col"></div>
-              <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
+              <li class="mdl-menu__item">hello@example.com</li>
+              <li class="mdl-menu__item">hi@example.com</li>
+              <!--firebase connection required-->
+              <!--extra ui required-->
+              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Traps</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Payments</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Store</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Payment Info</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>My Account</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Contact</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>About</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+          <iframe src="/ad.html" class="demo-cards" height="250x" width="100%"></iframe>
+        </nav>
+      </div>
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+          <div class=" mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col ">
+<!--firebase connection required-->
+
+              <h1 >Hello, Jeoff<h1>
+              <h2>Trap Status</h2>
+<!--firebase connection required-->
+              <p>1. Empty</p><p>2. Awaiting Empty</p><p>3. Error</p>
+<!--firebase connection required-->
+<!--extra ui required-->
+              <a>Add Trap</a>
+          </div>
+
+
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+            <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
+              <use xlink:href="#chart" />
+            </svg>
+            <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
+              <use xlink:href="#chart" />
+            </svg>
+          </div>
+
+          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
                 <!--firebase connection required-->
-                <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
-                  <h3>View options</h3>
-                  <ul>
-                    <li>
-                      <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                        <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
-                        <span class="mdl-checkbox__label">Click per object</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                        <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
-                        <span class="mdl-checkbox__label">Views per object</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                        <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
-                        <span class="mdl-checkbox__label">Objects selected</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                        <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
-                        <span class="mdl-checkbox__label">Objects viewed</span>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                  <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
-                  <div class="mdl-layout-spacer"></div>
-                  <!--firebase connection required-->
-                  <i class="material-icons">location_on</i>
-                </div>
+                <h2 class="mdl-card__title-text">Updates</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                Non dolore elit adipisicing ea reprehenderit consectetur culpa.
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
+              </div>
+            </div>
+            <div class="demo-separator mdl-cell--1-col"></div>
+
+<iframe src="/ad.html" class="demo-cards" height="250x"></iframe>
+
+<div class="demo-separator mdl-cell--1-col"></div>
+            <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
+              <!--firebase connection required-->
+              <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+                <h3>View options</h3>
+                <ul>
+                  <li>
+                    <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Click per object</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Views per object</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Objects selected</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Objects viewed</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
+                <div class="mdl-layout-spacer"></div>
+                <!--firebase connection required-->
+                <i class="material-icons">location_on</i>
               </div>
             </div>
           </div>
-          <div style='height=500px;visibility:hidden;'>Hi<br>Hi<br>Hello<br>Hi</div>
-        </main>
-      </div>
+        </div>
+      </main>
+    </div>
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
         <defs>
           <mask id="piemask" maskContentUnits="objectBoundingBox">
@@ -294,7 +229,7 @@ window.onload = function() {
           </g>
         </defs>
       </svg>
-      
+
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
         <defs>
           <g id="chart">
@@ -330,12 +265,6 @@ window.onload = function() {
           </g>
         </defs>
       </svg>
-      <script>
-      (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
-        t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
-      })(window, document, '_gscq','script','//widgets.getsitecontrol.com/162210/script.js');
-      </script>
-      <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    </body>
-    </html>
-    
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
+</html>
