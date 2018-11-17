@@ -79,14 +79,15 @@
           <span class="mdl-layout-title">Home</span>
           <script>
           function get() {
-            var ref = firebase.database().ref();
+            let ref = firebase.database().ref();
               ref.on("value", function(snapshot){
                 console.log(JSON.stringify(snapshot.val(), null, 2));
                 return(snapshot.val());
               });
           }
-
-
+          window.onload=function(){
+            get()
+          }
           </script>
 
           <div class="mdl-layout-spacer"></div>
