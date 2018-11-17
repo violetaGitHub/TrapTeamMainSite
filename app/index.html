@@ -107,8 +107,16 @@ function initapp() {
     console.log(error);
   });
 };
+function get() {
+  var ref = firebase.database().ref();
+  ref.on("value", function(snapshot){
+    console.log(JSON.stringify(snapshot.val(), null, 2));
+    return(snapshot.val());
+  });
+}
 window.onload = function() {
   initapp();
+  let database = get();
 }
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
