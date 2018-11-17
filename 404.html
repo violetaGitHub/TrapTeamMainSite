@@ -1,54 +1,56 @@
 <!doctype html>
 <!--
-  Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
+Material Design Lite
+Copyright 2015 Google Inc. All rights reserved.
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-      https://www.apache.org/licenses/LICENSE-2.0
+https://www.apache.org/licenses/LICENSE-2.0
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
 -->
 
 <html lang="en">
-  <head>
-    <meta name="robots" content="index, follow" />
-
-    <meta charset="utf-8">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
-    <script src="//platform-api.sharethis.com/js/sharethis.js#property=5b9345216ae21e0011fb0a51&product=inline-share-buttons"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125046720-1"></script>
-<script id="dsq-count-scr" src="//trapteamcc.disqus.com/count.js" async></script>
-<link rel="icon" href="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=32" sizes="32x32">
-<script>
+<head>
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
+  
+  <meta name="robots" content="index, follow" />
+  
+  <meta charset="utf-8">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
+  <script src="//platform-api.sharethis.com/js/sharethis.js#property=5b9345216ae21e0011fb0a51&product=inline-share-buttons"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125046720-1"></script>
+  <script id="dsq-count-scr" src="//trapteamcc.disqus.com/count.js" async></script>
+  <link rel="icon" href="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=32" sizes="32x32">
+  <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
+  
   gtag('config', 'UA-125046720-1');
 </script>
 <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
+  t = window.twttr || {};
   if (d.getElementById(id)) return t;
   js = d.createElement(s);
   js.id = id;
   js.src = "https://platform.twitter.com/widgets.js";
   fjs.parentNode.insertBefore(js, fjs);
-
+  
   t._e = [];
   t.ready = function(f) {
     t._e.push(f);
   };
-
+  
   return t;
 }(document, "script", "twitter-wjs"));</script>
 <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
@@ -72,36 +74,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
-    authDomain: "trapteam-cc.firebaseapp.com",
-    databaseURL: "https://trapteam-cc.firebaseio.com",
-    projectId: "trapteam-cc",
-    storageBucket: "trapteam-cc.appspot.com",
-    messagingSenderId: "150993996289"
-  };
-  firebase.initializeApp(config);
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
+  authDomain: "trapteam-cc.firebaseapp.com",
+  databaseURL: "https://trapteam-cc.firebaseio.com",
+  projectId: "trapteam-cc",
+  storageBucket: "trapteam-cc.appspot.com",
+  messagingSenderId: "150993996289"
+};
+firebase.initializeApp(config);
 </script>
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links
   $(".a").on('click', function(event) {
-
+    
     // Make sure this.hash has a value before overriding default behavior
     if (this.hash !== "") {
       // Prevent default anchor click behavior
       event.preventDefault();
-
+      
       // Store hash
       var hash = this.hash;
-
+      
       // Using jQuery's animate() method to add smooth page scroll
       // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
       $('html, body').animate({
         scrollTop: $(hash).offset().top
       }, 800, function(){
-
+        
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
       });
@@ -112,98 +114,98 @@ function init() {
   gapi.load('auth2', function() { // Ready. });
 }
 </script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Trap Team NZ</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Trap Team NZ</title>
 
-    <!-- Page styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-    <link rel="stylesheet" href="styles.css">
-      <!-- update the version number as needed -->
-  <script defer src="/__/firebase/5.3.1/firebase-app.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/5.3.1/firebase-auth.js"></script>
-  <script defer src="/__/firebase/5.3.1/firebase-database.js"></script>
-  <script defer src="/__/firebase/5.3.1/firebase-messaging.js"></script>
-  <script defer src="/__/firebase/5.3.1/firebase-storage.js"></script>
-  <script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css
+<!-- Page styles -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+<link rel="stylesheet" href="styles.css">
+<!-- update the version number as needed -->
+<script defer src="/__/firebase/5.3.1/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script defer src="/__/firebase/5.3.1/firebase-auth.js"></script>
+<script defer src="/__/firebase/5.3.1/firebase-database.js"></script>
+<script defer src="/__/firebase/5.3.1/firebase-messaging.js"></script>
+<script defer src="/__/firebase/5.3.1/firebase-storage.js"></script>
+<script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css
 ">
-  <!-- initialize the SDK after all desired features are loaded -->
-  <script defer src="/__/firebase/init.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-  <!-- Google Tag Manager -->
+<!-- initialize the SDK after all desired features are loaded -->
+<script defer src="/__/firebase/init.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PMXFRCJ');</script>
 <!-- End Google Tag Manager -->
-       <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-    // // The Firebase SDK is initialized and available here!
-    //
-    // firebase.auth().onAuthStateChanged(user => { });
-    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-    // firebase.messaging().requestPermission().then(() => { });
-    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-    //
-    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-    try {
-      let app = firebase.app();
-      let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-      document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-    } catch (e) {
-      console.error(e);
-      document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-    }
-    });
-    function auth() {
-          var provider = new firebase.auth.GoogleAuthProvider();
-firebase.auth().signInWithPopup(provider).then(function(result) {
-  // This gives you a Google Access Token. You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  alert('Signed In With Google');
-  var user = result.user;  // ...
-  console.log(user);
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
-  console.log("Error");
-});
-    }
-function auth_with_link(email) {
-
-
-var actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be whitelisted in the Firebase Console.
-  url: 'https://trapteam-cc.firebaseapp.com/',
-  // This must be true.
-  handleCodeInApp: true,
-  iOS: {
-    bundleId: 'com.example.ios'
-  },
-  android: {
-    packageName: 'com.example.android',
-    installApp: true,
-    minimumVersion: '12'
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  // // The Firebase SDK is initialized and available here!
+  //
+  // firebase.auth().onAuthStateChanged(user => { });
+  // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+  // firebase.messaging().requestPermission().then(() => { });
+  // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+  //
+  // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  
+  try {
+    let app = firebase.app();
+    let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+    document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+  } catch (e) {
+    console.error(e);
+    document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
   }
-};
-firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+});
+function auth() {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    alert('Signed In With Google');
+    var user = result.user;  // ...
+    console.log(user);
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+    console.log("Error");
+  });
+}
+function auth_with_link(email) {
+  
+  
+  var actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be whitelisted in the Firebase Console.
+    url: 'https://trapteam-cc.firebaseapp.com/',
+    // This must be true.
+    handleCodeInApp: true,
+    iOS: {
+      bundleId: 'com.example.ios'
+    },
+    android: {
+      packageName: 'com.example.android',
+      installApp: true,
+      minimumVersion: '12'
+    }
+  };
+  firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
   .then(function() {
     // The link was successfully sent. Inform the user.
     // Save the email locally so you don't need to ask the user for it again
@@ -214,25 +216,25 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
   .catch(function(error) {
     // Some error occurred, you can inspect the code: error.code
     console.log('error');
-
+    
   });
-
-  }
-  </script>
-    <style>
-    #view-source {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
-    </style>
-  </head>
-  <body class="mdc-typography">
-    <div id="fb-root"></div>
+  
+}
+</script>
+<style>
+#view-source {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900;
+}
+</style>
+</head>
+<body class="mdc-typography">
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -240,7 +242,7 @@ firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
   js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMXFRCJ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -252,282 +254,282 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-      <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
-        <div class="mdl-layout__header-row">
-          <span class="android-title mdl-layout-title">
-            <a href="/#" style="text-decoration: none;color: grey;">
-            <img class="android-logo-image" src="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=120"> Trap Team
-          </a>
-          </span>
-          <!-- Add spacer, to align navigation to the right in desktop -->
-          <div class="android-header-spacer mdl-layout-spacer"></div>
-          <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-          </div>
-          <!-- Navigation -->
-          <div class="android-navigation-container">
-            <nav class="android-navigation mdl-navigation">
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect  mdc-typography--button mdl-js-ripple-effect" href="/#">Home</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect  mdc-typography--button mdl-js-ripple-effect" href="">Log In</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdc-typography--button mdl-js-ripple-effect" href="">Possum Trap</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect mdc-typography--button mdl-js-ripple-effect" href="">Rat Trap</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdc-typography--button mdl-js-ripple-effect" href="">Mouse Trap</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect mdc-typography--button mdl-js-ripple-effect" href="">Pricing</a>
+<div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+<div class="mdl-layout__header-row">
+<span class="android-title mdl-layout-title">
+<a href="/#" style="text-decoration: none;color: grey;">
+<img class="android-logo-image" src="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=120"> Trap Team
+</a>
+</span>
+<!-- Add spacer, to align navigation to the right in desktop -->
+<div class="android-header-spacer mdl-layout-spacer"></div>
+<div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+</div>
+<!-- Navigation -->
+<div class="android-navigation-container">
+<nav class="android-navigation mdl-navigation">
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect  mdc-typography--button mdl-js-ripple-effect" href="/#">Home</a>
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect  mdc-typography--button mdl-js-ripple-effect" href="">Log In</a>
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdc-typography--button mdl-js-ripple-effect" href="">Possum Trap</a>
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect mdc-typography--button mdl-js-ripple-effect" href="">Rat Trap</a>
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdc-typography--button mdl-js-ripple-effect" href="">Mouse Trap</a>
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect mdc-typography--button mdl-js-ripple-effect" href="">Pricing</a>
 
-              <a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect mdc-typography--button mdl-js-ripple-effect" href="/about.html" style="display: none;">About</a>
+<a class="mdl-navigation__link mdl-typography--text-uppercase mdl-js-ripple-effect mdc-typography--button mdl-js-ripple-effect" href="/about.html" style="display: none;">About</a>
 
 
-            </nav>
-          </div>
-          <span class="android-mobile-title mdl-layout-title">
-            <img class="android-logo-image" src="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=120">
-          </span>
-          <button class="android-more-button mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button" style="display: none;">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-            <li class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">5.0 Lollipop</li>
-            <li class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">4.4 KitKat</li>
-            <li disabled class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">4.3 Jelly Bean</li>
-            <li class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">android history</li>
-          </ul>
-        </div>
-      </div>
+</nav>
+</div>
+<span class="android-mobile-title mdl-layout-title">
+<img class="android-logo-image" src="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=120">
+</span>
+<button class="android-more-button mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button" style="display: none;">
+<i class="material-icons">more_vert</i>
+</button>
+<ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+<li class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">5.0 Lollipop</li>
+<li class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">4.4 KitKat</li>
+<li disabled class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">4.3 Jelly Bean</li>
+<li class="mdl-menu__item mdc-typography--button mdl-js-ripple-effect" style="padding-top: 15px;">android history</li>
+</ul>
+</div>
+</div>
 
-      <div class="android-drawer mdl-layout__drawer">
-        <span class="mdl-layout-title">
-          <img class="android-logo-image" src="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=120">
-        </span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link coo-button mdc-typography--button mdl-js-ripple-effect" href="">Dashboard</a>
-          <div class="android-drawer-separator"></div>
-          <span class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href='#'>Product</span>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Rat Trap</a>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Possum Trap</a>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Mouse Trap</a>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Pricing</a>
-          <div class="android-drawer-separator"></div>
-          <span class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href='#'>About</span>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/about.html">About</a>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="//trapteam690333707.wordpress.com">Blog</a>
-          <!--https://trapteam690333707.wordpress.com-->
-          <div class="android-drawer-separator"></div>
-          <span class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="#">Partners</span>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="//codecamp.co.nz">Codecamp</a>
-          <a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="//goodnature.co.nz">GoodNature</a>
+<div class="android-drawer mdl-layout__drawer">
+<span class="mdl-layout-title">
+<img class="android-logo-image" src="https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png?w=120">
+</span>
+<nav class="mdl-navigation">
+<a class="mdl-navigation__link coo-button mdc-typography--button mdl-js-ripple-effect" href="">Dashboard</a>
+<div class="android-drawer-separator"></div>
+<span class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href='#'>Product</span>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Rat Trap</a>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Possum Trap</a>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Mouse Trap</a>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/404.html">Pricing</a>
+<div class="android-drawer-separator"></div>
+<span class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href='#'>About</span>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="/about.html">About</a>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="//trapteam690333707.wordpress.com">Blog</a>
+<!--https://trapteam690333707.wordpress.com-->
+<div class="android-drawer-separator"></div>
+<span class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="#">Partners</span>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="//codecamp.co.nz">Codecamp</a>
+<a class="mdl-navigation__link mdc-typography--button mdl-js-ripple-effect" href="//goodnature.co.nz">GoodNature</a>
 
-        </nav>
-                      <script type="text/javascript">
-              mdc.ripple.MDCRipple.attachTo(document.querySelector('.coo-button'));
-              mdc.ripple.MDCRipple.attachTo(document.querySelector('.moeo-button'));
-            </script>
-      </div>
+</nav>
+<script type="text/javascript">
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.coo-button'));
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.moeo-button'));
+</script>
+</div>
 
-      <div class="android-content mdl-layout__content">
-        <a name="top"></a>
-        <div class="android-be-together-section mdl-typography--text-center">
-          <div class="mdc-typography--headline1 logo-font android-slogan ">This does not exist... YET</div>
-          <div class="logo-font android-sub-slogan mdc-typography--subtitle1">We are still in development</div>
-          <div class="logo-font android-create-character">
-            <a href="" id="load" style="display: none;"><img src="images/andy.png"> create your android character</a>
-            <div class="g-signin2" data-onsuccess="onSignIn" style="display: none;"></div>
+<div class="android-content mdl-layout__content">
+<a name="top"></a>
+<div class="android-be-together-section mdl-typography--text-center">
+<div class="mdc-typography--headline1 logo-font android-slogan ">This does not exist... YET</div>
+<div class="logo-font android-sub-slogan mdc-typography--subtitle1">We are still in development</div>
+<div class="logo-font android-create-character">
+<a href="" id="load" style="display: none;"><img src="images/andy.png"> create your android character</a>
+<div class="g-signin2" data-onsuccess="onSignIn" style="display: none;"></div>
 
-            <div class="addthis_inline_share_toolbox"></div>
+<div class="addthis_inline_share_toolbox"></div>
 
-            <!--<div class="fb-share-button" data-href="https://trapteam-cc.firebaseapp.com/" data-layout="box_count" data-size="large" data-mobile-iframe="false"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftrapteam-cc.firebaseapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-            <a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world?url=https://trapteam-cc.firebaseapp.com"
-  data-size="large">
+<!--<div class="fb-share-button" data-href="https://trapteam-cc.firebaseapp.com/" data-layout="box_count" data-size="large" data-mobile-iframe="false"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftrapteam-cc.firebaseapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+<a class="twitter-share-button"
+href="https://twitter.com/intent/tweet?text=Hello%20world?url=https://trapteam-cc.firebaseapp.com"
+data-size="large">
 Tweet</a>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <g:plus action="share">Hello?</g:plus>-->
-          </div>
+</div>
 
-        </div>
-        <div class="android-screen-section mdl-typography--text-center" style="display: none;">
-          <a name="screens"></a>
-          <div class="mdl-typography--display-1-color-contrast">Powering screens of all sizes</div>
-          <div class="android-screens">
-            <div class="android-wear android-screen">
-              <a class="android-image-link" href="">
-                <img class="android-screen-image" src="images/wear-silver-on.png">
-                <img class="android-screen-image" src="images/wear-black-on.png">
-              </a>
-              <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android Wear</a>
+</div>
+<div class="android-screen-section mdl-typography--text-center" style="display: none;">
+<a name="screens"></a>
+<div class="mdl-typography--display-1-color-contrast">Powering screens of all sizes</div>
+<div class="android-screens">
+<div class="android-wear android-screen">
+<a class="android-image-link" href="">
+<img class="android-screen-image" src="images/wear-silver-on.png">
+<img class="android-screen-image" src="images/wear-black-on.png">
+</a>
+<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android Wear</a>
 
-            </div>
-            <div class="android-phone android-screen">
-              <a class="android-image-link" href="">
-                <img class="android-screen-image" src="images/nexus6-on.jpg">
-              </a>
-              <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Phones</a>
-            </div>
-            <div class="android-tablet android-screen">
-              <a class="android-image-link" href="">
-                <img class="android-screen-image" src="images/nexus9-on.jpg">
-              </a>
-              <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Tablets</a>
-            </div>
-            <div class="android-tv android-screen">
-              <a class="android-image-link" href="">
-                <img class="android-screen-image" src="images/tv-on.jpg">
-              </a>
-              <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android TV</a>
-            </div>
-            <div class="android-auto android-screen">
-              <a class="android-image-link" href="">
-                <img class="android-screen-image" src="images/auto-on.jpg">
-              </a>
-              <a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left" href="">Coming Soon: Android Auto</a>
-            </div>
-          </div>
-        </div>
-                  <div id="firebaseui-auth-container"></div>
-   <div id="loader" style="display: none;">Loading...</div>
-        <div class="android-wear-section" style="display: none;">
-          <div class="android-wear-band">
-            <div class="android-wear-band-text">
-              <div class="mdl-typography--display-2 mdl-typography--font-thin">Built-in to the world's best traps</div>
-              <p class="mdl-typography--headline mdl-typography--font-thin">
-                Our system is integrated into world-leading traps!
-              </p>
-              <p>
-                <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link foo-button mdc-button" href="https://goodnature.co.nz/">
-                  <b>Check Them Out</b>
-                </a>
-                <div class="sharethis-inline-reaction-buttons"></div>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="android-customized-section" style="display: none;">
-          <div class="android-customized-section-text">
-            <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Customised by you, for you</div>
-            <p class="mdl-typography--font-light">
-              Simply set traps, and track them, with our free trap cleaning & removing
-              <br>
-              <a href="#" class="android-link mdl-typography--font-light moo-button mdc-button mdl-js-ripple-effect"><b>Check out our trap removal service</b></a>
-            </p>
-            <script type="text/javascript">
-              mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
-              mdc.ripple.MDCRipple.attachTo(document.querySelector('.moo-button'));
-            </script>
-          </div>
-          <div class="android-customized-section-image"></div>
-        </div>
-        <div class="mdl-typography--text-center">
-        <!-- Begin MailChimp Signup Form -->
+</div>
+<div class="android-phone android-screen">
+<a class="android-image-link" href="">
+<img class="android-screen-image" src="images/nexus6-on.jpg">
+</a>
+<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Phones</a>
+</div>
+<div class="android-tablet android-screen">
+<a class="android-image-link" href="">
+<img class="android-screen-image" src="images/nexus9-on.jpg">
+</a>
+<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Tablets</a>
+</div>
+<div class="android-tv android-screen">
+<a class="android-image-link" href="">
+<img class="android-screen-image" src="images/tv-on.jpg">
+</a>
+<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">Android TV</a>
+</div>
+<div class="android-auto android-screen">
+<a class="android-image-link" href="">
+<img class="android-screen-image" src="images/auto-on.jpg">
+</a>
+<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left" href="">Coming Soon: Android Auto</a>
+</div>
+</div>
+</div>
+<div id="firebaseui-auth-container"></div>
+<div id="loader" style="display: none;">Loading...</div>
+<div class="android-wear-section" style="display: none;">
+<div class="android-wear-band">
+<div class="android-wear-band-text">
+<div class="mdl-typography--display-2 mdl-typography--font-thin">Built-in to the world's best traps</div>
+<p class="mdl-typography--headline mdl-typography--font-thin">
+Our system is integrated into world-leading traps!
+</p>
+<p>
+<a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link foo-button mdc-button" href="https://goodnature.co.nz/">
+<b>Check Them Out</b>
+</a>
+<div class="sharethis-inline-reaction-buttons"></div>
+</p>
+</div>
+</div>
+</div>
+<div class="android-customized-section" style="display: none;">
+<div class="android-customized-section-text">
+<div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">Customised by you, for you</div>
+<p class="mdl-typography--font-light">
+Simply set traps, and track them, with our free trap cleaning & removing
+<br>
+<a href="#" class="android-link mdl-typography--font-light moo-button mdc-button mdl-js-ripple-effect"><b>Check out our trap removal service</b></a>
+</p>
+<script type="text/javascript">
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.moo-button'));
+</script>
+</div>
+<div class="android-customized-section-image"></div>
+</div>
+<div class="mdl-typography--text-center">
+<!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-  #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
-  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
 <div id="mc_embed_signup">
 <form action="https://firebaseapp.us19.list-manage.com/subscribe/post?u=d8f4ddc5cd492d0dbea169d23&amp;id=0641ebdafe" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    <div id="mc_embed_signup_scroll">
-  <label for="mce-EMAIL">Subscribe to our mailing list</label>
-  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d8f4ddc5cd492d0dbea169d23_0641ebdafe" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    </div>
+<div id="mc_embed_signup_scroll">
+<label for="mce-EMAIL">Subscribe to our mailing list</label>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d8f4ddc5cd492d0dbea169d23_0641ebdafe" tabindex="-1" value=""></div>
+<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</div>
 </form>
 </div>
 </div>
 <!--End mc_embed_signup-->
-        <div class="android-more-section" style="display: none;">
-          <div class="android-section-title mdl-typography--display-1-color-contrast">More from Trap Team</div>
-          <div class="android-card-container mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
-                <img src="images/more-from-1.png">
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">Trap Collection</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">We Will Empty Your Traps!<br><br><br><br></span>
-              </div>
-              <div class="mdl-card__actions">
-                 <a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
-                   Go
-                   <i class="material-icons">chevron_right</i>
-                 </a>
-                 <div class="sharethis-inline-share-buttons"></div>
+<div class="android-more-section" style="display: none;">
+<div class="android-section-title mdl-typography--display-1-color-contrast">More from Trap Team</div>
+<div class="android-card-container mdl-grid">
+<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+<div class="mdl-card__media">
+<img src="images/more-from-1.png">
+</div>
+<div class="mdl-card__title">
+<h4 class="mdl-card__title-text">Trap Collection</h4>
+</div>
+<div class="mdl-card__supporting-text">
+<span class="mdl-typography--font-light mdl-typography--subhead">We Will Empty Your Traps!<br><br><br><br></span>
+</div>
+<div class="mdl-card__actions">
+<a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
+Go
+<i class="material-icons">chevron_right</i>
+</a>
+<div class="sharethis-inline-share-buttons"></div>
 
-                 <div class="rns"></div>
+<div class="rns"></div>
 
 
-              </div>
-            </div>
+</div>
+</div>
 
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
-                <img src="images/more-from-4.png">
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">Manage From Your Phone</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">Download Our App Now!<br><br><br><br></span>
-              </div>
-              <div class="mdl-card__actions">
-                 <a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
-                   Go
-                   <i class="material-icons">chevron_right</i>
-                 </a>
-                 <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="sharethis-inline-share-buttons"></div>
+<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+<div class="mdl-card__media">
+<img src="images/more-from-4.png">
+</div>
+<div class="mdl-card__title">
+<h4 class="mdl-card__title-text">Manage From Your Phone</h4>
+</div>
+<div class="mdl-card__supporting-text">
+<span class="mdl-typography--font-light mdl-typography--subhead">Download Our App Now!<br><br><br><br></span>
+</div>
+<div class="mdl-card__actions">
+<a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
+Go
+<i class="material-icons">chevron_right</i>
+</a>
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="sharethis-inline-share-buttons"></div>
 
-              </div>
-            </div>
+</div>
+</div>
 
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
-                <img src="images/more-from-2.png">
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">Easy to get going</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">Just enter your trap's ID, and your going - instantly<br><br><br><br></span>
-              </div>
-              <div class="mdl-card__actions">
-                 <a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
-                   Buy
-                   <i class="material-icons">chevron_right</i>
-                 </a>
-                 <div class="sharethis-inline-share-buttons"></div>
+<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+<div class="mdl-card__media">
+<img src="images/more-from-2.png">
+</div>
+<div class="mdl-card__title">
+<h4 class="mdl-card__title-text">Easy to get going</h4>
+</div>
+<div class="mdl-card__supporting-text">
+<span class="mdl-typography--font-light mdl-typography--subhead">Just enter your trap's ID, and your going - instantly<br><br><br><br></span>
+</div>
+<div class="mdl-card__actions">
+<a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
+Buy
+<i class="material-icons">chevron_right</i>
+</a>
+<div class="sharethis-inline-share-buttons"></div>
 
-              </div>
-            </div>
+</div>
+</div>
 
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
-                <img src="images/more-from-3.png">
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">Social integration</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">Get community stats<br><br><br><br></span>
-              </div>
-              <div class="mdl-card__actions">
-                 <a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
-                   Find apps
-                   <i class="material-icons">chevron_right</i>
-                 </a>
-                 <div class="sharethis-inline-share-buttons"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+<div class="mdl-card__media">
+<img src="images/more-from-3.png">
+</div>
+<div class="mdl-card__title">
+<h4 class="mdl-card__title-text">Social integration</h4>
+</div>
+<div class="mdl-card__supporting-text">
+<span class="mdl-typography--font-light mdl-typography--subhead">Get community stats<br><br><br><br></span>
+</div>
+<div class="mdl-card__actions">
+<a class="android-link mdl-button mdl-js-ripple-effect mdl-js-button mdl-typography--text-uppercase" href="">
+Find apps
+<i class="material-icons">chevron_right</i>
+</a>
+<div class="sharethis-inline-share-buttons"></div>
+</div>
+</div>
+</div>
+</div>
 
-        <footer class="android-footer mdl-mega-footer">
-          <h2>Comment</h2>
-          <div class="fb-comments" data-href="https://trapteam-cc.firebaseapp.com" data-width="100%" data-numposts="20"></div>
-          <!-- begin wwww.htmlcommentbox.com -->
+<footer class="android-footer mdl-mega-footer">
+<h2>Comment</h2>
+<div class="fb-comments" data-href="https://trapteam-cc.firebaseapp.com" data-width="100%" data-numposts="20"></div>
+<!-- begin wwww.htmlcommentbox.com -->
 <!-- end www.htmlcommentbox.com -->
 <h2>Disqus Trap Team NZ</h2>
 <div id="disqus_thread"></div>
@@ -551,105 +553,105 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <iframe src="/survey.html" width="100%" height="470" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe><iframe src="//renderer.apester.com/interaction/5ba09259d4b9a904b46fbc0f" width="100%" height="470" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-          <div class="mdl-mega-footer--top-section">
-            <div class="mdl-mega-footer--left-section">
+<div class="mdl-mega-footer--top-section">
+<div class="mdl-mega-footer--left-section">
 <div class="shareaholic-canvas" data-app="follow_buttons" data-app-id="28014041"></div>
-            </div>
-            <div class="mdl-mega-footer--right-section">
-              <a class="mdl-typography--font-light" href="#top">
-                Back to Top
-                <i class="material-icons">expand_less</i>
-              </a>
-            </div>
-            <!--<div class="shareaholic-canvas" data-app="recommendations" data-app-id="28110663" style="display: none;"></div>-->
+</div>
+<div class="mdl-mega-footer--right-section">
+<a class="mdl-typography--font-light" href="#top">
+Back to Top
+<i class="material-icons">expand_less</i>
+</a>
+</div>
+<!--<div class="shareaholic-canvas" data-app="recommendations" data-app-id="28110663" style="display: none;"></div>-->
 
-          </div>
+</div>
 
-          <div class="mdl-mega-footer--middle-section">
-          </div>
+<div class="mdl-mega-footer--middle-section">
+</div>
 
-          <div class="mdl-mega-footer--bottom-section">
-            <a class="android-link android-link-menu mdl-typography--font-light" id="version-dropdown">
-              Devices
-              <i class="material-icons">arrow_drop_up</i>
-            </a>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
-              <li class="mdl-menu__item">Possum Trap</li>
-              <li class="mdl-menu__item">Rat Trap</li>
-              <li class="mdl-menu__item">Mouse Trap</li>
-            </ul>
-            <a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
-              Useful GoodNature Links
-              <i class="material-icons">arrow_drop_up</i>
-            </a>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
-              <li class="mdl-menu__item"style="text-decoration: none;"><a style="text-decoration: none;" href="http://goodnature.co.nz">GoodNature</a></li>
-              <li class="mdl-menu__item" ><a href="https://goodnature.co.nz/collections/all?_=pf&pf_t_product_type=Traps"style="text-decoration: none;">Traps</a></li>
-              <li class="mdl-menu__item"><a href="https://goodnature.co.nz/collections/all?_=pf&pf_t_product_type=Lure&pf_t_product_type=Co2" style="text-decoration: none;">Lure & C02</a></li>
-              <li class="mdl-menu__item"style="text-decoration: none;"><a style="text-decoration: none;" href="https://goodnature.co.nz/collections/all?_=pf&pf_t_product_type=Accessories">Accessories</a></li>
-              <li class="mdl-menu__item"style="text-decoration: none;"><a style="text-decoration: none;" href="https://goodnature.co.nz/pages/support">Support</a></li>
-            </ul>
-          </div>
+<div class="mdl-mega-footer--bottom-section">
+<a class="android-link android-link-menu mdl-typography--font-light" id="version-dropdown">
+Devices
+<i class="material-icons">arrow_drop_up</i>
+</a>
+<ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
+<li class="mdl-menu__item">Possum Trap</li>
+<li class="mdl-menu__item">Rat Trap</li>
+<li class="mdl-menu__item">Mouse Trap</li>
+</ul>
+<a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
+Useful GoodNature Links
+<i class="material-icons">arrow_drop_up</i>
+</a>
+<ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
+<li class="mdl-menu__item"style="text-decoration: none;"><a style="text-decoration: none;" href="http://goodnature.co.nz">GoodNature</a></li>
+<li class="mdl-menu__item" ><a href="https://goodnature.co.nz/collections/all?_=pf&pf_t_product_type=Traps"style="text-decoration: none;">Traps</a></li>
+<li class="mdl-menu__item"><a href="https://goodnature.co.nz/collections/all?_=pf&pf_t_product_type=Lure&pf_t_product_type=Co2" style="text-decoration: none;">Lure & C02</a></li>
+<li class="mdl-menu__item"style="text-decoration: none;"><a style="text-decoration: none;" href="https://goodnature.co.nz/collections/all?_=pf&pf_t_product_type=Accessories">Accessories</a></li>
+<li class="mdl-menu__item"style="text-decoration: none;"><a style="text-decoration: none;" href="https://goodnature.co.nz/pages/support">Support</a></li>
+</ul>
+</div>
 
-        </footer>
-      </div>
-    </div>
-              <script type="text/javascript">
-  // Initialize the FirebaseUI Widget using Firebase.
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', {
-    signInOptions: [
-      {
-        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        requireDisplayName: false
-      }
-    ]
-  });
+</footer>
+</div>
+</div>
+<script type="text/javascript">
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: false
+    }
+  ]
+});
 
-  var uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        return true;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-        // Hide the loader.
-        document.getElementById('loader').style.display = 'none';
-      }
+var uiConfig = {
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return true;
     },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'next.html',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      //firebase.auth.PhoneAuthProvider.PROVIDER_ID
-    ],
-    // Terms of service url.
-    tosUrl: 'licence.html',
-    // Privacy policy url.
-    privacyPolicyUrl: 'licence.html'
-  };
-    ui.start('#firebaseui-auth-container', uiConfig);
+    uiShown: function() {
+      // The widget is rendered.
+      // Hide the loader.
+      document.getElementById('loader').style.display = 'none';
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+  signInFlow: 'popup',
+  signInSuccessUrl: 'next.html',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  tosUrl: 'licence.html',
+  // Privacy policy url.
+  privacyPolicyUrl: 'licence.html'
+};
+ui.start('#firebaseui-auth-container', uiConfig);
 function init() {
   gapi.load('auth2', function() { // Ready. });
 }
-  </script>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b989eb1453d487b"></script>
-    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"d8f4ddc5cd492d0dbea169d23","lid":"0641ebdafe","uniqueMethods":true}) })</script>
-    <script type="text/javascript" data-cfasync="false" src="//apps.shareaholic.com/assets/pub/shareaholic.js" data-shr-siteid="3ed18817b311e3393c6bb6a08aedd059" async="async"></script>
-    <script id="dsq-count-scr" src="//trapteamcc.disqus.com/count.js" async></script>
-    <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='bce75cec60602e16802f04b695fa950ae00f06909687d45be7011f5d030b9726';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
-    <script type="text/javascript">!function(t,e){t.artibotApi={l:[],t:[],on:function(){this.l.push(arguments)},trigger:function(){this.t.push(arguments)}};var a=!1,i=e.createElement("script");i.async=!0,i.type="text/javascript",i.src="https://app.artibot.ai/loader.js",e.getElementsByTagName("head").item(0).appendChild(i),i.onreadystatechange=i.onload=function(){if(!(a||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState)){new window.ArtiBot({i:"766d7aae-ea06-4035-89bc-00d44dff437f"});a=!0}}}(window,document);</script>
-    <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '3a0d91dd-a49c-44a9-9696-58a95b23f323', f: true }); done = true; } }; })();</script>
-  </body>
+</script>
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b989eb1453d487b"></script>
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"d8f4ddc5cd492d0dbea169d23","lid":"0641ebdafe","uniqueMethods":true}) })</script>
+<script type="text/javascript" data-cfasync="false" src="//apps.shareaholic.com/assets/pub/shareaholic.js" data-shr-siteid="3ed18817b311e3393c6bb6a08aedd059" async="async"></script>
+<script id="dsq-count-scr" src="//trapteamcc.disqus.com/count.js" async></script>
+<script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='bce75cec60602e16802f04b695fa950ae00f06909687d45be7011f5d030b9726';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
+<script type="text/javascript">!function(t,e){t.artibotApi={l:[],t:[],on:function(){this.l.push(arguments)},trigger:function(){this.t.push(arguments)}};var a=!1,i=e.createElement("script");i.async=!0,i.type="text/javascript",i.src="https://app.artibot.ai/loader.js",e.getElementsByTagName("head").item(0).appendChild(i),i.onreadystatechange=i.onload=function(){if(!(a||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState)){new window.ArtiBot({i:"766d7aae-ea06-4035-89bc-00d44dff437f"});a=!0}}}(window,document);</script>
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '3a0d91dd-a49c-44a9-9696-58a95b23f323', f: true }); done = true; } }; })();</script>
+</body>
 </html>
