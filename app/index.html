@@ -118,6 +118,16 @@ window.onload = function() {
   initapp();
   let database = get();
   // Put code here
+  /*
+  document.getElementById('button').onclick = function() {
+  firebase.auth().signOut().then(function() {
+  console.log('Signed Out');
+}, function(error) {
+console.error('Sign Out Error', error);
+}​;​
+
+});
+*/
 }
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -222,7 +232,7 @@ window.onload = function() {
                     <li class="mdl-menu__item">hi@example.com</li>
                     <!--firebase connection required-->
                     <!--extra ui required-->
-                    <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+                    <button class="mdl-menu__item" id='exit'><i class="material-icons">add</i>Sign out</button>
                   </ul>
                 </div>
               </header>
