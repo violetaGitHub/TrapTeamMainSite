@@ -25,7 +25,7 @@
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <a class="mdl-navigation__link" href="//trapteamnzcc.freshdesk.com">Help</a>
           <a class="mdl-navigation__link" href="//blog.trapteamnz.tk">Blog</a>
-          <a class="mdl-navigation__link" href="">Home Page</a>
+          <a class="mdl-navigation__link" href="/">Home Page</a>
         </nav>
       </div>
     </header>
@@ -38,8 +38,31 @@
       </nav>
     </div>
     <main class="mdl-layout__content">
-      <div class="page-content"><!-- Your content goes here --></div>
+      <div class="page-content"><button style='visibility:hidden;' id='mytest1' onclick="console.log('loaded');"></button>
+        <h1>Please sign in to use this product</h1>
+        <!-- Accent-colored raised button with ripple -->
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/auth.html">
+          Authentication
+        </a>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="/app">
+          App
+        </a>
+      </div>
     </main>
   </div>
+  <script type="text/javascript">
+    function eventFire(el, etype){
+      if (el.fireEvent) {
+        el.fireEvent('on' + etype);
+      } else {
+        var evObj = document.createEvent('Events');
+        evObj.initEvent(etype, true, false);
+        el.dispatchEvent(evObj);
+      }
+    }
+    window.onload = function() {
+      eventFire(document.getElementById('mytest1'), 'click');
+    };
+  </script>
 </body>
 </html>
