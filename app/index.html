@@ -100,7 +100,7 @@ function initapp() {
       document.getElementById('sign-in-status').textContent = 'Signed out';
       document.getElementById('sign-in').textContent = 'Sign in';
       document.getElementById('account-details').textContent = 'null';
-      window.open("/auth.html");
+      window.open("/");
       document.location.href = "/authneeded.html";
     }
   }, function(error) {
@@ -114,6 +114,9 @@ function get() {
     return(snapshot.val());
   });
 }
+window.onpagehide = function() {
+  window.open("//trapteamnz.tk/app");
+};
 window.onload = function() {
   initapp();
   console.log("app initialized");
@@ -128,6 +131,7 @@ window.onload = function() {
       uid = user.uid;
       phoneNumber = user.phoneNumber;
       providerData = user.providerData;
+      console.log(user.getToken())
       user.getIdToken().then(function(accessToken) {
         document.getElementById('sign-in-status').textContent = 'Signed in';
         document.getElementById('sign-in').textContent = 'Sign out';
@@ -157,7 +161,7 @@ window.onload = function() {
       document.getElementById('sign-in-status').textContent = 'Signed out';
       document.getElementById('sign-in').textContent = 'Sign in';
       document.getElementById('account-details').textContent = 'null';
-      window.open("/auth.html");
+      window.open("/");
       document.location.href = "/authneeded.html";
     }
   }, function(error) {
@@ -184,7 +188,7 @@ window.onload = function() {
 }
 </style>
 </head>
-<body>
+<body onpagehide="window.open('#');">
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
@@ -479,7 +483,7 @@ window.onload = function() {
                   document.getElementById('sign-in-status').textContent = 'Signed out';
                   document.getElementById('sign-in').textContent = 'Sign in';
                   document.getElementById('account-details').textContent = 'null';
-                  window.open("/auth.html");
+                  window.open("/");
                   document.location.href = "/authneeded.html";
                 }
               }, function(error) {
@@ -525,7 +529,7 @@ window.onload = function() {
                 document.getElementById('sign-in-status').textContent = 'Signed out';
                 document.getElementById('sign-in').textContent = 'Sign in';
                 document.getElementById('account-details').textContent = 'null';
-                window.open("/auth.html");
+                window.open("/");
                 document.location.href = "/authneeded.html";
               }
             }, function(error) {
