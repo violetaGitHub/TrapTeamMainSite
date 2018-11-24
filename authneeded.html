@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>Trap Team - Please sign in to continue</title>
   <script type="text/javascript">
-    var wid = '452918';
-    var uid = '216322';
+  var wid = '452918';
+  var uid = '216322';
   </script>
   <script type="text/javascript" src="//cdn.popcash.net/pop.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -50,22 +50,26 @@
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="//help.trapteamnz.tk">
           Help
         </a>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="//trapteamnzcc.freshdesk.com/support/tickets/new">
+          See a bug? Report it!
+        </a>
+        <!--https://trapteamnzcc.freshdesk.com/support/tickets/new-->
       </div>
     </main>
   </div>
   <script type="text/javascript">
-    function eventFire(el, etype){
-      if (el.fireEvent) {
-        el.fireEvent('on' + etype);
-      } else {
-        var evObj = document.createEvent('Events');
-        evObj.initEvent(etype, true, false);
-        el.dispatchEvent(evObj);
-      }
+  function eventFire(el, etype){
+    if (el.fireEvent) {
+      el.fireEvent('on' + etype);
+    } else {
+      var evObj = document.createEvent('Events');
+      evObj.initEvent(etype, true, false);
+      el.dispatchEvent(evObj);
     }
-    window.onload = function() {
-      eventFire(document.getElementById('mytest1'), 'click');
-    };
+  }
+  window.onload = function() {
+    eventFire(document.getElementById('mytest1'), 'click');
+  };
   </script>
 </body>
 </html>
