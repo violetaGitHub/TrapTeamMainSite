@@ -192,6 +192,9 @@ window.onload = function() {
 </head>
 <body>
   <h1>Loading...</h1><p>If you are not redirected within 10 seconds, then click <a href='/auth.html'>here.</a></p>
+  <div id="sign-in-status" style="display: none;"></div>
+  <div id="sign-in" style="display: none;"></div>
+  <div id="account-details" style="display: none;"></div>
   <script type="text/javascript">
   document.getElementById('exit').onclick = function() {
     firebase.auth().signOut().then(function() {
