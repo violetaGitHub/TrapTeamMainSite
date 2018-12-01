@@ -298,19 +298,10 @@ window.onload = function() {
                 <div class=" mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                   <!--firebase connection required-->
                   
-                  <script>
-                  window.onload(function(){
-                    console.log(displayName)
-                    var name ="Hello," + displayName;
-                    document.getElementById('header').innerHTML = name;
-                  })
-                  
-                  
-                  </script>
                   <h1 id='header' style="margin-left: 20px;display:inline;">Hello,<h1>
                     
                     
-                    <h1 style="margin-left: 20px;display:inline;">user.displayName<h1>
+                    <h1 style="margin-left: 20px;display:inline;"><h1>
                     </div>
                     
                     
@@ -526,6 +517,7 @@ window.onload = function() {
                       accessToken: accessToken,
                       providerData: providerData
                     }, null, '  '));
+                    document.getElementById("header").innerHTML = user.displayName;
                   });
                 } else {
                   // User is signed out.
