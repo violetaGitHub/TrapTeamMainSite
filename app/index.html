@@ -156,6 +156,7 @@ window.onload = function() {
           providerData: providerData
         }, null, '  '));
       });
+      console.log(user.displayName)
     } else {
       // User is signed out.
       document.getElementById('sign-in-status').textContent = 'Signed out';
@@ -167,7 +168,7 @@ window.onload = function() {
   }, function(error) {
     console.log(error);
   });
-  // Put code here
+  // ricks code here
   //variable database is database.
 };
 
