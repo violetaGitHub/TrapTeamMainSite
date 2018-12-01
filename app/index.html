@@ -107,13 +107,7 @@ function initapp() {
     console.log(error);
   });
 };
-function get() {
-  var ref = firebase.database().ref();
-  ref.on("value", function(snapshot){
-    console.log(JSON.stringify(snapshot.val(), null, 2));
-    return(snapshot.val());
-  });
-}
+
 
 
 
@@ -169,6 +163,7 @@ window.onload = function() {
   }, function(error) {
     console.log(error);
   });
+//code here database is
 
 };
 
@@ -228,7 +223,6 @@ window.onload = function() {
                   function get() {
                     let ref = firebase.database().ref();
                     ref.on("value", function(snapshot){
-                      console.log(JSON.stringify(snapshot.val(), null, 2));
                       return(snapshot.val());
                     });
                   }
@@ -431,6 +425,37 @@ window.onload = function() {
               </svg>
               <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
               <script type="text/javascript">
+              function get() {
+                var ref = firebase.database().ref();
+                ref.on("value", function(snapshot){
+                  return(snapshot.val());
+                });
+              }
+              window.onload = function(){
+                firebase.auth().onAuthStateChanged(function(user) {
+                  let database = get()
+                  console.log(database)
+
+
+
+
+
+
+                  //Make a list of trap holders
+
+                  //Personalize the Ui
+
+                  //Name
+                  document.getElementById("header").innerHTML ="Hello, " + user.displayName;
+
+                  //Traps
+                  console.log(user.uid)
+
+                  //His
+              });
+
+              }
+
               document.getElementById('exit').onclick = function() {
                 firebase.auth().signOut().then(function() {
                   console.log('Signed Out');document.getElementById('pagehide').innerhtml = "forget it.";
@@ -506,28 +531,7 @@ window.onload = function() {
                       accessToken: accessToken,
                       providerData: providerData
                     }, null, '  ');
-                    console.log(JSON.stringify({
-                      displayName: displayName,
-                      email: email,
-                      emailVerified: emailVerified,
-                      phoneNumber: phoneNumber,
-                      photoURL: photoURL,
-                      uid: uid,
-                      accessToken: accessToken,
-                      providerData: providerData
-                    }, null, '  '));
-<<<<<<< HEAD
-                    //Personalize the Ui
 
-                    //Name
-                    document.getElementById("header").innerHTML = user.displayName;
-
-                    //Traps
-
-                    //His
-=======
-                    document.getElementById("header").innerHTML = "Hello, " + user.displayName;
->>>>>>> 7adbb7382a17d762e042e814608ab02158097fed
                   });
                 } else {
                   // User is signed out.
