@@ -18,29 +18,29 @@ limitations under the License
 <html lang="en">
 <head>
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
-  
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Trap Team</title>
-  
+
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-  
+
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Material Design Lite">
   <link rel="apple-touch-icon-precomposed" href="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
-  
+
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
   <meta name="msapplication-TileColor" content="#3372DF">
-  
+
   <link rel="shortcut icon" href="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
-  
+
   <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
   <!--
   <link rel="canonical" href="http://www.example.com/">
@@ -60,7 +60,7 @@ var config = {
 firebase.initializeApp(config);
 
 function initapp() {
-  
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -128,7 +128,7 @@ window.onload = function() {
       displayName = user.displayName;
       email = user.email;
       emailVerified = user.emailVerified;
-      photoURL = user.photoURL;
+      photoURL = user.photoURL;6
       uid = user.uid;
       phoneNumber = user.phoneNumber;
       providerData = user.providerData;
@@ -145,6 +145,7 @@ window.onload = function() {
           accessToken: accessToken,
           providerData: providerData
         }, null, '  ');
+        console.log("This is running")
         console.log(JSON.stringify({
           displayName: displayName,
           email: email,
@@ -168,8 +169,7 @@ window.onload = function() {
   }, function(error) {
     console.log(error);
   });
-  // ricks code here
-  //variable database is database.
+
 };
 
 </script>
@@ -236,7 +236,7 @@ window.onload = function() {
                     get()
                   }
                   </script>
-                  
+
                   <div class="mdl-layout-spacer"></div>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                     <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -296,15 +296,14 @@ window.onload = function() {
             <main class="mdl-layout__content mdl-color--grey-100">
               <div class="mdl-grid demo-content">
                 <div class=" mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-                  <!--firebase connection required-->
-                  
+                  <!--firebase connection required-->  
                   <h1 id='header' style="margin-left: 20px;display:inline;">Hello,<h1>
                     
                     
                     <h1 style="margin-left: 20px;display:inline;"><h1>
                     </div>
-                    
-                    
+
+
                     <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
                       <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
                         <use xlink:href="#chart" />
@@ -316,7 +315,7 @@ window.onload = function() {
                       <div id="sign-in" style="display: none;"></div>
                       <div id="account-details" style="display: none;"></div>
                     </div>
-                    
+
                     <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
                       <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
                         <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
@@ -336,9 +335,9 @@ window.onload = function() {
                         </div>
                       </div>
                       <div class="demo-separator mdl-cell--1-col"></div>
-                      
+
                       <iframe src="/ad.html" class="demo-cards" height="250x"></iframe>
-                      
+
                       <div class="demo-separator mdl-cell--1-col"></div>
                       <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
                         <!--firebase connection required-->
@@ -394,7 +393,7 @@ window.onload = function() {
                   </g>
                 </defs>
               </svg>
-              
+
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
                 <defs>
                   <g id="chart">
@@ -540,4 +539,3 @@ window.onload = function() {
               </script>
             </body>
             </html>
-            
