@@ -431,10 +431,9 @@ window.onload = function() {
                   return(snapshot.val());
                 });
               }
-              window.onload = function(){
+              window.onload = function async(){
                 firebase.auth().onAuthStateChanged(function(user) {
-                  let database = get()
-                  console.log(database)
+                  console.log(get())
 
 
 
@@ -531,27 +530,6 @@ window.onload = function() {
                       accessToken: accessToken,
                       providerData: providerData
                     }, null, '  ');
-<<<<<<< HEAD
-=======
-                    console.log(JSON.stringify({
-                      displayName: displayName,
-                      email: email,
-                      emailVerified: emailVerified,
-                      phoneNumber: phoneNumber,
-                      photoURL: photoURL,
-                      uid: uid,
-                      accessToken: accessToken,
-                      providerData: providerData
-                    }, null, '  '));
-                    //Personalize the Ui
-
-                    //Name
-                    document.getElementById("header").innerHTML = "Hello, " + user.displayName;
-
-                    //Traps
-                    
-                    //His
->>>>>>> 47b4cc5942d3ed8437fbd6b9536a7c4c40c85b2c
 
                   });
                 } else {
