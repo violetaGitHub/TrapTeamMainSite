@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=latin-ext');
 html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-family: 'Noto Sans', 'Roboto', sans-serif;
 }
 .demo-avatar {
   width: 48px;
