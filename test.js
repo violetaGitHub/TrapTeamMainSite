@@ -1,6 +1,7 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
+var path = require('path')
 console.log("Starting Server");
 http.createServer(function (req, res) {
   console.log(req.rawHeaders[13]);
@@ -14,15 +15,33 @@ http.createServer(function (req, res) {
       console.log("Addon file, not html");
       var q = url.parse(req.url, true);
       var filename = "." + q.pathname;
+      urlext = req.url.split('.').pop();
+      console.log(urlext);
+      let extension = "text/";
+      if (urlext == "css") {
+        extension = "text/css";
+      }
+      else if (urlext == "js") {
+        extension="text/js";
+      }
+      else if (urlext == "jpg") {
+        extension="image/jpeg";
+      }
+      else if (urlext == "png") {
+        extension="image/png";
+      }
+      else {
+        extension = ""
+      }
       fs.readFile(filename, function(err, data) {
         if (err) {
-          res.writeHead(404, {'Content-Type': 'text/html'});
+          res.writeHead(404, {'Content-Type': "text/html"});
           return res.end("404 Not Found");
         }
         
-        console.log(req.rawHeaders[13]);
+        console.log("!!!Extension: "+{'Content-Type': extension});
         
-        res.writeHead(200);
+        res.writeHead(200, {'Content-Type': extension});
         res.write(data);
         return res.end();
       });

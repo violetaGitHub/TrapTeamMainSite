@@ -69,6 +69,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 			<section id="first">
 				<header>
 					<h2>Simple Pest Trapping</h2>
+					<span id="pagehide" style="display: none;"><p></p></span>
 				</header>
 				<div class="content">
 					<p><strong>Automation. Not Hard Work.</strong> Simply set up the trap, and we'll do the rest. Weather it's Maintenence, Trap Emptying, or Upgrades, we'll do it all for you. All you need is a trap, and the Trap Team mobile app. </p>
@@ -435,7 +436,15 @@ print 'Sorted in ' + i + ' iterations.';</code></pre>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-<!-- Smart embedded fast-load share button, and user excitement toolkit script insert link. DO NOT REMOVE< OR MULTIPLE FEATURES WILL BE BROKEN! --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b989eb1453d487b"></script>
-
+<!-- Smart embedded fast-load share button, and user excitement toolkit script insert link. DO NOT REMOVE OR MULTIPLE FEATURES WILL BE BROKEN! Please make sure link always stays at bottom of page.--> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b989eb1453d487b"></script>
+<script type="text/javascript">
+document.getElementById('pagehide').innerhtml = "true";
+window.onpagehide = function() {
+	if (document.getElementById('pagehide').innerhtml == "true") {
+		window.open("/");
+		alert("Are you sure you want to exit?");
+	}
+};
+</script>
 </body>
 </html>
