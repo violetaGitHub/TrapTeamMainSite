@@ -156,6 +156,7 @@ window.onload = function() {
           accessToken: accessToken,
           providerData: providerData
         }, null, '  '));
+        document.getElementById('pagehide').innerhtml = "forget it now!";
         document.location.href = "/app";
       });
     } else {
@@ -165,6 +166,7 @@ window.onload = function() {
       document.getElementById('account-details').textContent = 'null';
       window.open("/auth.html");
       document.location.href = "/authneeded.html";
+      document.getElementById('pagehide').innerhtml = "forget it now!";
     }
   }, function(error) {
     console.log(error);
@@ -191,6 +193,7 @@ window.onload = function() {
 </style>
 </head>
 <body>
+  <a id="pagehide"></a>
   <h1>Loading...</h1><p>If you are not redirected within 10 seconds, then click <a href='/auth.html'>here.</a></p>
   <div id="sign-in-status" style="display: none;"></div>
   <div id="sign-in" style="display: none;"></div>
@@ -235,10 +238,12 @@ window.onload = function() {
             accessToken: accessToken,
             providerData: providerData
           }, null, '  '));
+          document.getElementById('pagehide').innerhtml = "forget it now!";
           document.location.href = "/app";
         });
       } else {
         // User is signed out.
+        document.getElementById('pagehide').innerhtml = "forget it now!";
         document.getElementById('sign-in-status').textContent = 'Signed out';
         document.getElementById('sign-in').textContent = 'Sign in';
         document.getElementById('account-details').textContent = 'null';
@@ -282,6 +287,7 @@ window.onload = function() {
           accessToken: accessToken,
           providerData: providerData
         }, null, '  '));
+        document.getElementById('pagehide').innerhtml = "forget it now!";
         document.location.href = "/app";
       });
     } else {
@@ -289,15 +295,18 @@ window.onload = function() {
       document.getElementById('sign-in-status').textContent = 'Signed out';
       document.getElementById('sign-in').textContent = 'Sign in';
       document.getElementById('account-details').textContent = 'null';
+      document.getElementById('pagehide').innerhtml = "forget it now!";
       document.location.href = "/authneeded.html";
     }
   }, function(error) {
     console.log(error);
   });
+  </script>
+  <script type="text/javascript">
   document.getElementById('pagehide').innerhtml = "true";
   window.onpagehide = function() {
     if (document.getElementById('pagehide').innerhtml == "true") {
-      window.open("//trapteamnz.tk/");
+      window.open("/appredir.html");
       alert("Please sign out before exiting");
     }
   };
