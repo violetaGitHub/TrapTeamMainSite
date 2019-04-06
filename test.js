@@ -1,7 +1,7 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
-var path = require('path')
+
 console.log("Starting Server");
 http.createServer(function (req, res) {
   console.log(req.rawHeaders[13]);
@@ -108,5 +108,5 @@ http.createServer(function (req, res) {
     });
   }
   
-}).listen(80,'0.0.0.0');
+}).listen(10089,'0.0.0.0');
 console.log("Dev Server Initialised");

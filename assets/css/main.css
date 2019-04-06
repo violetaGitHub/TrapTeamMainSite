@@ -3275,7 +3275,8 @@ section, summary, time, mark, audio, video {
 		}
 		
 		#wrapper > section > header:before {
-			background: #43d9b8;
+			background: #009933
+			;
 			content: '';
 			display: block;
 			margin-top: 1rem;
