@@ -595,6 +595,13 @@ window.onload = function() {
               }, function(error) {
                 console.log(error);
                 profileImage();
+                var user = firebase.auth().currentUser;
+                user.sendEmailVerification().then(function() {
+                  // Email sent.
+                }).catch(function(error) {
+                  // An error happened.
+                  console.error("error verifing email");
+                });
               });
               document.getElementById('pagehide').innerhtml = "true";
               window.onpagehide = function() {
