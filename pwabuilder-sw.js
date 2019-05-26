@@ -1,5 +1,5 @@
 
-const CACHE = "pwabuilder-offline-page";
+const CACHE = "pwabuilder-offline-pages";
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
 const offlineFallbackPage = "index.html";
