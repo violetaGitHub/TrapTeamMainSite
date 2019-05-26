@@ -3,7 +3,7 @@
   "name" : "Trap Team CC",
   "scope" : "/",
   "display" : "standalone",
-  "start_url" : "https://trapteamnz.tk/",
+  "start_url" : "https://www.trapteamnz.tk/",
   "short_name" : "Trap Team",
   "theme_color" : "green",
   "description" : "",
@@ -14,11 +14,11 @@
   "generated" : "true",
   "icons" : [
     {
-      "src": "https://trapteamnz.tk/images/logo.png",
+      "src": "https://www.trapteamnz.tk/images/logo.png",
       "sizes": "32x32"
     },
     {
-      "src": "https://trapteamnz.tk/images/logo.png",
+      "src": "https://www.trapteamnz.tk/images/logo.png",
       "sizes": "512x512"
     }
     ]}
