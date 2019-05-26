@@ -84,10 +84,10 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 					<li><a href="#" onclick="document.getElementById('pagehide').innerhtml='blablah';" class="button primary">Home</a></li>
 					<li><a href="//trapteam690333707.wordpress.com" class="button" onclick="document.getElementById('pagehide').innerhtml='blablah';">Blog</a></li>
 					<li><a href="/about.html" class="button" onclick="document.getElementById('pagehide').innerhtml='blablah';">About</a></li>
-					<li><a href="/auth.html" class="button" onclick="document.getElementById('pagehide').innerhtml='blablah';">Log In</a></li>
-					<li><a href="//auto.trapteamnz.tk/signup.html" class="button primary" style="background-color: green;" onclick="document.getElementById('pagehide').innerhtml='blablah';">Get Started</a></li>
+					<li><a href="auth.html" class="button primary" style="background-color: green;" onclick="document.getElementById('pagehide').innerhtml='blablah';">Get Started</a></li>
 				</ul>
 				<h1>
+					<a href="/auth.html" class="button" onclick="document.getElementById('pagehide').innerhtml='blablah';">Log In</a><br>
 					<img src="images/logo.png" alt=""/><br>
 					Trap Team</h1>
 					<p>Automatic pest trapping at an affordable price - For you and your community.</p>
@@ -160,7 +160,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 				<div class="content">
 					<p><strong>Start Now</strong> and get everything you need to make you're household pestfree.</p>
 					<ul class="actions">
-						<li><a href="//auto.trapteamnz.tk/signup.html" class="button primary large">Get Started</a></li>
+						<li><a href="auth.html" class="button primary large">Get Started</a></li>
 						<li><a href="/about.html" class="button large">Learn More</a></li>
 					</ul>
 				</div>
@@ -511,36 +511,36 @@ if ("serviceWorker" in navigator) {
 }
 
 
-	let deferredPrompt = null;
+let deferredPrompt = null;
 
-	window.addEventListener('beforeinstallprompt', (e) => {
-		// Prevent Chrome 67 and earlier from automatically showing the prompt
-		e.preventDefault();
-		// Stash the event so it can be triggered later.
-		deferredPrompt = e;
-	});
+window.addEventListener('beforeinstallprompt', (e) => {
+	// Prevent Chrome 67 and earlier from automatically showing the prompt
+	e.preventDefault();
+	// Stash the event so it can be triggered later.
+	deferredPrompt = e;
+});
 
-	async function install() {
-		if (deferredPrompt) {
-			deferredPrompt.prompt();
-			console.log(deferredPrompt)
-			deferredPrompt.userChoice.then(function (choiceResult) {
-
-				if (choiceResult.outcome === 'accepted') {
-					console.log('Your PWA has been installed');
-				} else {
-					console.log('User chose to not install your PWA');
-				}
-
-				deferredPrompt = null;
-
-			});
-
-
-		}
+async function install() {
+	if (deferredPrompt) {
+		deferredPrompt.prompt();
+		console.log(deferredPrompt)
+		deferredPrompt.userChoice.then(function (choiceResult) {
+			
+			if (choiceResult.outcome === 'accepted') {
+				console.log('Your PWA has been installed');
+			} else {
+				console.log('User chose to not install your PWA');
+			}
+			
+			deferredPrompt = null;
+			
+		});
+		
+		
 	}
+}
 
-	install();
+install();
 
 
 </script>
