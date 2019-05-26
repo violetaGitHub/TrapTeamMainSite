@@ -7,18 +7,18 @@
   "short_name" : "Trap Team",
   "theme_color" : "green",
   "description" : "",
-  "orientation" : "any", 
+  "orientation" : "any",
   "background_color" : "green",
   "related_applications" : "",
   "prefer_related_applications" : "false",
   "generated" : "true",
   "icons" : [
     {
-      "src": "https://trapteam-cc.firebaseapp.com/images/logo.png",
+      "src": "https://trapteamnz.tk/images/logo.png",
       "sizes": "32x32"
     },
     {
-      "src": "https://trapteam-cc.firebaseapp.com/images/logo.png",
+      "src": "https://trapteamnz.tk/images/logo.png",
       "sizes": "512x512"
     }
     ]}
