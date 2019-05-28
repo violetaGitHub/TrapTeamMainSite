@@ -110,3 +110,9 @@ http.createServer(function (req, res) {
   
 }).listen(10089,'0.0.0.0');
 console.log("Dev Server Initialised");
+function myFunc(arg) {
+  console.log(`arg was => ${arg}`);
+  process.exit();
+}
+
+setTimeout(myFunc, 1500, 'funky');
