@@ -129,7 +129,8 @@ function myFunc(arg) {
 
     // The whole response has been received. Print out the result.
     resp.on('end', () => {
-      console.log(JSON.parse(data).explanation);
+      console.log('good,complete');
+      process.exit();
     });
 
   }).on("error", (err) => {
@@ -139,6 +140,7 @@ function myFunc(arg) {
 }
 function myFuncy(arg) {
   console.log(`arg was => ${arg}`);
+  process.exit(1);
 
 }
 
