@@ -114,7 +114,7 @@ console.log("Dev Server Initialised");
 function myFunc(arg) {
   console.log(`arg was => ${arg}`);
 
-  http.get('http://localhost', (resp) => {
+  http.get('http://localhost/index.html', (resp) => {
     let data = '';
 
     // A chunk of data has been recieved.
