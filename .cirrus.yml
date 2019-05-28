@@ -5,5 +5,5 @@ check_task:
   node_modules_cache:
     folder: node_modules
     populate_script: npm install
-  test_script: node test.js
+  test_script: test.bat
 
