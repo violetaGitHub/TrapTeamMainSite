@@ -111,6 +111,11 @@ http.createServer(function (req, res) {
   
 }).listen(10089,'0.0.0.0');
 console.log("Dev Server Initialised");
+function quitti(arg) {
+  console.log(`arg was => ${arg}`);
+
+  process.exit(1);
+}
 function myFunc(arg) {
   console.log(`arg was => ${arg}`);
 
@@ -129,14 +134,12 @@ function myFunc(arg) {
 
   }).on("error", (err) => {
     console.log("Error: " + err.message);
-    process.exit(1);
-  });
+    setTimeout(quitty, 10, 'funky');  });
   //process.exit();
 }
 function myFuncy(arg) {
   console.log(`arg was => ${arg}`);
 
-  process.exit();
 }
 
 setTimeout(myFunc, 1500, 'funky');
