@@ -1,4 +1,5 @@
 var http = require('http');
+const https = require('https');
 var url = require('url');
 var fs = require('fs');
 
@@ -112,7 +113,30 @@ http.createServer(function (req, res) {
 console.log("Dev Server Initialised");
 function myFunc(arg) {
   console.log(`arg was => ${arg}`);
+
+  http.get('http://localhost', (resp) => {
+    let data = '';
+
+    // A chunk of data has been recieved.
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+      console.log(JSON.parse(data).explanation);
+    });
+
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+  //process.exit();
+}
+function myFuncy(arg) {
+  console.log(`arg was => ${arg}`);
+
   process.exit();
 }
 
 setTimeout(myFunc, 1500, 'funky');
+setTimeout(myFuncy, 10000, 'funky');
