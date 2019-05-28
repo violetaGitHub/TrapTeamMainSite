@@ -1,4 +1,5 @@
 # TrapTeamMainSite
+[![Build Status](https://api.cirrus-ci.com/github/TrapTeamCCNZ/TrapTeamMainSite.svg)](https://cirrus-ci.com/github/TrapTeamCCNZ/TrapTeamMainSite)
 
 This our MAIN website that has info on all our traps and dashboards for people who have traps.
 It also gives us admin control over different things
