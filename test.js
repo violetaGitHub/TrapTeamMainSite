@@ -119,7 +119,7 @@ function quitti(arg) {
 function myFunc(arg) {
   console.log(`arg was => ${arg}`);
 
-  http.get('http://localhost/index.html', (resp) => {
+  http.get('http://localhost:10089/index.html', (resp) => {
     let data = '';
 
     // A chunk of data has been recieved.
