@@ -129,6 +129,7 @@ function myFunc(arg) {
 
   }).on("error", (err) => {
     console.log("Error: " + err.message);
+    process.exit(1);
   });
   //process.exit();
 }
