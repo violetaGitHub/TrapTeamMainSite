@@ -1,5 +1,5 @@
 # Contributor Covenant Code of Conduct
-
+- NOTE: PR = Pull Request
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as
@@ -86,5 +86,8 @@ How we code:
  - Step 5: Review the CI results
  - Step 4: Expalin in PR Comment what you have changed.
  - Step 5: CHeck back on the PR. SOmeone will edit/merge/comment on your PR.
+If you have push access, still use these guidelines, but:
+- a. Merge it yourself
+- b. Commit edited .md files straight to master, when they are not related to a branch/pr that you own. Otherwise, commit it to that branch/pr. 
 ## TrapBux
 Please Contact us for details! support@trapteamnz.tk
