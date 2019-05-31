@@ -74,3 +74,17 @@ available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.ht
 
 For answers to common questions about this code of conduct, see
 https://www.contributor-covenant.org/faq
+
+## Our Responsibilities
+
+How we code:
+
+ - Step 1: Create a Branch
+ - Step 1.5 (Optional) Use Trello to find useful work to do. If you do this, then look for already-open pull requests, and commit to those instead. The owner will look after the rest of these guidelines. https://trello.com/b/C5MpHQKU/trap-team
+ - Step 2: Code...
+ - Step 3: Create PR. Use a small, but informative name.
+ - Step 5: Review the CI results
+ - Step 4: Expalin in PR Comment what you have changed.
+ - Step 5: CHeck back on the PR. SOmeone will edit/merge/comment on your PR.
+## TrapBux
+Please Contact us for details! support@trapteamnz.tk
