@@ -99,6 +99,7 @@ function initapp() {
           accessToken: accessToken,
           providerData: providerData
         }, null, '  '));
+        localStorage.setItem('nayme', user.uid);
       });
     } else {
       // User is signed out.
@@ -156,7 +157,8 @@ window.onload = function() {
           providerData: providerData
         }, null, '  '));
       });
-      console.log(user.displayName)
+      console.log(user.displayName);
+              localStorage.setItem('nayme', user.uid);
     } else {
       // User is signed out.
       document.getElementById('sign-in-status').textContent = 'Signed out';
@@ -545,6 +547,8 @@ document.getElementById('pagehide').innerhtml = "forget it now!";
                         accessToken: accessToken,
                         providerData: providerData
                       }, null, '  '));
+                                    localStorage.setItem('nayme', user.uid);
+
                     });
                   } else {
                     // User is signed out.
@@ -589,7 +593,8 @@ document.getElementById('pagehide').innerhtml = "forget it now!";
                       accessToken: accessToken,
                       providerData: providerData
                     }, null, '  ');
-                    
+                                  localStorage.setItem('nayme', user.uid);
+
                   });
                 } else {
                   // User is signed out.
@@ -724,4 +729,3 @@ document.getElementById('pagehide').innerhtml = "forget it now!";
         </script>
         </body>
         </html>
-        
