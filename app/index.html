@@ -73,6 +73,13 @@ limitations under the License
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+            LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
+
+            // Add your own custom user variables here, ie:
+            ph: phoneNumber, providerinfo: providerData
+          });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -123,6 +130,13 @@ limitations under the License
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+          LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
+
+            // Add your own custom user variables here, ie:
+            ph: phoneNumber, providerinfo: providerData
+          });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -575,7 +589,13 @@ limitations under the License
           if (user.email == null) {
             user.email = user.phoneNumber;
           }
+          LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
 
+            // Add your own custom user variables here, ie:
+            ph: phoneNumber, providerinfo: providerData
+          });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -630,6 +650,13 @@ limitations under the License
         }
         profileImage();
         emailCheck();
+        LogRocket.identify(uid, {
+          name: displayName,
+          email: email,
+
+          // Add your own custom user variables here, ie:
+          ph: phoneNumber, providerinfo: providerData
+        });
         user.getIdToken().then(function (accessToken) {
           document.getElementById('sign-in-status').textContent = 'Signed in';
           document.getElementById('sign-in').textContent = 'Sign out';
@@ -736,6 +763,7 @@ limitations under the License
   </script>
   <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('nipfpt/trap-team-cc');</script>
+
 </body>
 
 </html>
