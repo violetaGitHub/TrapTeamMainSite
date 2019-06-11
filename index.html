@@ -545,7 +545,12 @@ install();
 if (document.location.href == "https://trapteam-cc.firebaseapp.com") {
 	window.location.replace("https://trapteamnz.tk");
 }
-
+	if (window.matchMedia('(display-mode: standalone)').matches) {
+		console.log("This is running as standalone.");
+		    if (navigator.online) {
+			window.location.replace("/app");
+		}
+	}
 </script>
 </body>
 </html>

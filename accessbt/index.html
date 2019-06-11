@@ -87,8 +87,8 @@ let loaderelement = document.getElementById('loader');
 async function hider() {
   //storer();
   loaderelement.style.display = 'none';
-    if (navigator.onLine) {
-      window.location.replace("/app");
+    if (navigator.online) {
+      window.location.replace("/accessbt");
     }
     else {
       alert("Please Visit Trap Team online To Use Your Dashboard");
