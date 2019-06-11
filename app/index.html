@@ -18,7 +18,8 @@ limitations under the License
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
   <link rel="manifest" href="/manifest.json">
   <script src="/redir.js" charset="utf-8"></script>
-
+  <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+  <script>window.LogRocket && window.LogRocket.init('nipfpt/trap-team-cc');</script>
   <script src="/redir.js" charset="utf-8"></script>
 
   <link rel="manifest" href="/firebaseappdotcommanifest.json">
@@ -73,6 +74,13 @@ limitations under the License
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+          LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
+
+            // Add your own custom user variables here, ie:
+            phone: phoneNumber
+          });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -123,6 +131,13 @@ limitations under the License
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+          LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
+
+            // Add your own custom user variables here, ie:
+            phone: phoneNumber
+          });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -571,7 +586,13 @@ limitations under the License
           if (user.email == null) {
             user.email = user.phoneNumber;
           }
+          LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
 
+            // Add your own custom user variables here, ie:
+            phone: phoneNumber
+          });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -626,6 +647,13 @@ limitations under the License
         }
         profileImage();
         emailCheck();
+        LogRocket.identify(uid, {
+          name: displayName,
+          email: email,
+
+          // Add your own custom user variables here, ie:
+          phone: phoneNumber
+  
         user.getIdToken().then(function (accessToken) {
           document.getElementById('sign-in-status').textContent = 'Signed in';
           document.getElementById('sign-in').textContent = 'Sign out';
@@ -748,6 +776,7 @@ limitations under the License
   <script>
     Sentry.init({ dsn: 'https://b55d68ef3c104440a37367f5ef80bc22@sentry.io/1478181' });
   </script>
+
 </body>
 
 </html>
