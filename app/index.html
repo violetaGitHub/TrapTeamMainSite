@@ -30,19 +30,19 @@ limitations under the License
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+  <link rel="icon" sizes="192x192" href="/images/logo.png">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-  <link rel="apple-touch-icon-precomposed" href="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
+  <link rel="apple-touch-icon-precomposed" href="/images/logo.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
+  <meta name="msapplication-TileImage" content="/images/logo.png">
   <meta name="msapplication-TileColor" content="#3372DF">
 
-  <link rel="shortcut icon" href="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
+  <link rel="shortcut icon" href="/images/logo.png">
 
   <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
   <!--
@@ -323,11 +323,7 @@ limitations under the License
 
               <h1 style="margin-left: 20px;display:inline;">
                 <h1>
-                  <button
-                    onclick="share('Get Trap Team', 'trapteam-cc.firebaseapp.com', 'Check out the new Trap System!')"
-                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                    Share
-                  </button>
+
                   <!--Table goes Below-->
                   <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                     <thead>
@@ -534,7 +530,7 @@ limitations under the License
         name = user.displayName;
         email = user.email;
         photoUrl = user.photoURL;
-        document.getElementById("email").innerHTML = email;
+        document.getElementById("email").innerHTML = email.substring(0, 20);
         emailVerified = user.emailVerified;
         uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
         // this value to authenticate with your backend server, if
@@ -556,7 +552,7 @@ limitations under the License
         //Personalize the Ui
 
         //Name
-        document.getElementById("header").innerHTML = "Hello, " + user.displayName;
+        document.getElementById("header").innerHTML = "Hello, " + user.displayName.substring(0, 20);
 
         //Traps
         console.log(user.uid)
