@@ -194,10 +194,31 @@ limitations under the License
       z-index: 900;
     }
   </style>
+    <style>
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        border: 0 solid #73AD21;
+        padding: 1%;
+        text-align: center;
+    
+      }
+    
+      #loader {
+        padding-top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    </style>
 </head>
 
 <body>
-  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <div class="center" id='loader'>
+      <p><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="50%"></p>
+      <p></p><img src="/accessbt/loader.svg?alt=media" alt="//\ccess" height="25%" id='load-image'></p>
+    </div>
+  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id='page-content-ttaapp' style="visibility: hidden;">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">Home</span>
@@ -294,22 +315,11 @@ limitations under the License
             role="presentation">home</i>Home</a>
         <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
             role="presentation">inbox</i>Traps</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-            role="presentation">delete</i>Payments</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-            role="presentation">report</i>Store</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-            role="presentation">forum</i>Payment Info</a>
+        
         <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
             role="presentation">flag</i>My Account</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-            role="presentation">local_offer</i>Promos</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-            role="presentation">shopping_cart</i>Contact</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-            role="presentation">people</i>About</a>
         <div class="mdl-layout-spacer"></div>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
+        <a class="mdl-navigation__link" href="//trapteamnzcc.freshdesk.com"><i class="mdl-color-text--blue-grey-400 material-icons"
             role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         <iframe src="/ad.html" class="demo-cards" height="250x" width="100%"></iframe>
       </nav>
@@ -761,7 +771,24 @@ limitations under the License
   </script>
   <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('nipfpt/trap-team-cc');</script>
+  <script>
+  let loaderelement = document.getElementById('loader');
+    let ttapp = document.getElementById('page-content-ttaapp');
 
+    async function hider() {
+      //storer();
+      loaderelement.style.display = 'none';
+      ttapp.style.visibility = 'visible';
+      console.log(ttapp.style.display);
+    }
+    myFunction();
+    function myFunction() {
+      setTimeout(function () { hider(); }, 10000);
+    }
+    //window.onload = function () { hider(); };
+    //page-content-ttaapp
+    window.addEventListener("load", hider);
+  </script>
 </body>
 
 </html>
