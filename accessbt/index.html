@@ -65,12 +65,12 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
+    //var database = firebase.database();
 
   myStorage = window.localStorage;
   let name = myStorage.getItem('nayme');
   
-  function get() {
+  /*function get() {
       let ref = firebase.database().ref();
       ref.on("value", function (snapshot) {
         return (snapshot.val());
@@ -82,11 +82,20 @@ async function storer() {
   } else {
     // Sorry! No Web Storage support..
   }
-}
+}*/
 let loaderelement = document.getElementById('loader');
 async function hider() {
   //storer();
   loaderelement.style.display = 'none';
+    if (navigator.onLine) {
+      window.location.replace("/app");
+    }
+    else {
+      alert("Please Visit Trap Team online To Use Your Dashboard");
+      alert("Showing Cached Pages Instead...");
+      window.location.replace("/");
+    }
+  
 }
 myFunction();
   function myFunction() {
