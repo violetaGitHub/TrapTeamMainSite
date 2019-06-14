@@ -28,7 +28,10 @@ limitations under the License
   }
   </style>
   <script src="/redir.js" charset="utf-8"></script>
-<script>bugsnagClient.notify(new Error('Test error'))</script>
+<script>Bugsnag.beforeNotify = function (data) {
+  data.metaData.sessionURL = LogRocket.sessionURL;
+  return data;
+};</script>
   <link rel="manifest" href="/firebaseappdotcommanifest.json">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
