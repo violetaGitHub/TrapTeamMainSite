@@ -198,11 +198,31 @@ window.onload = function() {
   z-index: 900;
 }
 </style>
+  <style>
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      border: 0 solid #73AD21;
+      padding: 1%;
+      text-align: center;
+  
+    }
+  
+    #loader {
+      padding-top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  </style>
 </head>
 <body>
   <a id="pagehide"></a>
-  <h1>Loading...</h1><p>If you are not redirected within 10 seconds, then click <a href='/auth.html'>here.</a></p>
-  <div id="sign-in-status" style="display: none;"></div>
+  
+  <div class="center" id='loader'> 
+    <p><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="50%"></p>
+    <p></p><img src="/accessbt/loader.svg?alt=media" alt="//\ccess" height="25%"></p>
+  </div>  <div id="sign-in-status" style="display: none;"></div>
   <div id="sign-in" style="display: none;"></div>
   <div id="account-details" style="display: none;"></div>
   <script type="text/javascript">
