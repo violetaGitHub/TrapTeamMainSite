@@ -15,6 +15,8 @@ limitations under the License
 <html lang="en">
 
 <head>
+<script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"></script>
+<script>window.bugsnagClient = bugsnag('b68bca05c215813a122c78460ac12086
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
   <link rel="manifest" href="/manifest.json">
   <script src="/redir.js" charset="utf-8"></script>
@@ -26,7 +28,7 @@ limitations under the License
   }
   </style>
   <script src="/redir.js" charset="utf-8"></script>
-
+<script>bugsnagClient.notify(new Error('Test error'))</script>
   <link rel="manifest" href="/firebaseappdotcommanifest.json">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
