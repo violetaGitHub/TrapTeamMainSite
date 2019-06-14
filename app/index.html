@@ -89,7 +89,11 @@ drift.load('cesz7uv9e69c');
   <link rel="canonical" href="http://www.example.com/">
 -->
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-
+  <script>
+LogRocket.getSessionURL(function (sessionURL) {
+  drift.track('LogRocket', { sessionURL: sessionURL });
+});
+</script>
   <script type="text/javascript">
     // Initialize Firebase
     var config = {
