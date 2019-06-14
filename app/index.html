@@ -18,7 +18,13 @@ limitations under the License
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
   <link rel="manifest" href="/manifest.json">
   <script src="/redir.js" charset="utf-8"></script>
-
+  <script src="/assets/js/jquery.min.js"></script>
+  <!--TwixPages Styles - Class Every Element twixpx-{{pagename}} and add it here, as display:none; Ignore the home page with this css-->
+  <style>
+  .twixpx-traps {
+    display: none;
+  }
+  </style>
   <script src="/redir.js" charset="utf-8"></script>
 
   <link rel="manifest" href="/firebaseappdotcommanifest.json">
@@ -291,7 +297,7 @@ limitations under the License
     </header>
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
       <header class="demo-drawer-header">
-        <img src="images/user.jpg" class="demo-avatar" id="photoimage">
+        <img src="images/user.jpg" class="demo-avatar" id="photoimage" alt='<img src="images/user.jpg" class="demo-avatar">'>
         <div class="demo-avatar-dropdown">
           <span id='email'>hello@example.com</span>
           <div class="mdl-layout-spacer"></div>
@@ -311,9 +317,9 @@ limitations under the License
         </div>
       </header>
       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
+        <a class="mdl-navigation__link" href="javascript:void(0)"  onclick='$(".twixpx-home").slideDown();$(".twixpx-traps").slideUp();'><i class="mdl-color-text--blue-grey-400 material-icons"
             role="presentation">home</i>Home</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
+        <a class="mdl-navigation__link" href='javascript:void(0);'onclick='$(".twixpx-home").slideUp();$(".twixpx-traps").slideDown();'><i class="mdl-color-text--blue-grey-400 material-icons"
             role="presentation">inbox</i>Traps</a>
         
         <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons"
@@ -370,7 +376,7 @@ limitations under the License
         </div>
 
 
-        <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+        <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col twixpx-home">
           <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
             <use xlink:href="#chart" />
           </svg>
@@ -382,7 +388,7 @@ limitations under the License
           <div id="account-details" style="display: none;"></div>
         </div>
 
-        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing twixpx-home">
           <div
             class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
@@ -407,7 +413,7 @@ limitations under the License
           </div>
           <div class="demo-separator mdl-cell--1-col"></div>
 
-          <iframe src="/ad.html" class="demo-cards" height="250x"></iframe>
+          <iframe src="/ad.html" class="demo-cards twixpx-home" height="250x" ></iframe>
 
           <div class="demo-separator mdl-cell--1-col"></div>
           <div
@@ -526,7 +532,9 @@ limitations under the License
         email = user.email;
         photoUrl = user.photoURL;
         console.log(photoUrl);
+        if (photoUrl) {
         document.getElementById("photoimage").src = photoUrl;
+        }
         emailVerified = user.emailVerified;
         uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
         // this value to authenticate with your backend server, if
