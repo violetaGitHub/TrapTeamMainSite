@@ -45,6 +45,29 @@ Free for personal and commercial use under the GCP 1.0 license
 	a {
 		text-decoration: none;
 	}
+	.divider {
+		display: none;
+	}
+		#menuicon {
+		display: none;
+	}
+	@media only screen and (max-device-width : 770px) {
+	.divider {
+		display: block;
+	}
+	#mainNav {
+		position: static;
+		display: none;
+	}
+	#menuicon {
+		display: block;
+		position: sticky;
+	}
+	}
+	#mainNav {
+		position: fixed; margin-left: 1px; opacity: 1;z-index: 100;padding: 20px; background-color: lightskyblue;
+	}
+
 </style>
 <meta name="propeller" content="d766ab37f5e307750f0660129b3b8224">
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
@@ -82,18 +105,41 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 
 </head>
 <body class="is-preload" style="background-color: #009933;">
-	
+	<nav id='mainNav'><a href="#"
+			style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green; margin: 10px;">Home</a><p class='divider'></p>
+			<a
+			href="//trapteam690333707.wordpress.com"
+			style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">Blog</a><p class='divider'></p>
+			<a
+			href="/about.html"
+			style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">About</a><p class='divider'></p>
+			<a
+			href="/git.html"
+			style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">$CODE4US</a><p class='divider'></p>
+			<a
+			href="/auth.html" style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;" onclick="document.getElementById('pagehide').innerhtml='blablah';"
+			style="background-color: green;">Log In</a><p class='divider'></p>
+			<span style="text-decoration: none; border: solid transparent 10px; padding: 10px; background-color: transparent;"
+				onclick="document.getElementById('pagehide').innerhtml='blablah';" style="background-color: transparent; padding-bottom: 100px;">
+			<a href="/auth.html" class="button"
+			onclick="document.getElementById('pagehide').innerhtml='blablah';" style="background-color: lightskyblue;">Get
+			Started</a></span><br>
+				<a onclick="$('#mainNav').slideToggle();" href="javascript:void(0)" id="menuicon"
+					style="text-decoration: none; font-size: 100px;padding:10px;"><i class="fa fa-times" aria-hidden="true"></i>
+
+	</nav>
+	<p></p>
+	<a onclick="$('#mainNav').slideToggle();" href="javascript:void(0)" id="menuicon" style="text-decoration: none; font-size: 100px;padding:10px;"><i class="fa fa-bars" aria-hidden="true"></i>
+</a><br>
 	<!-- Wrapper -->
 	<div id="wrapper" style="background-color: #009933;">
-		
+					
+
 		<!-- Intro -->
 		<section class="intro" style="background-color: #009933;">
 			<header style="background-color: #009933;">
 				<!-- https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.png -->
 					<span id="pagehide" style="visibility:hidden;margin-top:500px;"><p>Aliment</p></span>
-					<p style="position: fixed; margin-left: 1px; opacity: 1;z-index: 100;"><a href="#" style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">Home</a><a href="//trapteam690333707.wordpress.com"  style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">Blog</a><a href="/about.html"  style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">About</a><a href="/git.html"  style="text-decoration: none; border: solid green 10px; padding: 10px; background-color: green;">$CODE4US</a><br><br><a href="/auth.html" class="button" onclick="document.getElementById('pagehide').innerhtml='blablah';" style="background-color: green;">Log In</a> <a href="/auth.html" class="button" onclick="document.getElementById('pagehide').innerhtml='blablah';"
-						style="background-color: green;">Get Started</a><br>
-</p><p></p>
 					<h1>
 					<img src="images/logo.png" alt=""/><br>
 					Trap Team</h1>

@@ -3214,7 +3214,6 @@ section, summary, time, mark, audio, video {
 			background-position: -50% 10%;
 			background-repeat: repeat-y;
 			background-size: 75% auto;
-			content: '';
 			display: block;
 			height: 100%;
 			left: 0;
