@@ -25,11 +25,11 @@ http.createServer(function (req, res) {
       else if (urlext == "js") {
         extension="text/js";
       }
-      else if (urlext == "jpg") {
+      else if (urlext == "webp") {
         extension="image/jpeg";
       }
-      else if (urlext == "png") {
-        extension="image/png";
+      else if (urlext == "webp") {
+        extension="image/webp";
       }
       else {
         extension = ""

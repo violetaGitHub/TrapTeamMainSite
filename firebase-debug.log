@@ -1,0 +1,83 @@
+[debug] [2019-06-15T04:21:08.678Z] ----------------------------------------------------------------------
+[debug] [2019-06-15T04:21:08.681Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2019-06-15T04:21:08.681Z] CLI Version:   6.11.0
+[debug] [2019-06-15T04:21:08.681Z] Platform:      win32
+[debug] [2019-06-15T04:21:08.681Z] Node Version:  v10.13.0
+[debug] [2019-06-15T04:21:08.690Z] Time:          Sat Jun 15 2019 16:21:08 GMT+1200 (New Zealand Standard Time)
+[debug] [2019-06-15T04:21:08.690Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-15T04:21:08.700Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-15T04:21:08.700Z] > authorizing via signed-in user
+[debug] [2019-06-15T04:21:08.700Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-06-15T04:21:08.702Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-06-15T04:21:08.702Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-06-15T04:21:09.136Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:21:09.141Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-06-15T04:21:10.703Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:21:10.704Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-06-15T04:21:12.044Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:21:12.047Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-06-15T04:21:12.804Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-06-15T04:21:32.884Z] ----------------------------------------------------------------------
+[debug] [2019-06-15T04:21:32.886Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2019-06-15T04:21:32.886Z] CLI Version:   6.11.0
+[debug] [2019-06-15T04:21:32.886Z] Platform:      win32
+[debug] [2019-06-15T04:21:32.886Z] Node Version:  v10.13.0
+[debug] [2019-06-15T04:21:32.887Z] Time:          Sat Jun 15 2019 16:21:32 GMT+1200 (New Zealand Standard Time)
+[debug] [2019-06-15T04:21:32.887Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-15T04:21:32.894Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-15T04:21:32.894Z] > authorizing via signed-in user
+[debug] [2019-06-15T04:21:32.895Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-06-15T04:21:32.896Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-06-15T04:21:34.338Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:21:34.339Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-06-15T04:21:35.685Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:21:35.686Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-06-15T04:21:36.298Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-06-15T04:21:55.658Z] ----------------------------------------------------------------------
+[debug] [2019-06-15T04:21:55.660Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2019-06-15T04:21:55.660Z] CLI Version:   6.11.0
+[debug] [2019-06-15T04:21:55.660Z] Platform:      win32
+[debug] [2019-06-15T04:21:55.660Z] Node Version:  v10.13.0
+[debug] [2019-06-15T04:21:55.661Z] Time:          Sat Jun 15 2019 16:21:55 GMT+1200 (New Zealand Standard Time)
+[debug] [2019-06-15T04:21:55.661Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-15T04:21:55.668Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-15T04:21:55.668Z] > authorizing via signed-in user
+[debug] [2019-06-15T04:21:55.668Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-06-15T04:21:55.670Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-06-15T04:22:23.451Z] ----------------------------------------------------------------------
+[debug] [2019-06-15T04:22:23.453Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2019-06-15T04:22:23.454Z] CLI Version:   6.11.0
+[debug] [2019-06-15T04:22:23.454Z] Platform:      win32
+[debug] [2019-06-15T04:22:23.454Z] Node Version:  v10.13.0
+[debug] [2019-06-15T04:22:23.455Z] Time:          Sat Jun 15 2019 16:22:23 GMT+1200 (New Zealand Standard Time)
+[debug] [2019-06-15T04:22:23.455Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-15T04:22:23.462Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-15T04:22:23.462Z] > authorizing via signed-in user
+[debug] [2019-06-15T04:22:23.462Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-06-15T04:22:23.463Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-06-15T04:22:24.903Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:22:24.905Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-06-15T04:22:26.241Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-15T04:22:26.241Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-06-15T04:22:26.854Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
