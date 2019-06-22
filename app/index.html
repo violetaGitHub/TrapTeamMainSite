@@ -563,13 +563,16 @@ LogRocket.getSessionURL(function (sessionURL) {
   </svg>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script type="text/javascript">
-    function get() {
-      var ref = firebase.database().ref();
-      ref.on("value", function (snapshot) {
-        return (snapshot.val());
+    function get(cb) {
+      var ref = firebase.database().ref("/");
+      ref.on("value").then( function (snapshot) {
+        console.log(snapshot.val());
+        debugger;
+        cb(snapshot.val());
       });
     }
-    console.log(get());
+
+    get(a => {console.log(a);});
     function profileImage() {
 
       var user = firebase.auth().currentUser;
@@ -838,7 +841,6 @@ LogRocket.getSessionURL(function (sessionURL) {
     }
     async function hider() {
       //storer();
-            console.clear();
       ttapp.style.visibility = 'visible';
       console.log(ttapp.style.display);
       loaderelement.style.display = 'none';
