@@ -311,16 +311,6 @@ LogRocket.getSessionURL(function (sessionURL) {
                 <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
                   <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title">Home</span>
-                    <script>
-                      function get() {
-                        let ref = firebase.database().ref();
-                        ref.on("value", function (snapshot) {
-                          return (snapshot.val());
-                        });
-                      }
-                        alert(get().get().Trapholders.trapper12.Area);
-                    </script>
-
                     <div class="mdl-layout-spacer"></div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                       <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -563,6 +553,7 @@ LogRocket.getSessionURL(function (sessionURL) {
   </svg>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script type="text/javascript">
+
     function get(cb) {
       var ref = firebase.database().ref("/");
       ref.on("value").then( function (snapshot) {
@@ -571,7 +562,7 @@ LogRocket.getSessionURL(function (sessionURL) {
         cb(snapshot.val());
       });
     }
-
+    
     get(a => {console.log(a);});
     function profileImage() {
 
