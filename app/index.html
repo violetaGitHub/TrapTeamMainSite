@@ -128,6 +128,7 @@ drift.load('cesz7uv9e69c');
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+
             LogRocket.identify(uid, {
             name: displayName,
             email: email,
@@ -135,6 +136,14 @@ drift.load('cesz7uv9e69c');
             // Add your own custom user variables here, ie:
             ph: phoneNumber, providerinfo: providerData
           });
+          analytics.identify(user.uid, {
+            name: displayName,
+            email: user.email
+          });
+          analytics.identify(user.uid, { 
+            name: displayName,             
+            email: user.email          
+          });           
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -191,6 +200,10 @@ drift.load('cesz7uv9e69c');
 
             // Add your own custom user variables here, ie:
             ph: phoneNumber, providerinfo: providerData
+          });
+          analytics.identify(user.uid, {
+             name: displayName,
+             email: user.email           
           });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
@@ -660,6 +673,10 @@ drift.load('cesz7uv9e69c');
             // Add your own custom user variables here, ie:
             ph: phoneNumber, providerinfo: providerData
           });
+          analytics.identify(user.uid, {            
+            name: displayName,             
+            email: user.email           
+          });           
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
