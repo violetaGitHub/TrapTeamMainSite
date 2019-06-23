@@ -879,6 +879,13 @@ drift.load('cesz7uv9e69c');
         data.metaData.sessionURL = LogRocket.sessionURL;
         return data;
       };</script>
+      <script>
+      LogRocket.getSessionURL(function (sessionURL) {
+          analytics.track('LogRocket', {
+            sessionURL: sessionURL,
+          });
+        });
+      </script>
 </body>
 
 </html>
