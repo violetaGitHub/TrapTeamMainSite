@@ -68,10 +68,7 @@ drift.load('cesz7uv9e69c');
   }
   </style>
   <script src="/redir.js" charset="utf-8"></script>
-<script>Bugsnag.beforeNotify = function (data) {
-  data.metaData.sessionURL = LogRocket.sessionURL;
-  return data;
-};</script>
+
   <link rel="manifest" href="/firebaseappdotcommanifest.json">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,11 +97,7 @@ drift.load('cesz7uv9e69c');
   <link rel="canonical" href="http://www.example.com/">
 -->
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-  <script>
-LogRocket.getSessionURL(function (sessionURL) {
-  drift.track('LogRocket', { sessionURL: sessionURL });
-});
-</script>
+ 
   <script type="text/javascript">
     // Initialize Firebase
     var config = {
@@ -846,6 +839,15 @@ LogRocket.getSessionURL(function (sessionURL) {
     //page-content-ttaapp
     window.addEventListener("load", hider);
   </script>
+  <script>Bugsnag.beforeNotify = function (data) {
+  data.metaData.sessionURL = LogRocket.sessionURL;
+  return data;
+};</script>
+<script>
+  LogRocket.getSessionURL(function (sessionURL) {
+    drift.track('LogRocket', { sessionURL: sessionURL });
+  });
+</script>
   
 </body>
 
