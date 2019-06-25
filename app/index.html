@@ -11,6 +11,13 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License
+
+
+
+IMPORTANT NOTES:
+
+      firebase.auth().onAuthStateChanged(function (user)  - This is a piece of code to ignore, this makes the user sign in if they are not already. It is positioned strategically to check before mission-critical events, as well as it's polling feature.
+
 -->
 <html lang="en">
 
@@ -562,36 +569,12 @@ drift.load('cesz7uv9e69c');
       var user = firebase.auth().currentUser;
       var name, email, photoUrl, uid, emailVerified;
 
-      if (user != null) {
-        name = user.displayName;
-        email = user.email;
-        photoUrl = user.photoURL;
-        console.log(photoUrl);
-        if (photoUrl) {
-        document.getElementById("photoimage").src = photoUrl;
-        }
-        emailVerified = user.emailVerified;
-        uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-        // this value to authenticate with your backend server, if
-        // you have one. Use User.getToken() instead.
-      }
-    }
 
     function emailCheck() {
       var user = firebase.auth().currentUser;
       var name, email, photoUrl, uid, emailVerified;
 
-      if (user != null) {
-        name = user.displayName;
-        email = user.email;
-        photoUrl = user.photoURL;
-        document.getElementById("email").innerHTML = email.substring(0, 20);
-        emailVerified = user.emailVerified;
-        uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-        // this value to authenticate with your backend server, if
-        // you have one. Use User.getToken() instead.
-      }
-    }
+
 
     window.onload = function async() {
       firebase.auth().onAuthStateChanged(function (user) {
@@ -817,18 +800,12 @@ drift.load('cesz7uv9e69c');
   <script>
   let loaderelement = document.getElementById('loader');
     let ttapp = document.getElementById('page-content-ttaapp');
-    function get() {
-       let ref = firebase.database().ref();
-          ref.on("value", function (snapshot) {
-             return (snapshot.val());
-       });
-    }
+
     async function hider() {
       //storer();
       ttapp.style.visibility = 'visible';
       console.log(ttapp.style.display);
       loaderelement.style.display = 'none';
-      alert(get().Trapholders.trapper12.Area);
 
     }
     myFunction();
