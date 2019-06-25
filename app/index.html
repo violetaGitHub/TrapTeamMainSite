@@ -63,7 +63,6 @@ drift.load('cesz7uv9e69c');
 <!-- End of Async Drift Code -->
 
 <script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"></script>
-<script>window.bugsnagClient = bugsnag('b68bca05c215813a122c78460ac12086
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
   <link rel="manifest" href="/manifest.json">
   <script src="/redir.js" charset="utf-8"></script>
@@ -129,6 +128,10 @@ drift.load('cesz7uv9e69c');
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+                    document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
+                              document.getElementById("header").innerHTML = user.email.substring(0, 20);
+
+
             LogRocket.identify(uid, {
             name: displayName,
             email: email,
@@ -139,6 +142,7 @@ drift.load('cesz7uv9e69c');
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
+            document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
             document.getElementById('account-details').textContent = JSON.stringify({
               displayName: displayName,
               email: email,
@@ -175,7 +179,6 @@ drift.load('cesz7uv9e69c');
     window.onload = function () {
       initapp();
       console.log("app initialized");
-      let database = get();
       firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           // User is signed in.
@@ -186,6 +189,10 @@ drift.load('cesz7uv9e69c');
           uid = user.uid;
           phoneNumber = user.phoneNumber;
           providerData = user.providerData;
+                    document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
+          document.getElementById("header").innerHTML = user.email.substring(0, 20);
+
+
           LogRocket.identify(uid, {
             name: displayName,
             email: email,
@@ -196,6 +203,8 @@ drift.load('cesz7uv9e69c');
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
+                      document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
+
             document.getElementById('account-details').textContent = JSON.stringify({
               displayName: displayName,
               email: email,
@@ -234,184 +243,7 @@ drift.load('cesz7uv9e69c');
 
     };
   </script>
-  <script type="text/javascript">
-
-    function get(cb) {
-      var ref = firebase.database().ref("/");
-      ref.on("value").then(function (snapshot) {
-        console.log(snapshot.val());
-        debugger;
-        cb(snapshot.val());
-      });
-    }
-
-    get(a => { console.log(a); });
-    function profileImage() {
-
-      var user = firebase.auth().currentUser;
-      var name, email, photoUrl, uid, emailVerified;
-
-
-      function emailCheck() {
-        var user = firebase.auth().currentUser;
-        var name, email, photoUrl, uid, emailVerified;
-      }
-
-
-      window.onload = function async() {
-        firebase.auth().onAuthStateChanged(function (user) {
-          console.log(get())
-
-
-
-
-
-
-          //Make a list of trap holders
-
-          //Personalize the Ui
-
-          //Name
-          document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
-
-          //Traps
-          console.log(user.uid)
-
-          //His
-
-        });
-
-      }
-
-      document.getElementById('exit').onclick = function () {
-        firebase.auth().signOut().then(function () {
-          console.log('Signed Out'); document.getElementById('pagehide').innerhtml = "forget it.";
-        }, function (error) {
-          console.error('Sign Out Error', error);
-        });
-        firebase.auth().onAuthStateChanged(function (user) {
-          if (user) {
-            // User is signed in.
-            displayName = user.displayName;
-            email = user.email;
-            emailVerified = user.emailVerified;
-            photoURL = user.photoURL;
-            uid = user.uid;
-            phoneNumber = user.phoneNumber;
-            providerData = user.providerData;
-            if (user.email === null) {
-              user.email = user.phoneNumber;
-            }
-            if (user.email == null) {
-              user.email = user.phoneNumber;
-            }
-            LogRocket.identify(uid, {
-              name: displayName,
-              email: email,
-
-              // Add your own custom user variables here, ie:
-              ph: phoneNumber, providerinfo: providerData
-            });
-            user.getIdToken().then(function (accessToken) {
-              document.getElementById('sign-in-status').textContent = 'Signed in';
-              document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  ');
-              console.log(JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  '));
-            });
-          } else {
-            // User is signed out.
-            document.getElementById('sign-in-status').textContent = 'Signed out';
-            document.getElementById('sign-in').textContent = 'Sign in';
-            document.getElementById('account-details').textContent = 'null';
-            window.open("/"); document.getElementById('pagehide').innerhtml = "forget it now!";
-            document.location.href = "/authneeded.html";
-          }
-        }, function (error) {
-          console.log(error);
-        });
-      };
-      firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-          // User is signed in.
-          displayName = user.displayName;
-          email = user.email;
-          emailVerified = user.emailVerified;
-          photoURL = user.photoURL;
-          uid = user.uid;
-          phoneNumber = user.phoneNumber;
-          providerData = user.providerData;
-          if (email === null) {
-            user.email = user.phoneNumber
-          }
-          if (email == null) {
-            user.email = user.phoneNumber
-          }
-          profileImage();
-          emailCheck();
-          LogRocket.identify(uid, {
-            name: displayName,
-            email: email,
-
-            // Add your own custom user variables here, ie:
-            ph: phoneNumber, providerinfo: providerData
-          });
-          user.getIdToken().then(function (accessToken) {
-            document.getElementById('sign-in-status').textContent = 'Signed in';
-            document.getElementById('sign-in').textContent = 'Sign out';
-            document.getElementById('account-details').textContent = JSON.stringify({
-              displayName: displayName,
-              email: email,
-              emailVerified: emailVerified,
-              phoneNumber: phoneNumber,
-              photoURL: photoURL,
-              uid: uid,
-              accessToken: accessToken,
-              providerData: providerData
-            }, null, '  ');
-
-          });
-        } else {
-          // User is signed out.
-          document.getElementById('sign-in-status').textContent = 'Signed out';
-          document.getElementById('sign-in').textContent = 'Sign in';
-          document.getElementById('account-details').textContent = 'null';
-          document.getElementById('pagehide').innerhtml = "forget it now!";
-          document.location.href = "/authneeded.html";
-          profileImage();
-        }
-      }, function (error) {
-        console.log(error);
-        profileImage();
-        var user = firebase.auth().currentUser;
-        user.sendEmailVerification().then(function () {
-          // Email sent.
-        }).catch(function (error) {
-          // An error happened.
-          console.error("error verifing email");
-        });
-      });
-      document.getElementById('pagehide').innerhtml = "true";
-
-
-  </script>
+  
   <link rel="stylesheet"
     href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
@@ -818,16 +650,191 @@ drift.load('cesz7uv9e69c');
     //page-content-ttaapp
     window.addEventListener("load", hider);
   </script>
-  <script>Bugsnag.beforeNotify = function (data) {
-  data.metaData.sessionURL = LogRocket.sessionURL;
-  return data;
-};</script>
+  <script>
+  window.bugsnagClient = bugsnag('b68bca05c215813a122c78460ac12086');
+
+    window.bugsnagClient.beforeNotify = function (data) {
+      data.metaData.sessionURL = LogRocket.sessionURL;
+      return data;
+    };
+</script>
 <script>
   LogRocket.getSessionURL(function (sessionURL) {
     drift.track('LogRocket', { sessionURL: sessionURL });
   });
 </script>
-  
+  <script type="text/javascript">
+    //PURPOSE: HANDLE DATABASE, HANDLE AUTH
+      //PURPOSE: HANDLE DATABASE
+
+    function get(cb) {
+      var ref = firebase.database().ref("/");
+      ref.on("value").then(function (snapshot) {
+        console.log(snapshot.val());
+        debugger;
+        cb(snapshot.val());
+      });
+    }
+
+    get(a => { console.log(a); });
+    function profileImage() {
+
+      var user = firebase.auth().currentUser;
+      var name, email, photoUrl, uid, emailVerified;
+
+
+      function emailCheck() {
+        var user = firebase.auth().currentUser;
+        var name, email, photoUrl, uid, emailVerified;
+      }
+
+    //PURPOSE: HANDLE AUTH
+
+      window.onload = function async() {
+        firebase.auth().onAuthStateChanged(function (user) {
+          console.log( )
+          //Make a list of trap holders
+          //Personalize the Ui
+          //Name
+          document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
+          //Traps
+          console.log(user.uid)
+          //His
+        });
+
+      }
+
+      document.getElementById('exit').onclick = function () {
+        firebase.auth().signOut().then(function () {
+          console.log('Signed Out'); document.getElementById('pagehide').innerhtml = "forget it.";
+        }, function (error) {
+          console.error('Sign Out Error', error);
+        });
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            // User is signed in.
+            displayName = user.displayName;
+            email = user.email;
+            emailVerified = user.emailVerified;
+            photoURL = user.photoURL;
+            uid = user.uid;
+            phoneNumber = user.phoneNumber;
+            providerData = user.providerData;
+                      document.getElementById("header").innerHTML = "Hello " + user.displayName.substring(0, 20);
+
+            if (user.email === null) {
+              user.email = user.phoneNumber;
+            }
+            if (user.email == null) {
+              user.email = user.phoneNumber;
+            }
+            LogRocket.identify(uid, {
+              name: displayName,
+              email: email,
+
+              // Add your own custom user variables here, ie:
+              ph: phoneNumber, providerinfo: providerData
+            });
+            user.getIdToken().then(function (accessToken) {
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('account-details').textContent = JSON.stringify({
+                displayName: displayName,
+                email: email,
+                emailVerified: emailVerified,
+                phoneNumber: phoneNumber,
+                photoURL: photoURL,
+                uid: uid,
+                accessToken: accessToken,
+                providerData: providerData
+              }, null, '  ');
+              console.log(JSON.stringify({
+                displayName: displayName,
+                email: email,
+                emailVerified: emailVerified,
+                phoneNumber: phoneNumber,
+                photoURL: photoURL,
+                uid: uid,
+                accessToken: accessToken,
+                providerData: providerData
+              }, null, '  '));
+            });
+          } else {
+            // User is signed out.
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+            document.getElementById('sign-in').textContent = 'Sign in';
+            document.getElementById('account-details').textContent = 'null';
+            window.open("/"); document.getElementById('pagehide').innerhtml = "forget it now!";
+            document.location.href = "/authneeded.html";
+          }
+        }, function (error) {
+          console.log(error);
+        });
+      };
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          // User is signed in.
+          displayName = user.displayName;
+          email = user.email;
+          emailVerified = user.emailVerified;
+          photoURL = user.photoURL;
+          uid = user.uid;
+          phoneNumber = user.phoneNumber;
+          providerData = user.providerData;
+          if (email === null) {
+            user.email = user.phoneNumber
+          }
+          if (email == null) {
+            user.email = user.phoneNumber
+          }
+          profileImage();
+          emailCheck();
+          LogRocket.identify(uid, {
+            name: displayName,
+            email: email,
+
+            // Add your own custom user variables here, ie:
+            ph: phoneNumber, providerinfo: providerData
+          });
+          user.getIdToken().then(function (accessToken) {
+            document.getElementById('sign-in-status').textContent = 'Signed in';
+            document.getElementById('sign-in').textContent = 'Sign out';
+            document.getElementById('account-details').textContent = JSON.stringify({
+              displayName: displayName,
+              email: email,
+              emailVerified: emailVerified,
+              phoneNumber: phoneNumber,
+              photoURL: photoURL,
+              uid: uid,
+              accessToken: accessToken,
+              providerData: providerData
+            }, null, '  ');
+
+          });
+        } else {
+          // User is signed out.
+          document.getElementById('sign-in-status').textContent = 'Signed out';
+          document.getElementById('sign-in').textContent = 'Sign in';
+          document.getElementById('account-details').textContent = 'null';
+          document.getElementById('pagehide').innerhtml = "forget it now!";
+          document.location.href = "/authneeded.html";
+          profileImage();
+        }
+      }, function (error) {
+        console.log(error);
+        profileImage();
+        var user = firebase.auth().currentUser;
+        user.sendEmailVerification().then(function () {
+          // Email sent.
+        }).catch(function (error) {
+          // An error happened.
+          console.error("error verifing email");
+        });
+      });
+      document.getElementById('pagehide').innerhtml = "true";
+    }
+
+  </script>
 </body>
 
 </html>
