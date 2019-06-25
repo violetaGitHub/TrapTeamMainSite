@@ -22,6 +22,22 @@ IMPORTANT NOTES:
 <html lang="en">
 
 <head>
+<script>
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+  analytics.load("gqbaHuIC0OV4lpzJiKF4pOdrJRIop365");
+  analytics.page();
+  }}();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123568344-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123568344-2');
+</script>
+
 <!-- Begin Inspectlet Asynchronous Code -->
 <script type="text/javascript">
 (function() {
@@ -63,6 +79,10 @@ drift.load('cesz7uv9e69c');
 <!-- End of Async Drift Code -->
 
 <script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"></script>
+
+
+<script>window.bugsnagClient = bugsnag('b68bca05c215813a122c78460ac12086');</script>
+
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
   <link rel="manifest" href="/manifest.json">
   <script src="/redir.js" charset="utf-8"></script>
@@ -105,6 +125,7 @@ drift.load('cesz7uv9e69c');
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
   <!-- The next 2 scripts handle AUTH -->
 
+
   <script type="text/javascript">
     // Initialize Firebase
     var config = {
@@ -132,6 +153,7 @@ drift.load('cesz7uv9e69c');
                               document.getElementById("header").innerHTML = user.email.substring(0, 20);
 
 
+
             LogRocket.identify(uid, {
             name: displayName,
             email: email,
@@ -139,6 +161,14 @@ drift.load('cesz7uv9e69c');
             // Add your own custom user variables here, ie:
             ph: phoneNumber, providerinfo: providerData
           });
+          analytics.identify(user.uid, {
+            name: displayName,
+            email: user.email
+          });
+          analytics.identify(user.uid, { 
+            name: displayName,             
+            email: user.email          
+          });           
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -199,6 +229,10 @@ drift.load('cesz7uv9e69c');
 
             // Add your own custom user variables here, ie:
             ph: phoneNumber, providerinfo: providerData
+          });
+          analytics.identify(user.uid, {
+             name: displayName,
+             email: user.email           
           });
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
@@ -563,7 +597,7 @@ drift.load('cesz7uv9e69c');
     </defs>
   </svg>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  
+
   <script>
     // This is the "Offline copy of pages" service worker
 
@@ -835,6 +869,21 @@ drift.load('cesz7uv9e69c');
     }
 
   </script>
+      LogRocket.getSessionURL(function (sessionURL) {
+        drift.track('LogRocket', { sessionURL: sessionURL });
+      });
+    </script>
+    <script>Bugsnag.beforeNotify = function (data) {
+        data.metaData.sessionURL = LogRocket.sessionURL;
+        return data;
+      };</script>
+      <script>
+      LogRocket.getSessionURL(function (sessionURL) {
+          analytics.track('LogRocket', {
+            sessionURL: sessionURL,
+          });
+        });
+      </script>
 </body>
 
 </html>
