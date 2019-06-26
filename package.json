@@ -1,0 +1,18 @@
+{
+  "name": "trapteam.cc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/test.js",
+  "dependencies": {
+    "firebase-functions": "^2.3.1",
+    "firebase-functions-test": "^0.1.5"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}

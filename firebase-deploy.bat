@@ -1,0 +1,2 @@
+firebase deploy
+@echo off

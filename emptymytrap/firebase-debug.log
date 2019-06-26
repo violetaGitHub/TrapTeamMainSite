@@ -1,0 +1,32 @@
+[debug] [2019-03-02T00:52:34.951Z] ----------------------------------------------------------------------
+[debug] [2019-03-02T00:52:34.954Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-03-02T00:52:34.954Z] CLI Version:   6.2.2
+[debug] [2019-03-02T00:52:34.954Z] Platform:      win32
+[debug] [2019-03-02T00:52:34.954Z] Node Version:  v10.13.0
+[debug] [2019-03-02T00:52:34.955Z] Time:          Sat Mar 02 2019 13:52:34 GMT+1300 (New Zealand Daylight Time)
+[debug] [2019-03-02T00:52:34.955Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-02T00:52:34.963Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-02T00:52:34.963Z] > authorizing via signed-in user
+[debug] [2019-03-02T00:52:34.963Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-03-02T00:52:34.965Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-03-02T00:52:36.413Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-02T00:52:36.414Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-03-02T00:52:37.818Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\stevi\OneDrive\My sites\trapteam.cc'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-02T00:52:38.340Z] Fetching environment
+[debug] [2019-03-02T00:52:38.342Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289:getServerAppConfig  
+ 
+[debug] [2019-03-02T00:52:38.343Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-02T00:52:38.933Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-02T00:52:38.933Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-02T00:52:38.982Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-03-02T00:52:40.481Z] Parsing function triggers

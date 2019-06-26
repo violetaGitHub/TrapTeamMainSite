@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Sign up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD5mizPaS3A69q_aNrrtL3zzlcIWB42c_8",
+    authDomain: "trapteamvolunteers.firebaseapp.com",
+    databaseURL: "https://trapteamvolunteers.firebaseio.com",
+    projectId: "trapteamvolunteers",
+    storageBucket: "trapteamvolunteers.appspot.com",
+    messagingSenderId: "442999782760"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+  
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+  <header class="mdl-layout__header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Trap Team Volunteers</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Trap Team Volunteers</span>
+
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content" style='padding-left: 5%;padding-right: 5%;'>
+        <amp-consent layout="nodisplay" id="consent-element">
+          <script type="application/json">
+          {
+            "consents": {
+              "my-consent": {
+                "checkConsentHref": "https://example.com/api/show-consent",
+                "promptUI": "consent-ui"
+              }
+            }
+          }
+          </script>
+        </amp-consent>
+        <amp-img alt="A view of the sea"
+        src="//trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.webp"
+        width="900"
+        height="700"
+        layout="responsive">
+      </amp-img>
+      <form action="https://script.google.com/macros/s/AKfycbzIWGUs21D1daJ8WjFZlJEPbHTrpOJ1QmKsMO5E0V3RPT-CR_c/exec" method="post">
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          <input class="mdl-textfield__input" type="email" id="sample1"required>
+          <label class="mdl-textfield__label" for="sample1">Email...</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          <input class="mdl-textfield__input" type="password" id="sample1"required>
+          <label class="mdl-textfield__label" for="sample1">Password...</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          <input class="mdl-textfield__input" type="password" id="sample1" required>
+          <label class="mdl-textfield__label" for="sample1">Confirm Password...</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          <input class="mdl-textfield__input" type="tel" id="sample1"required>
+          <label class="mdl-textfield__label" for="sample1">Phone Number</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          
+          <label for="adr"class="mdl-textfield__label"> Address</label>
+          <input  class="mdl-textfield__input"type="text" id="adr" name="address" placeholder="542 W. 15th Street"required>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          
+          <label for="city"class="mdl-textfield__label"> City</label>
+          <input  class="mdl-textfield__input"type="text" id="city" name="city" placeholder="New York"required>
+        </div>
+        
+        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+          <input  class="mdl-textfield__input"type="text" id="zip" name="zip" placeholder="10001"required>
+          <label for="zip"class="mdl-textfield__label">Zip</label>
+          
+        </div>
+        <!-- Colored raised button -->
+        <input type="submit"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+      </input>
+      
+    </form>
+    
+  </div>
+</main>
+</div>    <!-- Simple Textfield -->
+<amp-facebook-comments width=486 height=657
+layout="responsive"
+data-numposts="5"
+data-href="https://trapteamvolunteers.firebaseapp.com/signup.html">
+</amp-facebook-comments>
+
+</body>
+</html>

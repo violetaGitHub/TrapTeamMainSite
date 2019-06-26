@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      border: 0 solid #73AD21;
+      padding: 1%;
+      text-align: center;
+
+    }
+    #loader {
+            padding-top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+    }
+  </style>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+  
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"></script>
+  <link rel="manifest" href="/manifest.json">
+
+      <!-- Previously loaded Firebase SDKs -->
+    
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+
+</script>
+  <title>/Access by Trap Team</title>
+</head>
+
+<body>
+  <div class="center" id='loader'>
+    <p><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="50%"></p>
+    <p></p><img src="/accessbt/loader.svg?alt=media" alt="//\ccess" height="25%"></p>
+  </div>
+
+<script>
+    // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
+        authDomain: "trapteam-cc.firebaseapp.com",
+        databaseURL: "https://trapteam-cc.firebaseio.com",
+        projectId: "trapteam-cc",
+        storageBucket: "trapteam-cc.appspot.com",
+        messagingSenderId: "150993996289",
+        appId: "1:150993996289:web:9a6a477accc058af"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    //var database = firebase.database();
+
+  myStorage = window.localStorage;
+  let name = myStorage.getItem('nayme');
+  
+  /*function get() {
+      let ref = firebase.database().ref();
+      ref.on("value", function (snapshot) {
+        return (snapshot.val());
+      });
+    }
+async function storer() {
+  if (typeof (Storage) !== "undefined") {
+    console.log(get()[nayme]);
+  } else {
+    // Sorry! No Web Storage support..
+  }
+}*/
+let loaderelement = document.getElementById('loader');
+async function hider() {
+  //storer();
+  loaderelement.style.display = 'none';
+  //debugger;
+    if (navigator.onLine) {
+      window.location.replace("/appredir.html");
+    }
+    else {
+      alert("Please Visit Trap Team online To Use Your Dashboard");
+      alert("Showing Cached Pages Instead...");
+      window.location.replace("/");
+    }
+  
+}
+myFunction();
+  function myFunction() {
+    setTimeout(function () { hider(); }, 10000);
+  }
+  //window.onload = function () { hider(); };
+  window.addEventListener("load", hider);
+
+</script>
+<script>
+  // This is the "Offline copy of pages" service worker
+
+  // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+  // Check compatibility for the browser we're running this in
+  if ("serviceWorker" in navigator) {
+    if (navigator.serviceWorker.controller) {
+      console.log("[PWA Builder] active service worker found, no need to register");
+    } else {
+      // Register the service worker
+      navigator.serviceWorker
+        .register("pwabuilder-sw.js", {
+          scope: "./"
+        })
+        .then(function (reg) {
+          console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+  }
+
+
+  let deferredPrompt = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+  });
+
+  async function install() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      console.log(deferredPrompt)
+      deferredPrompt.userChoice.then(function (choiceResult) {
+
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Your PWA has been installed');
+        } else {
+          console.log('User chose to not install your PWA');
+        }
+
+        deferredPrompt = null;
+
+      });
+
+
+    }
+  }
+
+  install();
+
+
+</script>
+</body>
+
+</html>

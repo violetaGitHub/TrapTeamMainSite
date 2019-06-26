@@ -1,0 +1,51 @@
+[debug] [2019-01-18T05:24:32.440Z] ----------------------------------------------------------------------
+[debug] [2019-01-18T05:24:32.443Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-01-18T05:24:32.443Z] CLI Version:   6.2.2
+[debug] [2019-01-18T05:24:32.443Z] Platform:      win32
+[debug] [2019-01-18T05:24:32.443Z] Node Version:  v10.13.0
+[debug] [2019-01-18T05:24:32.444Z] Time:          Fri Jan 18 2019 18:24:32 GMT+1300 (New Zealand Daylight Time)
+[debug] [2019-01-18T05:24:32.444Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-01-18T05:24:32.455Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-18T05:24:32.455Z] > authorizing via signed-in user
+[debug] [2019-01-18T05:24:32.455Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-01-18T05:24:32.457Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-01-18T05:24:32.457Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-01-18T05:24:32.860Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-18T05:24:32.872Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-01-18T05:24:34.423Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-18T05:24:34.424Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-01-18T05:24:35.776Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\stevi\OneDrive\My sites\trapteam.cc'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-01-18T05:24:36.431Z] Fetching environment
+[debug] [2019-01-18T05:24:36.432Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289:getServerAppConfig  
+ 
+[debug] [2019-01-18T05:24:36.433Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-01-18T05:24:37.144Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-18T05:24:37.145Z] Starting @google-cloud/functions-emulator
+[debug] [2019-01-18T05:24:37.257Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-01-18T05:24:38.701Z] Parsing function triggers
+[info] +  functions: TakeDataFromTrap: http://localhost:5001/trapteam-cc/us-central1/TakeDataFromTrap
+[info] +  functions: TestForValues: http://localhost:5001/trapteam-cc/us-central1/TestForValues
+[debug] [2019-01-18T05:24:47.558Z] Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at write_ (_http_outgoing.js:572:17)
+    at ServerResponse.write (_http_outgoing.js:567:10)
+    at ReadStream.ondata (_stream_readable.js:666:20)
+    at ReadStream.emit (events.js:182:13)
+    at ReadStream.EventEmitter.emit (domain.js:442:20)
+    at addChunk (_stream_readable.js:283:12)
+    at readableAddChunk (_stream_readable.js:264:11)
+    at ReadStream.Readable.push (_stream_readable.js:219:10)
+    at lazyFs.read (internal/fs/streams.js:181:12)
+    at FSReqWrap.wrapper [as oncomplete] (fs.js:460:17)
+[error] 
+[error] Error: An unexpected error has occurred.

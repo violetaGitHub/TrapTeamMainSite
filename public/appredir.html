@@ -1,0 +1,397 @@
+<!doctype html>
+<!--
+Material Design Lite
+Copyright 2015 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
+-->
+<html lang="en">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <script src="/redir.js" charset="utf-8"></script>
+  
+  <script src="/redir.js" charset="utf-8"></script>
+  
+  <link rel="manifest" href="/firebaseappdotcommanifest.json">
+  
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Trap Team</title>
+  
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.webp">
+  
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+  <link rel="apple-touch-icon-precomposed" href="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
+  
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
+  <meta name="msapplication-TileColor" content="#3372DF">
+  
+  <link rel="shortcut icon" href="//assets-cdn.github.com/images/spinners/octocat-spinner-128.gif">
+  
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/">
+-->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+
+<script type="text/javascript">
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
+  authDomain: "trapteam-cc.firebaseapp.com",
+  databaseURL: "https://trapteam-cc.firebaseio.com",
+  projectId: "trapteam-cc",
+  storageBucket: "trapteam-cc.appspot.com",
+  messagingSenderId: "150993996289"
+};
+firebase.initializeApp(config);
+
+function initapp() {
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      displayName = user.displayName;
+      email = user.email;
+      emailVerified = user.emailVerified;
+      photoURL = user.photoURL;
+      uid = user.uid;
+      phoneNumber = user.phoneNumber;
+      providerData = user.providerData;
+      user.getIdToken().then(function(accessToken) {
+        document.getElementById('sign-in-status').textContent = 'Signed in';
+        document.getElementById('sign-in').textContent = 'Sign out';
+        document.getElementById('account-details').textContent = JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  ');
+        console.log(JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  '));
+        document.location.href = "/app";
+      });
+    } else {
+      // User is signed out.
+      document.getElementById('sign-in-status').textContent = 'Signed out';
+      document.getElementById('sign-in').textContent = 'Sign in';
+      document.getElementById('account-details').textContent = 'null';
+      window.open("/auth.html");
+      document.location.href = "/authneeded.html";
+    }
+  }, function(error) {
+    console.log(error);
+  });
+};
+function get() {
+  var ref = firebase.database().ref();
+  ref.on("value", function(snapshot){
+    console.log(JSON.stringify(snapshot.val(), null, 2));
+    return(snapshot.val());
+  });
+}
+
+
+
+
+window.onload = function() {
+  initapp();
+  console.log("app initialized");
+  let database = get();
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      displayName = user.displayName;
+      email = user.email;
+      emailVerified = user.emailVerified;
+      photoURL = user.photoURL;
+      uid = user.uid;
+      phoneNumber = user.phoneNumber;
+      providerData = user.providerData;
+      user.getIdToken().then(function(accessToken) {
+        document.getElementById('sign-in-status').textContent = 'Signed in';
+        document.getElementById('sign-in').textContent = 'Sign out';
+        document.getElementById('account-details').textContent = JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  ');
+        console.log(JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  '));
+        document.getElementById('pagehide').innerhtml = "forget it now!";
+        document.location.href = "/app";
+      });
+    } else {
+      // User is signed out.
+      document.getElementById('sign-in-status').textContent = 'Signed out';
+      document.getElementById('sign-in').textContent = 'Sign in';
+      document.getElementById('account-details').textContent = 'null';
+      window.open("/auth.html");
+      document.location.href = "/authneeded.html";
+      document.getElementById('pagehide').innerhtml = "forget it now!";
+    }
+  }, function(error) {
+    console.log(error);
+  });
+  // Put code here
+  //variable database is database.
+};
+
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+#view-source {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900;
+}
+</style>
+  <style>
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      border: 0 solid #73AD21;
+      padding: 1%;
+      text-align: center;
+  
+    }
+  
+    #loader {
+      padding-top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <a id="pagehide"></a>
+  
+  <div class="center" id='loader'> 
+    <p><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="50%"></p>
+    <p></p><img src="/accessbt/loader.svg?alt=media" alt="//\ccess" height="25%"></p>
+  </div>  <div id="sign-in-status" style="display: none;"></div>
+  <div id="sign-in" style="display: none;"></div>
+  <div id="account-details" style="display: none;"></div>
+  <script type="text/javascript">
+  document.getElementById('exit').onclick = function() {
+    firebase.auth().signOut().then(function() {
+      console.log('Signed Out');
+    }, function(error) {
+      console.error('Sign Out Error', error);
+    });
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        displayName = user.displayName;
+        email = user.email;
+        emailVerified = user.emailVerified;
+        photoURL = user.photoURL;
+        uid = user.uid;
+        phoneNumber = user.phoneNumber;
+        providerData = user.providerData;
+        user.getIdToken().then(function(accessToken) {
+          document.getElementById('sign-in-status').textContent = 'Signed in';
+          document.getElementById('sign-in').textContent = 'Sign out';
+          document.getElementById('account-details').textContent = JSON.stringify({
+            displayName: displayName,
+            email: email,
+            emailVerified: emailVerified,
+            phoneNumber: phoneNumber,
+            photoURL: photoURL,
+            uid: uid,
+            accessToken: accessToken,
+            providerData: providerData
+          }, null, '  ');
+          console.log(JSON.stringify({
+            displayName: displayName,
+            email: email,
+            emailVerified: emailVerified,
+            phoneNumber: phoneNumber,
+            photoURL: photoURL,
+            uid: uid,
+            accessToken: accessToken,
+            providerData: providerData
+          }, null, '  '));
+          document.getElementById('pagehide').innerhtml = "forget it now!";
+          document.location.href = "/app";
+        });
+      } else {
+        // User is signed out.
+        document.getElementById('pagehide').innerhtml = "forget it now!";
+        document.getElementById('sign-in-status').textContent = 'Signed out';
+        document.getElementById('sign-in').textContent = 'Sign in';
+        document.getElementById('account-details').textContent = 'null';
+        
+        document.location.href = "/authneeded.html";
+      }
+    }, function(error) {
+      console.log(error);
+    });
+  };
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      displayName = user.displayName;
+      email = user.email;
+      emailVerified = user.emailVerified;
+      photoURL = user.photoURL;
+      uid = user.uid;
+      phoneNumber = user.phoneNumber;
+      providerData = user.providerData;
+      user.getIdToken().then(function(accessToken) {
+        document.getElementById('sign-in-status').textContent = 'Signed in';
+        document.getElementById('sign-in').textContent = 'Sign out';
+        document.getElementById('account-details').textContent = JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  ');
+        console.log(JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  '));
+        document.getElementById('pagehide').innerhtml = "forget it now!";
+        document.location.href = "/app";
+      });
+    } else {
+      // User is signed out.
+      document.getElementById('sign-in-status').textContent = 'Signed out';
+      document.getElementById('sign-in').textContent = 'Sign in';
+      document.getElementById('account-details').textContent = 'null';
+      document.getElementById('pagehide').innerhtml = "forget it now!";
+      document.location.href = "/authneeded.html";
+    }
+  }, function(error) {
+    console.log(error);
+  });
+  </script>
+  <script type="text/javascript">
+  document.getElementById('pagehide').innerhtml = "true";
+  window.onpagehide = function() {
+    if (document.getElementById('pagehide').innerhtml == "true") {
+      window.open("/appredir.html");
+      alert("Please sign out before exiting");
+    }
+  };
+  </script>
+  <script>
+  // This is the "Offline copy of pages" service worker
+  
+  // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+  
+  // Check compatibility for the browser we're running this in
+  if ("serviceWorker" in navigator) {
+    if (navigator.serviceWorker.controller) {
+      console.log("[PWA Builder] active service worker found, no need to register");
+    } else {
+      // Register the service worker
+      navigator.serviceWorker
+      .register("/pwabuilder-sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      });
+    }
+  }
+  
+  
+  let deferredPrompt = null;
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+  });
+  /
+  async function install() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      console.log(deferredPrompt)
+      deferredPrompt.userChoice.then(function (choiceResult) {
+        
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Your PWA has been installed');
+        } else {
+          console.log('User chose to not install your PWA');
+        }
+        
+        deferredPrompt = null;
+        
+      });
+      
+      
+    }
+  }
+  
+  install();
+  
+  
+  </script>
+</body>
+</html>
