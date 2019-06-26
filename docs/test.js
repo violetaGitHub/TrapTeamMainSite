@@ -11,7 +11,7 @@ http.createServer(function (req, res) {
   var lastFive = id.substr(id.length - 5); // => "Tabs1"
   console.log(lastFive);
   if (lastFive !== ".html") {
-    console.log('Not .html')
+    console.log('Not .html');
     if (lastFive.indexOf('.') > -1) {
       console.log("Addon file, not html");
       var q = url.parse(req.url, true);
@@ -32,7 +32,7 @@ http.createServer(function (req, res) {
         extension="image/webp";
       }
       else {
-        extension = ""
+        extension = "";
       }
       fs.readFile(filename, function(err, data) {
         if (err) {
