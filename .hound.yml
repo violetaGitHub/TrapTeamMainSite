@@ -1,8 +1,0 @@
-scss:
-  enabled: true
-
-rubocop:
-  enabled: false
-
-jshint:
-  ignore_file: .gitignore
