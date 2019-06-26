@@ -4,7 +4,7 @@
   "description": "",
   "main": "public/test.js",
   "dependencies": {
-    "firebase-functions": "^2.3.1",
+    "firebase-functions": "^3.0.2",
     "firebase-functions-test": "^0.1.5"
   },
   "devDependencies": {
