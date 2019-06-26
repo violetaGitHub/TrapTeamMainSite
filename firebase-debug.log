@@ -155,3 +155,29 @@
 [debug] [2019-06-22T02:55:55.389Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-06-26T04:50:46.350Z] ----------------------------------------------------------------------
+[debug] [2019-06-26T04:50:46.355Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2019-06-26T04:50:46.356Z] CLI Version:   6.11.0
+[debug] [2019-06-26T04:50:46.356Z] Platform:      win32
+[debug] [2019-06-26T04:50:46.356Z] Node Version:  v10.13.0
+[debug] [2019-06-26T04:50:46.366Z] Time:          Wed Jun 26 2019 16:50:46 GMT+1200 (New Zealand Standard Time)
+[debug] [2019-06-26T04:50:46.367Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-26T04:50:46.388Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-26T04:50:46.389Z] > authorizing via signed-in user
+[debug] [2019-06-26T04:50:46.389Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-06-26T04:50:46.393Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-06-26T04:50:46.393Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-06-26T04:50:46.968Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-26T04:50:46.981Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-06-26T04:50:48.648Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-26T04:50:48.650Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-06-26T04:50:50.047Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-26T04:50:50.049Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-06-26T04:50:50.872Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000

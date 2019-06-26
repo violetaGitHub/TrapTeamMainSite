@@ -192,7 +192,7 @@ drift.load('cesz7uv9e69c');
     window.onload = function () {
       initapp();
       console.log("app initialized");
-      let database = get();
+      let database = 
       firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           // User is signed in.
@@ -334,13 +334,7 @@ drift.load('cesz7uv9e69c');
                   <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title">Home</span>
                     <script>
-                      function get() {
-                        let ref = firebase.database().ref();
-                        ref.on("value", function (snapshot) {
-                          return (snapshot.val());
-                        });
-                      }
-                        alert(get().get().Trapholders.trapper12.Area);
+
                     </script>
 
                     <div class="mdl-layout-spacer"></div>
@@ -585,13 +579,7 @@ drift.load('cesz7uv9e69c');
   </svg>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script type="text/javascript">
-    function get() {
-      var ref = firebase.database().ref();
-      ref.on("value", function (snapshot) {
-        return (snapshot.val());
-      });
-    }
-    console.log(get());
+
     function profileImage() {
 
       var user = firebase.auth().currentUser;
@@ -630,7 +618,6 @@ drift.load('cesz7uv9e69c');
 
     window.onload = function async() {
       firebase.auth().onAuthStateChanged(function (user) {
-        console.log(get())
 
 
 
@@ -856,19 +843,13 @@ drift.load('cesz7uv9e69c');
   <script>
   let loaderelement = document.getElementById('loader');
     let ttapp = document.getElementById('page-content-ttaapp');
-    function get() {
-       let ref = firebase.database().ref();
-          ref.on("value", function (snapshot) {
-             return (snapshot.val());
-       });
-    }
+
     async function hider() {
       //storer();
-            console.clear();
+            
       ttapp.style.visibility = 'visible';
       console.log(ttapp.style.display);
       loaderelement.style.display = 'none';
-      alert(get().Trapholders.trapper12.Area);
 
     }
     myFunction();
@@ -884,7 +865,7 @@ drift.load('cesz7uv9e69c');
         drift.track('LogRocket', { sessionURL: sessionURL });
       });
     </script>
-    <script>Bugsnag.beforeNotify = function (data) {
+    <script>window.bugsnag.beforeNotify = function (data) {
         data.metaData.sessionURL = LogRocket.sessionURL;
         return data;
       };</script>
@@ -894,6 +875,11 @@ drift.load('cesz7uv9e69c');
             sessionURL: sessionURL,
           });
         });
+        LogRocket.getSessionURL(sessionURL => {
+            Sentry.configureScope(scope => {
+              scope.setExtra("sessionURL", sessionURL);
+            });
+          });
       </script>
 </body>
 
