@@ -95,7 +95,7 @@
 			}, userConfig);
 
 			// Expand "target" if it's not a jQuery object already.
-				if (typeof config.target != 'jQuery')
+				if (typeof config.target !== 'jQuery')
 					config.target = $(config.target);
 
 		// Panel.
@@ -119,7 +119,7 @@
 						config.target.removeClass(config.visibleClass);
 
 					// Post-hide stuff.
-						window.setTimeout(function() {
+						window.setTimeout(() => {
 
 							// Reset scroll position.
 								if (config.resetScroll)
@@ -164,7 +164,7 @@
 								$this._hide();
 
 							// Redirect to href.
-								window.setTimeout(function() {
+								window.setTimeout(() => {
 
 									if (target == '_blank')
 										window.open(href);
@@ -178,14 +178,14 @@
 				}
 
 			// Event: Touch stuff.
-				$this.on('touchstart', function(event) {
+				$this.on('touchstart', (event) => {
 
 					$this.touchPosX = event.originalEvent.touches[0].pageX;
 					$this.touchPosY = event.originalEvent.touches[0].pageY;
 
 				});
 
-				$this.on('touchmove', function(event) {
+				$this.on('touchmove', (event) => {
 
 					if ($this.touchPosX === null
 					||	$this.touchPosY === null)
@@ -250,12 +250,12 @@
 				});
 
 			// Event: Prevent certain events inside the panel from bubbling.
-				$this.on('click touchend touchstart touchmove', function(event) {
+				$this.on('click touchend touchstart touchmove', (event) => {
 					event.stopPropagation();
 				});
 
 			// Event: Hide panel if a child anchor tag pointing to its ID is clicked.
-				$this.on('click', 'a[href="#' + id + '"]', function(event) {
+				$this.on('click', 'a[href="#' + id + '"]', (event) => {
 
 					event.preventDefault();
 					event.stopPropagation();
@@ -267,12 +267,12 @@
 		// Body.
 
 			// Event: Hide panel on body click/tap.
-				$body.on('click touchend', function(event) {
+				$body.on('click touchend', (event) => {
 					$this._hide(event);
 				});
 
 			// Event: Toggle.
-				$body.on('click', 'a[href="#' + id + '"]', function(event) {
+				$body.on('click', 'a[href="#' + id + '"]', (event) => {
 
 					event.preventDefault();
 					event.stopPropagation();
@@ -285,7 +285,7 @@
 
 			// Event: Hide on ESC.
 				if (config.hideOnEscape)
-					$window.on('keydown', function(event) {
+					$window.on('keydown', (event) => {
 
 						if (event.keyCode == 27)
 							$this._hide(event);
@@ -303,7 +303,7 @@
 	$.fn.placeholder = function() {
 
 		// Browser natively supports placeholders? Bail.
-			if (typeof (document.createElement('input')).placeholder != 'undefined')
+			if (typeof (document.createElement('input')).placeholder !== 'undefined')
 				return $(this);
 
 		// No elements?
@@ -392,7 +392,7 @@
 						x.hide();
 
 					i
-						.on('blur', function(event) {
+						.on('blur', (event) => {
 
 							event.preventDefault();
 
@@ -408,7 +408,7 @@
 						});
 
 					x
-						.on('focus', function(event) {
+						.on('focus', (event) => {
 
 							event.preventDefault();
 
@@ -421,7 +421,7 @@
 								.focus();
 
 						})
-						.on('keypress', function(event) {
+						.on('keypress', (event) => {
 
 							event.preventDefault();
 							x.val('');
@@ -432,7 +432,7 @@
 
 		// Events.
 			$this
-				.on('submit', function() {
+				.on('submit', () => {
 
 					$this.find('input[type=text],input[type=password],textarea')
 						.each(function(event) {
@@ -452,7 +452,7 @@
 						});
 
 				})
-				.on('reset', function(event) {
+				.on('reset', (event) => {
 
 					event.preventDefault();
 
@@ -528,7 +528,7 @@
 		var key = '__prioritize';
 
 		// Expand $elements if it's not already a jQuery object.
-			if (typeof $elements != 'jQuery')
+			if (typeof $elements !== 'jQuery')
 				$elements = $($elements);
 
 		// Step through elements.

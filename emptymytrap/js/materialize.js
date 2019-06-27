@@ -16,7 +16,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
 (function (factory) {
   window.cash = factory();
-})(function () {
+})(() => {
   var doc = document,
       win = window,
       ArrayProto = Array.prototype,
@@ -172,7 +172,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   function matches(el, selector) {
     var m = el && (el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector || el.oMatchesSelector);
-    return !!m && m.call(el, selector);
+    return Boolean(m) && m.call(el, selector);
   }
 
   function getCompareFunction(selector) {
@@ -191,14 +191,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   }
 
   function unique(collection) {
-    return cash(slice.call(collection).filter(function (item, index, self) {
+    return cash(slice.call(collection).filter((item, index, self) => {
       return self.indexOf(item) === index;
     }));
   }
 
   cash.extend({
     merge: function (first, second) {
-      var len = +second.length,
+      var len = Number(second.length),
           i = first.length,
           j = 0;
 
@@ -252,7 +252,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   fn.extend({
     data: function (name, value) {
       if (isString(name)) {
-        return value === undefined ? getData(this[0], name) : this.each(function (v) {
+        return value === undefined ? getData(this[0], name) : this.each((v) => {
           return setData(v, name, value);
         });
       }
@@ -265,7 +265,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     },
 
     removeData: function (key) {
-      return this.each(function (v) {
+      return this.each((v) => {
         return removeData(v, key);
       });
     }
@@ -302,9 +302,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     addClass: function (c) {
       var classes = getClasses(c);
 
-      return classes ? this.each(function (v) {
+      return classes ? this.each((v) => {
         var spacedName = " " + v.className + " ";
-        each(classes, function (c) {
+        each(classes, (c) => {
           addClass(v, c, spacedName);
         });
       }) : this;
@@ -320,7 +320,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this[0] ? this[0].getAttribute ? this[0].getAttribute(name) : this[0][name] : undefined;
         }
 
-        return this.each(function (v) {
+        return this.each((v) => {
           if (v.setAttribute) {
             v.setAttribute(name, value);
           } else {
@@ -340,7 +340,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var check = false,
           classes = getClasses(c);
       if (classes && classes.length) {
-        this.each(function (v) {
+        this.each((v) => {
           check = hasClass(v, classes[0]);
           return !check;
         });
@@ -350,7 +350,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     prop: function (name, value) {
       if (isString(name)) {
-        return value === undefined ? this[0][name] : this.each(function (v) {
+        return value === undefined ? this[0][name] : this.each((v) => {
           v[name] = value;
         });
       }
@@ -363,7 +363,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     },
 
     removeAttr: function (name) {
-      return this.each(function (v) {
+      return this.each((v) => {
         if (v.removeAttribute) {
           v.removeAttribute(name);
         } else {
@@ -377,15 +377,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return this.attr("class", "");
       }
       var classes = getClasses(c);
-      return classes ? this.each(function (v) {
-        each(classes, function (c) {
+      return classes ? this.each((v) => {
+        each(classes, (c) => {
           removeClass(v, c);
         });
       }) : this;
     },
 
     removeProp: function (name) {
-      return this.each(function (v) {
+      return this.each((v) => {
         delete v[name];
       });
     },
@@ -395,9 +395,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return this[state ? "addClass" : "removeClass"](c);
       }
       var classes = getClasses(c);
-      return classes ? this.each(function (v) {
+      return classes ? this.each((v) => {
         var spacedName = " " + v.className + " ";
-        each(classes, function (c) {
+        each(classes, (c) => {
           if (hasClass(v, c)) {
             removeClass(v, c);
           } else {
@@ -428,7 +428,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       var comparator = isFunction(selector) ? selector : getCompareFunction(selector);
 
-      return cash(filter.call(this, function (e) {
+      return cash(filter.call(this, (e) => {
         return comparator(e, selector);
       }));
     },
@@ -460,7 +460,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var camelRegex = /(?:^\w|[A-Z]|\b\w)/g,
         whiteSpace = /[\s-_]+/g;
     return function (str) {
-      return str.replace(camelRegex, function (letter, index) {
+      return str.replace(camelRegex, (letter, index) => {
         return letter[index === 0 ? "toLowerCase" : "toUpperCase"]();
       }).replace(whiteSpace, "");
     };
@@ -482,7 +482,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           prefixes = ["webkit", "moz", "ms", "o"],
           props = (prop + " " + prefixes.join(ucProp + " ") + ucProp).split(" ");
 
-      each(props, function (p) {
+      each(props, (p) => {
         if (p in style) {
           cache[p] = prop = cache[prop] = p;
           return false;
@@ -500,7 +500,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     css: function (prop, value) {
       if (isString(prop)) {
         prop = getPrefixedProp(prop);
-        return arguments.length > 1 ? this.each(function (v) {
+        return arguments.length > 1 ? this.each((v) => {
           return v.style[prop] = value;
         }) : win.getComputedStyle(this[0])[prop];
       }
@@ -518,7 +518,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return parseInt(win.getComputedStyle(el[0], null)[prop], 10) || 0;
   }
 
-  each(["Width", "Height"], function (v) {
+  each(["Width", "Height"], (v) => {
     var lower = v.toLowerCase();
 
     fn[lower] = function () {
@@ -557,7 +557,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         eventCache.splice(index, 1);
       }
     } else {
-      each(eventCache, function (event) {
+      each(eventCache, (event) => {
         node.removeEventListener(eventName, event);
       });
       eventCache = [];
@@ -566,7 +566,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   fn.extend({
     off: function (eventName, callback) {
-      return this.each(function (v) {
+      return this.each((v) => {
         return removeEvent(v, eventName, callback);
       });
     },
@@ -609,7 +609,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
       }
 
-      return this.each(function (v) {
+      return this.each((v) => {
         var finalCallback = callback;
         if (runOnce) {
           finalCallback = function () {
@@ -638,7 +638,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var evt = document.createEvent('HTMLEvents');
         evt.initEvent(eventName, true, false);
         evt = this.extend(evt, data);
-        return this.each(function (v) {
+        return this.each((v) => {
           return v.dispatchEvent(evt);
         });
       }
@@ -652,7 +652,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   function getSelectMultiple_(el) {
     var values = [];
-    each(el.options, function (o) {
+    each(el.options, (o) => {
       if (o.selected) {
         values.push(o.value);
       }
@@ -688,7 +688,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     serialize: function () {
       var query = "";
 
-      each(this[0].elements || this, function (el) {
+      each(this[0].elements || this, (el) => {
         if (el.disabled || el.tagName === "FIELDSET") {
           return;
         }
@@ -702,7 +702,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           case "select-multiple":
             var values = getValue(el);
             if (values !== null) {
-              each(values, function (value) {
+              each(values, (value) => {
                 query += encode(name, value);
               });
             }
@@ -723,7 +723,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return getValue(this[0]);
       }
 
-      return this.each(function (v) {
+      return this.each((v) => {
         return v.value = value;
       });
     }
@@ -743,15 +743,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var str = isString(child);
 
     if (!str && child.length) {
-      each(child, function (v) {
+      each(child, (v) => {
         return insertContent(parent, v, prepend);
       });
       return;
     }
 
-    each(parent, str ? function (v) {
+    each(parent, str ? (v) => {
       return v.insertAdjacentHTML(prepend ? "afterbegin" : "beforeend", child);
-    } : function (v, i) {
+    } : (v, i) => {
       return insertElement(v, i === 0 ? child : child.cloneNode(true), prepend);
     });
   }
@@ -778,7 +778,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     },
 
     clone: function () {
-      return cash(this.map(function (v) {
+      return cash(this.map((v) => {
         return v.cloneNode(true);
       }));
     },
@@ -793,7 +793,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return this[0].innerHTML;
       }
       var source = content.nodeType ? content[0].outerHTML : content;
-      return this.each(function (v) {
+      return this.each((v) => {
         return v.innerHTML = source;
       });
     },
@@ -801,10 +801,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     insertAfter: function (selector) {
       var _this = this;
 
-      cash(selector).each(function (el, i) {
+      cash(selector).each((el, i) => {
         var parent = el.parentNode,
             sibling = el.nextSibling;
-        _this.each(function (v) {
+        _this.each((v) => {
           parent.insertBefore(i === 0 ? v : v.cloneNode(true), sibling);
         });
       });
@@ -814,9 +814,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     insertBefore: function (selector) {
       var _this2 = this;
-      cash(selector).each(function (el, i) {
+      cash(selector).each((el, i) => {
         var parent = el.parentNode;
-        _this2.each(function (v) {
+        _this2.each((v) => {
           parent.insertBefore(i === 0 ? v : v.cloneNode(true), el);
         });
       });
@@ -834,8 +834,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     },
 
     remove: function () {
-      return this.each(function (v) {
-        if (!!v.parentNode) {
+      return this.each((v) => {
+        if (v.parentNode) {
           return v.parentNode.removeChild(v);
         }
       });
@@ -845,7 +845,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (content === undefined) {
         return this[0].textContent;
       }
-      return this.each(function (v) {
+      return this.each((v) => {
         return v.textContent = content;
       });
     }
@@ -880,12 +880,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   fn.extend({
     children: function (selector) {
       var elems = [];
-      this.each(function (el) {
+      this.each((el) => {
         push.apply(elems, el.children);
       });
       elems = unique(elems);
 
-      return !selector ? elems : elems.filter(function (v) {
+      return !selector ? elems : elems.filter((v) => {
         return matches(v, selector);
       });
     },
@@ -908,7 +908,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var match = false,
           comparator = getCompareFunction(selector);
 
-      this.each(function (el) {
+      this.each((el) => {
         match = comparator(el, selector);
         return !match;
       });
@@ -922,7 +922,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       var elems = [];
-      this.each(function (el) {
+      this.each((el) => {
         push.apply(elems, find(selector, el));
       });
 
@@ -950,7 +950,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       var comparator = getCompareFunction(selector);
 
-      return this.filter(function (el) {
+      return this.filter((el) => {
         return !comparator(el, selector);
       });
     },
@@ -958,7 +958,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     parent: function () {
       var result = [];
 
-      this.each(function (item) {
+      this.each((item) => {
         if (item && item.parentNode) {
           result.push(item.parentNode);
         }
@@ -971,7 +971,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var last,
           result = [];
 
-      this.each(function (item) {
+      this.each((item) => {
         last = item;
 
         while (last && last.parentNode && last !== doc.body.parentNode) {
@@ -994,7 +994,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var collection = this.parent().children(selector),
           el = this[0];
 
-      return collection.filter(function (i) {
+      return collection.filter((i) => {
         return i !== el;
       });
     }
@@ -1003,7 +1003,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   return cash;
 });
-;
+
 var Component = function () {
   /**
    * Generic constructor for all components
@@ -1021,7 +1021,7 @@ var Component = function () {
 
     // If exists, destroy and reinitialize in child
     var ins = classDef.getInstance(el);
-    if (!!ins) {
+    if (ins) {
       ins.destroy();
     }
 
@@ -1043,7 +1043,7 @@ var Component = function () {
       var instances = null;
       if (els instanceof Element) {
         instances = new classDef(els, options);
-      } else if (!!els && (els.jquery || els.cash || els instanceof NodeList)) {
+      } else if (Boolean(els) && (els.jquery || els.cash || els instanceof NodeList)) {
         var instancesArr = [];
         for (var i = 0; i < els.length; i++) {
           instancesArr.push(new classDef(els[i], options));
@@ -1058,7 +1058,7 @@ var Component = function () {
   return Component;
 }();
 
-; // Required for Meteor package, the use of window prevents export by Meteor
+ // Required for Meteor package, the use of window prevents export by Meteor
 (function (window) {
   if (window.Package) {
     M = {};
@@ -1067,12 +1067,12 @@ var Component = function () {
   }
 
   // Check for jQuery
-  M.jQueryLoaded = !!window.jQuery;
+  M.jQueryLoaded = Boolean(window.jQuery);
 })(window);
 
 // AMD
 if (typeof define === 'function' && define.amd) {
-  define('M', [], function () {
+  define('M', [], () => {
     return M;
   });
 
@@ -1163,7 +1163,7 @@ M.initializeJqueryWrapper = function (plugin, pluginName, classRef) {
  */
 M.AutoInit = function (context) {
   // Use document.body if no context is given
-  var root = !!context ? context : document.body;
+  var root = context ? context : document.body;
 
   var registry = {
     Autocomplete: root.querySelectorAll('.autocomplete:not(.no-autoinit)'),
@@ -1464,15 +1464,15 @@ M.throttle = function (func, wait, options) {
     return result;
   };
 };
-; /*
+ /*
   v2.2.0
   2017 Julian Garnier
   Released under the MIT license
   */
-var $jscomp = { scope: {} };$jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (e, r, p) {
+var $jscomp = { scope: {} };$jscomp.defineProperty = "function" === typeof Object.defineProperties ? Object.defineProperty : function (e, r, p) {
   if (p.get || p.set) throw new TypeError("ES3 does not support getters and setters.");e != Array.prototype && e != Object.prototype && (e[r] = p.value);
 };$jscomp.getGlobal = function (e) {
-  return "undefined" != typeof window && window === e ? e : "undefined" != typeof global && null != global ? global : e;
+  return "undefined" !== typeof window && window === e ? e : "undefined" !== typeof global && null != global ? global : e;
 };$jscomp.global = $jscomp.getGlobal(this);$jscomp.SYMBOL_PREFIX = "jscomp_symbol_";
 $jscomp.initSymbol = function () {
   $jscomp.initSymbol = function () {};$jscomp.global.Symbol || ($jscomp.global.Symbol = $jscomp.Symbol);
@@ -1480,11 +1480,11 @@ $jscomp.initSymbol = function () {
   return $jscomp.SYMBOL_PREFIX + (e || "") + $jscomp.symbolCounter_++;
 };
 $jscomp.initSymbolIterator = function () {
-  $jscomp.initSymbol();var e = $jscomp.global.Symbol.iterator;e || (e = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("iterator"));"function" != typeof Array.prototype[e] && $jscomp.defineProperty(Array.prototype, e, { configurable: !0, writable: !0, value: function () {
+  $jscomp.initSymbol();var e = $jscomp.global.Symbol.iterator;e || (e = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("iterator"));"function" !== typeof Array.prototype[e] && $jscomp.defineProperty(Array.prototype, e, { configurable: !0, writable: !0, value: function () {
       return $jscomp.arrayIterator(this);
     } });$jscomp.initSymbolIterator = function () {};
 };$jscomp.arrayIterator = function (e) {
-  var r = 0;return $jscomp.iteratorPrototype(function () {
+  var r = 0;return $jscomp.iteratorPrototype(() => {
     return r < e.length ? { done: !1, value: e[r++] } : { done: !0 };
   });
 };
@@ -1493,7 +1493,7 @@ $jscomp.iteratorPrototype = function (e) {
     return this;
   };return e;
 };$jscomp.array = $jscomp.array || {};$jscomp.iteratorFromArray = function (e, r) {
-  $jscomp.initSymbolIterator();e instanceof String && (e += "");var p = 0,
+  $jscomp.initSymbolIterator();e instanceof String && (e = String(e));var p = 0,
       m = { next: function () {
       if (p < e.length) {
         var u = p++;return { value: r(u, e[u]), done: !1 };
@@ -1510,16 +1510,16 @@ $jscomp.polyfill = function (e, r, p, m) {
       var u = e[m];u in p || (p[u] = {});p = p[u];
     }e = e[e.length - 1];m = p[e];r = r(m);r != m && null != r && $jscomp.defineProperty(p, e, { configurable: !0, writable: !0, value: r });
   }
-};$jscomp.polyfill("Array.prototype.keys", function (e) {
+};$jscomp.polyfill("Array.prototype.keys", (e) => {
   return e ? e : function () {
-    return $jscomp.iteratorFromArray(this, function (e) {
+    return $jscomp.iteratorFromArray(this, (e) => {
       return e;
     });
   };
 }, "es6-impl", "es3");var $jscomp$this = this;
 (function (r) {
   M.anime = r();
-})(function () {
+})(() => {
   function e(a) {
     if (!h.col(a)) try {
       return document.querySelectorAll(a);
@@ -1531,14 +1531,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
     }return f;
   }function p(a) {
-    return a.reduce(function (a, d) {
+    return a.reduce((a, d) => {
       return a.concat(h.arr(d) ? p(d) : d);
     }, []);
   }function m(a) {
     if (h.arr(a)) return a;
     h.str(a) && (a = e(a) || a);return a instanceof NodeList || a instanceof HTMLCollection ? [].slice.call(a) : [a];
   }function u(a, c) {
-    return a.some(function (a) {
+    return a.some((a) => {
       return a === c;
     });
   }function C(a) {
@@ -1557,18 +1557,18 @@ $jscomp.polyfill = function (e, r, p, m) {
       d[b] = h.und(a[b]) ? c[b] : a[b];
     }return d;
   }function T(a) {
-    a = a.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, function (a, c, d, k) {
+    a = a.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (a, c, d, k) => {
       return c + c + d + d + k + k;
     });var c = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);
     a = parseInt(c[1], 16);var d = parseInt(c[2], 16),
         c = parseInt(c[3], 16);return "rgba(" + a + "," + d + "," + c + ",1)";
   }function U(a) {
     function c(a, c, b) {
-      0 > b && (b += 1);1 < b && --b;return b < 1 / 6 ? a + 6 * (c - a) * b : .5 > b ? c : b < 2 / 3 ? a + (c - a) * (2 / 3 - b) * 6 : a;
+      0 > b && (b += 1);1 < b && --b;return b < 1 / 6 ? a + 6 * (c - a) * b : 0.5 > b ? c : b < 2 / 3 ? a + (c - a) * (2 / 3 - b) * 6 : a;
     }var d = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g.exec(a) || /hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*([\d.]+)\)/g.exec(a);a = parseInt(d[1]) / 360;var b = parseInt(d[2]) / 100,
         f = parseInt(d[3]) / 100,
         d = d[4] || 1;if (0 == b) f = b = a = f;else {
-      var n = .5 > f ? f * (1 + b) : f + b - f * b,
+      var n = 0.5 > f ? f * (1 + b) : f + b - f * b,
           k = 2 * f - n,
           f = c(k, n, a + 1 / 3),
           b = c(k, n, a);a = c(k, n, a - 1 / 3);
@@ -1587,7 +1587,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     var d = V(c),
         d = -1 < c.indexOf("scale") ? 1 : 0 + d;a = a.style.transform;if (!a) return d;for (var b = [], f = [], n = [], k = /(\w+)\((.+?)\)/g; b = k.exec(a);) {
       f.push(b[1]), n.push(b[2]);
-    }a = r(n, function (a, b) {
+    }a = r(n, (a, b) => {
       return f[b] === c;
     });return a.length ? a[0] : d;
   }function K(a, c) {
@@ -1629,34 +1629,34 @@ $jscomp.polyfill = function (e, r, p, m) {
       if (h.rgb(b)) {
         var f = /rgb\((\d+,\s*[\d]+,\s*[\d]+)\)/g.exec(b);b = f ? "rgba(" + f[1] + ",1)" : b;
       } else b = h.hex(b) ? T(b) : h.hsl(b) ? U(b) : void 0;
-    } else f = (f = y(b)) ? b.substr(0, b.length - f.length) : b, b = c && !/\s/g.test(b) ? f + c : f;b += "";return { original: b, numbers: b.match(d) ? b.match(d).map(Number) : [0], strings: h.str(a) || c ? b.split(d) : [] };
+    } else f = (f = y(b)) ? b.substr(0, b.length - f.length) : b, b = c && !/\s/g.test(b) ? f + c : f;b = String(b);return { original: b, numbers: b.match(d) ? b.match(d).map(Number) : [0], strings: h.str(a) || c ? b.split(d) : [] };
   }function P(a) {
-    a = a ? p(h.arr(a) ? a.map(m) : m(a)) : [];return r(a, function (a, d, b) {
+    a = a ? p(h.arr(a) ? a.map(m) : m(a)) : [];return r(a, (a, d, b) => {
       return b.indexOf(a) === d;
     });
   }function Z(a) {
-    var c = P(a);return c.map(function (a, b) {
+    var c = P(a);return c.map((a, b) => {
       return { target: a, id: b, total: c.length };
     });
   }function aa(a, c) {
     var d = C(c);if (h.arr(a)) {
       var b = a.length;2 !== b || h.obj(a[0]) ? h.fnc(c.duration) || (d.duration = c.duration / b) : a = { value: a };
-    }return m(a).map(function (a, b) {
+    }return m(a).map((a, b) => {
       b = b ? 0 : c.delay;a = h.obj(a) && !h.pth(a) ? a : { value: a };h.und(a.delay) && (a.delay = b);return a;
-    }).map(function (a) {
+    }).map((a) => {
       return z(a, d);
     });
   }function ba(a, c) {
     var d = {},
         b;for (b in a) {
-      var f = I(a[b], c);h.arr(f) && (f = f.map(function (a) {
+      var f = I(a[b], c);h.arr(f) && (f = f.map((a) => {
         return I(a, c);
       }), 1 === f.length && (f = f[0]));d[b] = f;
     }d.duration = parseFloat(d.duration);d.delay = parseFloat(d.delay);return d;
   }function ca(a) {
     return h.arr(a) ? A.apply(this, a) : Q[a];
   }function da(a, c) {
-    var d;return a.tweens.map(function (b) {
+    var d;return a.tweens.map((b) => {
       b = ba(b, c);var f = b.value,
           e = K(c.target, a.name),
           k = d ? d.to.original : e,
@@ -1665,17 +1665,17 @@ $jscomp.polyfill = function (e, r, p, m) {
           e = y(w) || y(k) || y(e);b.from = O(k, e);b.to = O(w, e);b.start = d ? d.end : a.offset;b.end = b.start + b.delay + b.duration;b.easing = ca(b.easing);b.elasticity = (1E3 - Math.min(Math.max(b.elasticity, 1), 999)) / 1E3;b.isPath = h.pth(f);b.isColor = h.col(b.from.original);b.isColor && (b.round = 1);return d = b;
     });
   }function ea(a, c) {
-    return r(p(a.map(function (a) {
-      return c.map(function (b) {
+    return r(p(a.map((a) => {
+      return c.map((b) => {
         var c = J(a.target, b.name);if (c) {
           var d = da(b, a);b = { type: c, property: b.name, animatable: a, tweens: d, duration: d[d.length - 1].end, delay: d[0].delay };
         } else b = void 0;return b;
       });
-    })), function (a) {
+    })), (a) => {
       return !h.und(a);
     });
   }function R(a, c, d, b) {
-    var f = "delay" === a;return c.length ? (f ? Math.min : Math.max).apply(Math, c.map(function (b) {
+    var f = "delay" === a;return c.length ? (f ? Math.min : Math.max).apply(Math, c.map((b) => {
       return b[a];
     })) : f ? b.delay : d.offset + b.delay + b.duration;
   }function fa(a) {
@@ -1689,9 +1689,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     }a = ea(b, f);return z(c, { children: [], animatables: b, animations: a, duration: R("duration", a, c, d), delay: R("delay", a, c, d) });
   }function q(a) {
     function c() {
-      return window.Promise && new Promise(function (a) {
+      return window.Promise && new Promise(((a) => {
         return p = a;
-      });
+      }));
     }function d(a) {
       return g.reversed ? g.duration - a : a;
     }function b(a) {
@@ -1700,7 +1700,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             k = e.animatable,
             h = e.tweens,
             n = h.length - 1,
-            l = h[n];n && (l = r(h, function (b) {
+            l = h[n];n && (l = r(h, (b) => {
           return a < b.end;
         })[0] || l);for (var h = Math.min(Math.max(a - l.start - l.delay, 0), l.duration) / l.duration, w = isNaN(h) ? 1 : l.easing(h, l.elasticity), h = l.to.strings, p = l.round, n = [], m = void 0, m = l.to.numbers.length, t = 0; t < m; t++) {
           var x = void 0,
@@ -1795,19 +1795,19 @@ $jscomp.polyfill = function (e, r, p, m) {
     }return function (c, d, b, f) {
       if (0 <= c && 1 >= c && 0 <= b && 1 >= b) {
         var e = new Float32Array(11);if (c !== d || b !== f) for (var k = 0; 11 > k; ++k) {
-          e[k] = a(.1 * k, c, b);
+          e[k] = a(0.1 * k, c, b);
         }return function (k) {
           if (c === d && b === f) return k;if (0 === k) return 0;if (1 === k) return 1;for (var h = 0, l = 1; 10 !== l && e[l] <= k; ++l) {
-            h += .1;
-          }--l;var l = h + (k - e[l]) / (e[l + 1] - e[l]) * .1,
-              n = 3 * (1 - 3 * b + 3 * c) * l * l + 2 * (3 * b - 6 * c) * l + 3 * c;if (.001 <= n) {
+            h += 0.1;
+          }--l;var l = h + (k - e[l]) / (e[l + 1] - e[l]) * 0.1,
+              n = 3 * (1 - 3 * b + 3 * c) * l * l + 2 * (3 * b - 6 * c) * l + 3 * c;if (0.001 <= n) {
             for (h = 0; 4 > h; ++h) {
               n = 3 * (1 - 3 * b + 3 * c) * l * l + 2 * (3 * b - 6 * c) * l + 3 * c;if (0 === n) break;var m = a(l, c, b) - k,
                   l = l - m / n;
             }k = l;
           } else if (0 === n) k = l;else {
             var l = h,
-                h = h + .1,
+                h = h + 0.1,
                 g = 0;do {
               m = l + (h - l) / 2, n = a(m, c, b) - k, 0 < n ? h = m : l = m;
             } while (1e-7 < Math.abs(n) && 10 > ++g);k = m;
@@ -1820,12 +1820,12 @@ $jscomp.polyfill = function (e, r, p, m) {
     function a(a, b) {
       return 0 === a || 1 === a ? a : -Math.pow(2, 10 * (a - 1)) * Math.sin(2 * (a - 1 - b / (2 * Math.PI) * Math.asin(1)) * Math.PI / b);
     }var c = "Quad Cubic Quart Quint Sine Expo Circ Back Elastic".split(" "),
-        d = { In: [[.55, .085, .68, .53], [.55, .055, .675, .19], [.895, .03, .685, .22], [.755, .05, .855, .06], [.47, 0, .745, .715], [.95, .05, .795, .035], [.6, .04, .98, .335], [.6, -.28, .735, .045], a], Out: [[.25, .46, .45, .94], [.215, .61, .355, 1], [.165, .84, .44, 1], [.23, 1, .32, 1], [.39, .575, .565, 1], [.19, 1, .22, 1], [.075, .82, .165, 1], [.175, .885, .32, 1.275], function (b, c) {
+        d = { In: [[0.55, 0.085, 0.68, 0.53], [0.55, 0.055, 0.675, 0.19], [0.895, 0.03, 0.685, 0.22], [0.755, 0.05, 0.855, 0.06], [0.47, 0, 0.745, 0.715], [0.95, 0.05, 0.795, 0.035], [0.6, 0.04, 0.98, 0.335], [0.6, -0.28, 0.735, 0.045], a], Out: [[0.25, 0.46, 0.45, 0.94], [0.215, 0.61, 0.355, 1], [0.165, 0.84, 0.44, 1], [0.23, 1, 0.32, 1], [0.39, 0.575, 0.565, 1], [0.19, 1, 0.22, 1], [0.075, 0.82, 0.165, 1], [0.175, 0.885, 0.32, 1.275], function (b, c) {
         return 1 - a(1 - b, c);
-      }], InOut: [[.455, .03, .515, .955], [.645, .045, .355, 1], [.77, 0, .175, 1], [.86, 0, .07, 1], [.445, .05, .55, .95], [1, 0, 0, 1], [.785, .135, .15, .86], [.68, -.55, .265, 1.55], function (b, c) {
-        return .5 > b ? a(2 * b, c) / 2 : 1 - a(-2 * b + 2, c) / 2;
+      }], InOut: [[0.455, 0.03, 0.515, 0.955], [0.645, 0.045, 0.355, 1], [0.77, 0, 0.175, 1], [0.86, 0, 0.07, 1], [0.445, 0.05, 0.55, 0.95], [1, 0, 0, 1], [0.785, 0.135, 0.15, 0.86], [0.68, -0.55, 0.265, 1.55], function (b, c) {
+        return 0.5 > b ? a(2 * b, c) / 2 : 1 - a(-2 * b + 2, c) / 2;
       }] },
-        b = { linear: A(.25, .25, .75, .75) },
+        b = { linear: A(0.25, 0.25, 0.75, 0.75) },
         f = {},
         e;for (e in d) {
       f.type = e, d[f.type].forEach(function (a) {
@@ -1871,9 +1871,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     var c = N(a);a.setAttribute("stroke-dasharray", c);return c;
   };q.bezier = A;q.easings = Q;q.timeline = function (a) {
     var c = q(a);c.pause();c.duration = 0;c.add = function (d) {
-      c.children.forEach(function (a) {
+      c.children.forEach((a) => {
         a.began = !0;a.completed = !0;
-      });m(d).forEach(function (b) {
+      });m(d).forEach((b) => {
         var d = z(b, D(S, a || {}));d.targets = d.targets || a.targets;b = c.duration;var e = d.offset;d.autoplay = !1;d.direction = c.direction;d.offset = h.und(e) ? b : L(e, b);c.began = !0;c.completed = !0;c.seek(d.offset);d = q(d);d.began = !0;d.completed = !0;d.duration > b && (c.duration = d.duration);c.children.push(d);
       });c.seek(0);c.reset();c.autoplay && c.restart();return c;
     };return c;
@@ -1881,7 +1881,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     return Math.floor(Math.random() * (c - a + 1)) + a;
   };return q;
 });
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -1970,7 +1970,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._handleCollapsibleClickBound = this._handleCollapsibleClick.bind(this);
         this._handleCollapsibleKeydownBound = this._handleCollapsibleKeydown.bind(this);
         this.el.addEventListener('click', this._handleCollapsibleClickBound);
-        this.$headers.each(function (header) {
+        this.$headers.each((header) => {
           header.addEventListener('keydown', _this4._handleCollapsibleKeydownBound);
         });
       }
@@ -2139,7 +2139,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           if (this.options.accordion) {
             var $collapsibleLis = this.$el.children('li');
             var $activeLis = this.$el.children('li.active');
-            $activeLis.each(function (el) {
+            $activeLis.each((el) => {
               var index = $collapsibleLis.index($(el));
               _this7.close(index);
             });
@@ -2184,7 +2184,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Collapsible;
       }
     }, {
@@ -2203,7 +2203,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Collapsible, 'collapsible', 'M_Collapsible');
   }
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -2283,7 +2283,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this8.filterQuery = [];
 
       // Move dropdown-content after dropdown-trigger
-      if (!!_this8.options.container) {
+      if (_this8.options.container) {
         $(_this8.options.container).append(_this8.dropdownEl);
       } else {
         _this8.$el.after(_this8.dropdownEl);
@@ -2393,11 +2393,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_handleMouseLeave",
       value: function _handleMouseLeave(e) {
         var toEl = e.toElement || e.relatedTarget;
-        var leaveToDropdownContent = !!$(toEl).closest('.dropdown-content').length;
+        var leaveToDropdownContent = Boolean($(toEl).closest('.dropdown-content').length);
         var leaveToActiveDropdownTrigger = false;
 
         var $closestTrigger = $(toEl).closest('.dropdown-trigger');
-        if ($closestTrigger.length && !!$closestTrigger[0].M_Dropdown && $closestTrigger[0].M_Dropdown.isOpen) {
+        if ($closestTrigger.length && Boolean($closestTrigger[0].M_Dropdown) && $closestTrigger[0].M_Dropdown.isOpen) {
           leaveToActiveDropdownTrigger = true;
         }
 
@@ -2414,11 +2414,11 @@ $jscomp.polyfill = function (e, r, p, m) {
         var $target = $(e.target);
         if (this.options.closeOnClick && $target.closest('.dropdown-content').length && !this.isTouchMoving) {
           // isTouchMoving to check if scrolling on mobile.
-          setTimeout(function () {
+          setTimeout(() => {
             _this9.close();
           }, 0);
         } else if ($target.closest('.dropdown-trigger').length || !$target.closest('.dropdown-content').length) {
-          setTimeout(function () {
+          setTimeout(() => {
             _this9.close();
           }, 0);
         }
@@ -2484,7 +2484,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           do {
             newFocusedIndex = newFocusedIndex + direction;
 
-            if (!!this.dropdownEl.children[newFocusedIndex] && this.dropdownEl.children[newFocusedIndex].tabIndex !== -1) {
+            if (Boolean(this.dropdownEl.children[newFocusedIndex]) && this.dropdownEl.children[newFocusedIndex].tabIndex !== -1) {
               foundNewIndex = true;
               break;
             }
@@ -2502,7 +2502,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           var $activatableElement = $(focusedElement).find('a, button').first();
 
           // Click a or button tag if exists, otherwise click li tag
-          !!$activatableElement.length ? $activatableElement[0].click() : focusedElement.click();
+          $activatableElement.length ? $activatableElement[0].click() : focusedElement.click();
 
           // Close dropdown on ESC
         } else if (e.which === M.keys.ESC && this.isOpen) {
@@ -2517,7 +2517,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.filterQuery.push(letter);
 
           var string = this.filterQuery.join(''),
-              newOptionEl = $(this.dropdownEl).find('li').filter(function (el) {
+              newOptionEl = $(this.dropdownEl).find('li').filter((el) => {
             return $(el).text().toLowerCase().indexOf(string) === 0;
           })[0];
 
@@ -2560,7 +2560,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.dropdownEl.tabIndex = 0;
 
         // Only set tabindex if it hasn't been set by user
-        $(this.dropdownEl).children().each(function (el) {
+        $(this.dropdownEl).children().each((el) => {
           if (!el.getAttribute('tabindex')) {
             el.setAttribute('tabindex', 0);
           }
@@ -2822,7 +2822,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Dropdown;
       }
     }, {
@@ -2849,7 +2849,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Dropdown, 'dropdown', 'M_Dropdown');
   }
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -3174,7 +3174,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.style.zIndex = 1000 + Modal._modalsOpen * 2 + 1;
 
         // Set opening trigger, undefined indicates modal was opened by javascript
-        this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
+        this._openingTrigger = $trigger ? $trigger[0] : undefined;
 
         // onOpenStart callback
         if (typeof this.options.onOpenStart === 'function') {
@@ -3255,7 +3255,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Modal;
       }
     }, {
@@ -3288,7 +3288,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
   }
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -3623,7 +3623,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Add overlay
         this.$overlay = $('<div id="materialbox-overlay"></div>').css({
           opacity: 0
-        }).one('click', function () {
+        }).one('click', () => {
           if (_this18.doneAnimating) {
             _this18.close();
           }
@@ -3767,7 +3767,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Materialbox;
       }
     }, {
@@ -3786,7 +3786,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
   }
 })(cash, M.anime);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -3906,7 +3906,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Parallax;
       }
     }, {
@@ -3949,7 +3949,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Parallax, 'parallax', 'M_Parallax');
   }
 })(cash);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -4091,7 +4091,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
 
         // Act as regular link if target attribute is specified.
-        if (!!tabLink.attr('target')) {
+        if ((tabLink.attr('target'))) {
           return;
         }
 
@@ -4114,7 +4114,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Swap content
         if (this.options.swipeable) {
           if (this._tabsCarousel) {
-            this._tabsCarousel.set(this.index, function () {
+            this._tabsCarousel.set(this.index, () => {
               if (typeof _this22.options.onShow === 'function') {
                 _this22.options.onShow.call(_this22, _this22.$content[0]);
               }
@@ -4157,7 +4157,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.appendChild(indicator);
         this._indicator = indicator;
 
-        setTimeout(function () {
+        setTimeout(() => {
           _this23._indicator.style.left = _this23._calcLeftPos(_this23.$activeTabLink) + 'px';
           _this23._indicator.style.right = _this23._calcRightPos(_this23.$activeTabLink) + 'px';
         }, 0);
@@ -4207,7 +4207,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
 
         var $tabsContent = $();
-        this.$tabLinks.each(function (link) {
+        this.$tabLinks.each((link) => {
           var $currContent = $(M.escapeHash(link.hash));
           $currContent.addClass('carousel-item');
           $tabsContent = $tabsContent.add($currContent);
@@ -4264,8 +4264,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_setupNormalTabs",
       value: function _setupNormalTabs() {
         // Hide Tabs Content
-        this.$tabLinks.not(this.$activeTabLink).each(function (link) {
-          if (!!link.hash) {
+        this.$tabLinks.not(this.$activeTabLink).each((link) => {
+          if (link.hash) {
             var $currContent = $(M.escapeHash(link.hash));
             if ($currContent.length) {
               $currContent[0].style.display = 'none';
@@ -4282,8 +4282,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_teardownNormalTabs",
       value: function _teardownNormalTabs() {
         // show Tabs Content
-        this.$tabLinks.each(function (link) {
-          if (!!link.hash) {
+        this.$tabLinks.each((link) => {
+          if (link.hash) {
             var $currContent = $(M.escapeHash(link.hash));
             if ($currContent.length) {
               $currContent[0].style.display = '';
@@ -4391,7 +4391,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Tabs;
       }
     }, {
@@ -4410,7 +4410,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Tabs, 'tabs', 'M_Tabs');
   }
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -4540,7 +4540,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         clearTimeout(this._exitDelayTimeout);
 
-        this._exitDelayTimeout = setTimeout(function () {
+        this._exitDelayTimeout = setTimeout(() => {
           if (_this26.isHovered || _this26.isFocused) {
             return;
           }
@@ -4560,7 +4560,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         clearTimeout(this._enterDelayTimeout);
 
-        this._enterDelayTimeout = setTimeout(function () {
+        this._enterDelayTimeout = setTimeout(() => {
           if (!_this27.isHovered && !_this27.isFocused) {
             return;
           }
@@ -4731,7 +4731,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Tooltip;
       }
     }, {
@@ -4750,7 +4750,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
 })(cash, M.anime);
-; /*!
+ /*!
   * Waves v0.6.4
   * http://fian.my.id/Waves
   *
@@ -4759,7 +4759,7 @@ $jscomp.polyfill = function (e, r, p, m) {
   * https://github.com/fians/Waves/blob/master/LICENSE
   */
 
-;(function (window) {
+(function (window) {
   'use strict';
 
   var Waves = Waves || {};
@@ -4900,7 +4900,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       // Fade out ripple after delay
-      setTimeout(function () {
+      setTimeout(() => {
         var style = {
           'top': relativeY + 'px',
           'left': relativeX + 'px',
@@ -4920,7 +4920,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         ripple.setAttribute('style', convertStyle(style));
 
-        setTimeout(function () {
+        setTimeout(() => {
           try {
             el.removeChild(ripple);
           } catch (e) {
@@ -4981,7 +4981,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       if (e.type === 'touchstart') {
         TouchHandler.touches += 1; //push
       } else if (e.type === 'touchend' || e.type === 'touchcancel') {
-        setTimeout(function () {
+        setTimeout(() => {
           if (TouchHandler.touches > 0) {
             TouchHandler.touches -= 1; //pop after 500ms
           }
@@ -5079,11 +5079,11 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   window.Waves = Waves;
 
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     Waves.displayEffect();
   }, false);
 })(window);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -5144,7 +5144,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         toast.classList.add('toast');
 
         // Add custom classes onto toast
-        if (!!this.options.classes.length) {
+        if (this.options.classes.length) {
           $(toast).addClass(this.options.classes);
         }
 
@@ -5153,7 +5153,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           toast.appendChild(this.message);
 
           // Check if it is jQuery object
-        } else if (!!this.message.jquery) {
+        } else if (this.message.jquery) {
           $(toast).append(this.message[0]);
 
           // Insert as html;
@@ -5194,7 +5194,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         var _this28 = this;
 
         if (this.timeRemaining !== Infinity) {
-          this.counterInterval = setInterval(function () {
+          this.counterInterval = setInterval(() => {
             // If toast is not being dragged, decrease its time remaining
             if (!_this28.panning) {
               _this28.timeRemaining -= 20;
@@ -5254,7 +5254,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * Get Instance
        */
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Toast;
       }
 
@@ -5325,7 +5325,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_onDragMove",
       value: function _onDragMove(e) {
-        if (!!Toast._draggedToast) {
+        if (Toast._draggedToast) {
           e.preventDefault();
           var toast = Toast._draggedToast;
           toast.deltaX = Math.abs(toast.xPos - Toast._xPos(e));
@@ -5347,7 +5347,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_onDragEnd",
       value: function _onDragEnd() {
-        if (!!Toast._draggedToast) {
+        if (Toast._draggedToast) {
           var toast = Toast._draggedToast;
           toast.panning = false;
           toast.el.classList.remove('panning');
@@ -5434,7 +5434,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     return new Toast(options);
   };
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -6050,7 +6050,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Sidenav;
       }
     }, {
@@ -6078,7 +6078,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Sidenav, 'sidenav', 'M_Sidenav');
   }
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -6262,7 +6262,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_enter",
       value: function _enter() {
-        ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
+        ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((value) => {
           return value.height() != 0;
         });
 
@@ -6284,14 +6284,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _exit() {
         var _this35 = this;
 
-        ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (value) {
+        ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((value) => {
           return value.height() != 0;
         });
 
         if (ScrollSpy._visibleElements[0]) {
           $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(this.options.activeClass);
 
-          ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (el) {
+          ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((el) => {
             return el.attr('id') != _this35.$el.attr('id');
           });
           if (ScrollSpy._visibleElements[0]) {
@@ -6313,7 +6313,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_ScrollSpy;
       }
     }, {
@@ -6396,7 +6396,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(ScrollSpy, 'scrollSpy', 'M_ScrollSpy');
   }
 })(cash, M.anime);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -6688,7 +6688,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_highlight",
       value: function _highlight(string, $el) {
         var img = $el.find('img');
-        var matchStart = $el.text().toLowerCase().indexOf('' + string.toLowerCase() + ''),
+        var matchStart = $el.text().toLowerCase().indexOf(String(String(string.toLowerCase()))),
             matchEnd = matchStart + string.length - 1,
             beforeMatch = $el.text().slice(0, matchStart),
             matchText = $el.text().slice(matchStart, matchEnd + 1),
@@ -6789,7 +6789,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         for (var i = 0; i < matchingData.length; i++) {
           var _entry = matchingData[i];
           var $autocompleteOption = $('<li></li>');
-          if (!!_entry.data) {
+          if (_entry.data) {
             $autocompleteOption.append("<img src=\"" + _entry.data + "\" class=\"right circle\"><span>" + _entry.key + "</span>");
           } else {
             $autocompleteOption.append('<span>' + _entry.key + '</span>');
@@ -6863,7 +6863,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Autocomplete;
       }
     }, {
@@ -6890,7 +6890,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Autocomplete, 'autocomplete', 'M_Autocomplete');
   }
 })(cash);
-;(function ($) {
+(function ($) {
   // Function to update labels of text fields
   M.updateTextFields = function () {
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
@@ -7020,7 +7020,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     $textarea.data('previous-length', $textarea[0].value.length);
   };
 
-  $(document).ready(function () {
+  $(document).ready(() => {
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea';
 
@@ -7033,12 +7033,12 @@ $jscomp.polyfill = function (e, r, p, m) {
     });
 
     // Add active if input element has been pre-populated on document ready
-    $(document).ready(function () {
+    $(document).ready(() => {
       M.updateTextFields();
     });
 
     // HTML DOM FORM RESET handling
-    $(document).on('reset', function (e) {
+    $(document).on('reset', (e) => {
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
@@ -7049,7 +7049,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         });
 
         // Reset select (after native reset)
-        setTimeout(function () {
+        setTimeout(() => {
           formReset.find('select').each(function () {
             // check if initialized
             if (this.M_FormSelect) {
@@ -7065,7 +7065,7 @@ $jscomp.polyfill = function (e, r, p, m) {
      * Add active when element has focus
      * @param {Event} e
      */
-    document.addEventListener('focus', function (e) {
+    document.addEventListener('focus', (e) => {
       if ($(e.target).is(input_selector)) {
         $(e.target).siblings('label, .prefix').addClass('active');
       }
@@ -7075,7 +7075,7 @@ $jscomp.polyfill = function (e, r, p, m) {
      * Remove active when element is blurred
      * @param {Event} e
      */
-    document.addEventListener('blur', function (e) {
+    document.addEventListener('blur', (e) => {
       var $inputElement = $(e.target);
       if ($inputElement.is(input_selector)) {
         var selector = '.prefix';
@@ -7135,7 +7135,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     });
   }); // End of $(document).ready
 })(cash);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -7179,7 +7179,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       // setup
       _this39.$slider = _this39.$el.find('.slides');
       _this39.$slides = _this39.$slider.children('li');
-      _this39.activeIndex = _this39.$slides.filter(function (item) {
+      _this39.activeIndex = _this39.$slides.filter((item) => {
         return $(item).hasClass('active');
       }).first().index();
       if (_this39.activeIndex != -1) {
@@ -7189,12 +7189,12 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this39._setSliderHeight();
 
       // Set initial positions of captions
-      _this39.$slides.find('.caption').each(function (el) {
+      _this39.$slides.find('.caption').each((el) => {
         _this39._animateCaptionIn(el, 0);
       });
 
       // Move img src into background-image
-      _this39.$slides.find('img').each(function (el) {
+      _this39.$slides.find('img').each((el) => {
         var placeholderBase64 = 'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if ($(el).attr('src') !== placeholderBase64) {
           $(el).css('background-image', 'url("' + $(el).attr('src') + '")');
@@ -7226,7 +7226,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       // Adjust height to current slide
-      _this39.$active.find('img').each(function (el) {
+      _this39.$active.find('img').each((el) => {
         anim({
           targets: _this39.$active.find('.caption')[0],
           opacity: 1,
@@ -7271,7 +7271,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
 
         if (this.options.indicators) {
-          this.$indicators.each(function (el) {
+          this.$indicators.each((el) => {
             el.addEventListener('click', _this40._handleIndicatorClickBound);
           });
         }
@@ -7287,7 +7287,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         var _this41 = this;
 
         if (this.options.indicators) {
-          this.$indicators.each(function (el) {
+          this.$indicators.each((el) => {
             el.removeEventListener('click', _this41._handleIndicatorClickBound);
           });
         }
@@ -7377,7 +7377,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         if (this.options.indicators) {
           this.$indicators = $('<ul class="indicators"></ul>');
-          this.$slides.each(function (el, index) {
+          this.$slides.each((el, index) => {
             var $indicator = $('<li class="indicator-item"></li>');
             _this42.$indicators.append($indicator[0]);
           });
@@ -7421,7 +7421,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             duration: this.options.duration,
             easing: 'easeOutQuad',
             complete: function () {
-              _this43.$slides.not('.active').each(function (el) {
+              _this43.$slides.not('.active').each((el) => {
                 anim({
                   targets: el,
                   opacity: 0,
@@ -7530,7 +7530,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Slider;
       }
     }, {
@@ -7549,7 +7549,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Slider, 'slider', 'M_Slider');
   }
 })(cash, M.anime);
-;(function ($, anim) {
+(function ($, anim) {
   $(document).on('click', '.card', function (e) {
     if ($(this).children('.card-reveal').length) {
       var $card = $(e.target).closest('.card');
@@ -7583,7 +7583,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }
   });
 })(cash, M.anime);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -7913,7 +7913,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _setPlaceholder() {
         if (this.chipsData !== undefined && !this.chipsData.length && this.options.placeholder) {
           $(this.$input).prop('placeholder', this.options.placeholder);
-        } else if ((this.chipsData === undefined || !!this.chipsData.length) && this.options.secondaryPlaceholder) {
+        } else if ((this.chipsData === undefined || Boolean(this.chipsData.length)) && this.options.secondaryPlaceholder) {
           $(this.$input).prop('placeholder', this.options.secondaryPlaceholder);
         }
       }
@@ -7974,7 +7974,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function deleteChip(chipIndex) {
         var $chip = this.$chips.eq(chipIndex);
         this.$chips.eq(chipIndex).remove();
-        this.$chips = this.$chips.filter(function (el) {
+        this.$chips = this.$chips.filter((el) => {
           return $(el).index() >= 0;
         });
         this.chipsData.splice(chipIndex, 1);
@@ -8016,7 +8016,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Chips;
       }
     }, {
@@ -8126,7 +8126,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Chips, 'chips', 'M_Chips');
   }
 
-  $(document).ready(function () {
+  $(document).ready(() => {
     // Handle removal of static chips.
     $(document.body).on('click', '.chip .close', function () {
       var $chips = $(this).closest('.chips');
@@ -8137,7 +8137,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     });
   });
 })(cash);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -8266,7 +8266,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Pushpin;
       }
     }, {
@@ -8301,7 +8301,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Pushpin, 'pushpin', 'M_Pushpin');
   }
 })(cash);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {
@@ -8489,7 +8489,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.$el.addClass('active');
 
         var time = 0;
-        this.$floatingBtnsReverse.each(function (el) {
+        this.$floatingBtnsReverse.each((el) => {
           anim({
             targets: el,
             opacity: 1,
@@ -8513,7 +8513,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _animateOutFAB() {
         var _this49 = this;
 
-        this.$floatingBtnsReverse.each(function (el) {
+        this.$floatingBtnsReverse.each((el) => {
           anim.remove(el);
           anim({
             targets: el,
@@ -8572,7 +8572,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           'background-color': fabColor
         });
 
-        setTimeout(function () {
+        setTimeout(() => {
           _this50.$el.css({
             transform: '',
             transition: 'transform .2s cubic-bezier(0.550, 0.085, 0.680, 0.530), background-color 0s linear .2s'
@@ -8583,7 +8583,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             transition: 'transform .2s'
           });
 
-          setTimeout(function () {
+          setTimeout(() => {
             _this50.$el.css({
               overflow: 'hidden',
               'background-color': fabColor
@@ -8638,7 +8638,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           opacity: ''
         });
 
-        setTimeout(function () {
+        setTimeout(() => {
           backdrop.remove();
 
           // Set initial state.
@@ -8656,7 +8656,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             transform: 'translate3d(0,' + _this51.offsetY + 'px,0)'
           });
 
-          setTimeout(function () {
+          setTimeout(() => {
             _this51.$el.css({
               transform: 'translate3d(0,0,0)',
               transition: 'transform .2s'
@@ -8681,7 +8681,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_FloatingActionButton;
       }
     }, {
@@ -8700,7 +8700,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(FloatingActionButton, 'floatingActionButton', 'M_FloatingActionButton');
   }
 })(cash, M.anime);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -8805,7 +8805,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this52.options = $.extend({}, Datepicker.defaults, options);
 
       // make sure i18n defaults are not lost when only few i18n option properties are passed
-      if (!!options && options.hasOwnProperty('i18n') && typeof options.i18n === 'object') {
+      if (Boolean(options) && options.hasOwnProperty('i18n') && typeof options.i18n === 'object') {
         _this52.options.i18n = $.extend({}, Datepicker.defaults.i18n, options.i18n);
       }
 
@@ -8911,7 +8911,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
 
         var formatArray = format.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g);
-        var formattedDate = formatArray.map(function (label) {
+        var formattedDate = formatArray.map((label) => {
           if (_this54.formats[label]) {
             return _this54.formats[label]();
           }
@@ -9377,7 +9377,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             return _this55.options.i18n.months[_this55.date.getMonth()];
           },
           yy: function () {
-            return ('' + _this55.date.getFullYear()).slice(2);
+            return (String(_this55.date.getFullYear())).slice(2);
           },
           yyyy: function () {
             return _this55.date.getFullYear();
@@ -9604,7 +9604,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Datepicker;
       }
     }, {
@@ -9625,7 +9625,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
   }
 })(cash);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -9794,7 +9794,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           this.showView('minutes', this.options.duration / 2);
         } else if (this.options.autoClose) {
           $(this.minutesView).addClass('timepicker-dial-out');
-          setTimeout(function () {
+          setTimeout(() => {
             _this57.done();
           }, this.options.duration / 2);
         }
@@ -9816,7 +9816,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // Append popover to input by default
         var containerEl = document.querySelector(this.options.container);
-        if (this.options.container && !!containerEl) {
+        if (this.options.container && Boolean(containerEl)) {
           this.$modalEl.appendTo(containerEl);
         } else {
           this.$modalEl.insertBefore(this.el);
@@ -9988,7 +9988,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "_updateTimeFromInput",
       value: function _updateTimeFromInput() {
         // Get the time
-        var value = ((this.el.value || this.options.defaultTime || '') + '').split(':');
+        var value = (String(this.el.value || this.options.defaultTime || '')).split(':');
         if (this.options.twelveHour && !(typeof value[1] === 'undefined')) {
           if (value[1].toUpperCase().indexOf('AM') > 0) {
             this.amOrPm = 'AM';
@@ -9998,14 +9998,14 @@ $jscomp.polyfill = function (e, r, p, m) {
           value[1] = value[1].replace('AM', '').replace('PM', '');
         }
         if (value[0] === 'now') {
-          var now = new Date(+new Date() + this.options.fromNow);
+          var now = new Date(Number(new Date()) + this.options.fromNow);
           value = [now.getHours(), now.getMinutes()];
           if (this.options.twelveHour) {
             this.amOrPm = value[0] >= 12 && value[0] < 24 ? 'PM' : 'AM';
           }
         }
-        this.hours = +value[0] || 0;
-        this.minutes = +value[1] || 0;
+        this.hours = Number(value[0]) || 0;
+        this.minutes = Number(value[1]) || 0;
         this.spanHours.innerHTML = this.hours;
         this.spanMinutes.innerHTML = Timepicker._addLeadingZero(this.minutes);
 
@@ -10034,7 +10034,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // After transitions ended
         clearTimeout(this.toggleViewTimer);
-        this.toggleViewTimer = setTimeout(function () {
+        this.toggleViewTimer = setTimeout(() => {
           $(hideView).css('visibility', 'hidden');
         }, this.options.duration);
       }
@@ -10053,7 +10053,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         if (delay) {
           $(this.canvas).addClass('timepicker-canvas-out');
-          setTimeout(function () {
+          setTimeout(() => {
             $(self.canvas).removeClass('timepicker-canvas-out');
             self.setHand(x, y);
           }, delay);
@@ -10118,7 +10118,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             // Do not vibrate too frequently
             if (!this.vibrateTimer) {
               navigator[this.vibrate](10);
-              this.vibrateTimer = setTimeout(function () {
+              this.vibrateTimer = setTimeout(() => {
                 _this59.vibrateTimer = null;
               }, 100);
             }
@@ -10241,7 +10241,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Timepicker;
       }
     }, {
@@ -10262,7 +10262,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Timepicker, 'timepicker', 'M_Timepicker');
   }
 })(cash);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {};
@@ -10371,7 +10371,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "updateCounter",
       value: function updateCounter() {
-        var maxLength = +this.$el.attr('data-length'),
+        var maxLength = Number(this.$el.attr('data-length')),
             actualLength = this.el.value.length;
         this.isValidLength = actualLength <= maxLength;
         var counterString = actualLength;
@@ -10413,7 +10413,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_CharacterCounter;
       }
     }, {
@@ -10432,7 +10432,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(CharacterCounter, 'characterCounter', 'M_CharacterCounter');
   }
 })(cash);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -10510,7 +10510,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
       // Iterate through slides
       _this61.$indicators = $('<ul class="indicators"></ul>');
-      _this61.$el.find('.carousel-item').each(function (el, i) {
+      _this61.$el.find('.carousel-item').each((el, i) => {
         _this61.images.push(el);
         if (_this61.showIndicators) {
           var $indicator = $('<li class="indicator-item"></li>');
@@ -10533,7 +10533,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
       // Setup cross browser string
       _this61.xform = 'transform';
-      ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
+      ['webkit', 'Moz', 'O', 'ms'].every((prefix) => {
         var e = prefix + 'Transform';
         if (typeof document.body.style[e] !== 'undefined') {
           _this61.xform = e;
@@ -10587,7 +10587,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         if (this.showIndicators && this.$indicators) {
           this._handleIndicatorClickBound = this._handleIndicatorClick.bind(this);
-          this.$indicators.find('.indicator-item').each(function (el, i) {
+          this.$indicators.find('.indicator-item').each((el, i) => {
             el.addEventListener('click', _this62._handleIndicatorClickBound);
           });
         }
@@ -10620,7 +10620,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.removeEventListener('click', this._handleCarouselClickBound);
 
         if (this.showIndicators && this.$indicators) {
-          this.$indicators.find('.indicator-item').each(function (el, i) {
+          this.$indicators.find('.indicator-item').each((el, i) => {
             el.removeEventListener('click', _this63._handleIndicatorClickBound);
           });
         }
@@ -10826,7 +10826,7 @@ $jscomp.polyfill = function (e, r, p, m) {
             }
           } else {
             // Get height when image is loaded normally
-            firstImage.one('load', function (el, i) {
+            firstImage.one('load', (el, i) => {
               _this64.$el.css('height', el.offsetHeight + 'px');
             });
           }
@@ -10942,7 +10942,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (this.scrollingTimeout != null) {
           window.clearTimeout(this.scrollingTimeout);
         }
-        this.scrollingTimeout = window.setTimeout(function () {
+        this.scrollingTimeout = window.setTimeout(() => {
           _this65.$el.removeClass('scrolling');
         }, this.options.duration);
 
@@ -11200,7 +11200,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Carousel;
       }
     }, {
@@ -11219,7 +11219,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Carousel, 'carousel', 'M_Carousel');
   }
 })(cash);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -11554,7 +11554,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_TapTarget;
       }
     }, {
@@ -11573,7 +11573,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(TapTarget, 'tapTarget', 'M_TapTarget');
   }
 })(cash);
-;(function ($) {
+(function ($) {
   'use strict';
 
   var _defaults = {
@@ -11651,7 +11651,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._handleOptionClickBound = this._handleOptionClick.bind(this);
         this._handleInputClickBound = this._handleInputClick.bind(this);
 
-        $(this.dropdownOptions).find('li:not(.optgroup)').each(function (el) {
+        $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
           el.addEventListener('click', _this68._handleOptionClickBound);
         });
         this.el.addEventListener('change', this._handleSelectChangeBound);
@@ -11667,7 +11667,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _removeEventHandlers() {
         var _this69 = this;
 
-        $(this.dropdownOptions).find('li:not(.optgroup)').each(function (el) {
+        $(this.dropdownOptions).find('li:not(.optgroup)').each((el) => {
           el.removeEventListener('click', _this69._handleOptionClickBound);
         });
         this.el.removeEventListener('change', this._handleSelectChangeBound);
@@ -11760,7 +11760,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // Create dropdown structure.
         if (this.$selectOptions.length) {
-          this.$selectOptions.each(function (el) {
+          this.$selectOptions.each((el) => {
             if ($(el).is('option')) {
               // Direct descendant option.
               var optionEl = void 0;
@@ -11776,7 +11776,7 @@ $jscomp.polyfill = function (e, r, p, m) {
               var selectOptions = $(el).children('option');
               $(_this70.dropdownOptions).append($('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]);
 
-              selectOptions.each(function (el) {
+              selectOptions.each((el) => {
                 var optionEl = _this70._appendOptionWithIcon(_this70.$el, el, 'optgroup-option');
                 _this70._addOptionToValueDict(el, optionEl);
               });
@@ -11883,7 +11883,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         // add icons
         var iconUrl = option.getAttribute('data-icon');
-        if (!!iconUrl) {
+        if (iconUrl) {
           var imgEl = $("<img alt=\"\" src=\"" + iconUrl + "\">");
           liEl.prepend(imgEl);
         }
@@ -11932,7 +11932,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         var values = [];
         var options = this.$el.find('option');
 
-        options.each(function (el) {
+        options.each((el) => {
           if ($(el).prop('selected')) {
             var text = $(el).text();
             values.push(text);
@@ -12016,7 +12016,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_FormSelect;
       }
     }, {
@@ -12035,7 +12035,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(FormSelect, 'formSelect', 'M_FormSelect');
   }
 })(cash);
-;(function ($, anim) {
+(function ($, anim) {
   'use strict';
 
   var _defaults = {};
@@ -12314,7 +12314,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "getInstance",
       value: function getInstance(el) {
-        var domElem = !!el.jquery ? el[0] : el;
+        var domElem = el.jquery ? el[0] : el;
         return domElem.M_Range;
       }
     }, {

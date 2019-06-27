@@ -4,7 +4,7 @@ var url = require('url');
 var fs = require('fs');
 
 console.log("Starting Server");
-http.createServer(function (req, res) {
+http.createServer((req, res) => {
   console.log(req.rawHeaders[13]);
   console.log(req.url);
   var id = req.url;
@@ -34,7 +34,7 @@ http.createServer(function (req, res) {
       else {
         extension = "";
       }
-      fs.readFile(filename, function(err, data) {
+      fs.readFile(filename, (err, data) => {
         if (err) {
           res.writeHead(404, {'Content-Type': "text/html"});
           return res.end("404 Not Found");
@@ -55,7 +55,7 @@ http.createServer(function (req, res) {
         //Return the webpage as a html document
         var q = url.parse(req.url, true);
         var filename = "." + q.pathname;
-        fs.readFile(filename, function(err, data) {
+        fs.readFile(filename, (err, data) => {
           if (err) {
             res.writeHead(404, {'Content-Type': 'text/html'});
             return res.end("404 Not Found");
@@ -74,7 +74,7 @@ http.createServer(function (req, res) {
         //Return the webpage as a html document
         var q = url.parse(req.url, true);
         var filename = "." + q.pathname;
-        fs.readFile(filename, function(err, data) {
+        fs.readFile(filename, (err, data) => {
           if (err) {
             res.writeHead(404, {'Content-Type': 'text/html'});
             return res.end("404 Not Found");
@@ -95,7 +95,7 @@ http.createServer(function (req, res) {
     //Return the webpage as a html document
     var q = url.parse(req.url, true);
     var filename = "." + q.pathname;
-    fs.readFile(filename, function(err, data) {
+    fs.readFile(filename, (err, data) => {
       if (err) {
         res.writeHead(404, {'Content-Type': 'text/html'});
         return res.end("404 Not Found");

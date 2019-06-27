@@ -21,8 +21,8 @@
 		});
 
 	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
+		$window.on('load', () => {
+			window.setTimeout(() => {
 				$body.removeClass('is-preload');
 			}, 100);
 		});
@@ -117,7 +117,7 @@
 					$modal.focus();
 
 				// Delay.
-					setTimeout(function() {
+					setTimeout(() => {
 
 						// Unlock.
 							$modal[0]._locked = false;
@@ -149,12 +149,12 @@
 						.removeClass('loaded');
 
 				// Delay.
-					setTimeout(function() {
+					setTimeout(() => {
 
 						$modal
 							.removeClass('visible');
 
-						setTimeout(function() {
+						setTimeout(() => {
 
 							// Clear src.
 								$modalImg.attr('src', '');
@@ -179,7 +179,7 @@
 						$modal.trigger('click');
 
 			})
-			.on('mouseup mousedown mousemove', '.modal', function(event) {
+			.on('mouseup mousedown mousemove', '.modal', (event) => {
 
 				// Stop propagation.
 					event.stopPropagation();
@@ -192,7 +192,7 @@
 						var $modalImg = $(this),
 							$modal = $modalImg.parents('.modal');
 
-						setTimeout(function() {
+						setTimeout(() => {
 
 							// No longer visible? Bail.
 								if (!$modal.hasClass('visible'))

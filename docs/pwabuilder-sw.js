@@ -4,11 +4,11 @@ const CACHE = "pwabuilder-offline-pages";
 const offlineFallbackPage = "index.html";
 
 // Install stage sets up the offline page in the cache and opens a new cache
-self.addEventListener("install", function (event) {
+self.addEventListener("install", (event) => {
   console.log("[PWA Builder] Install Event processing");
   
   event.waitUntil(
-    caches.open(CACHE).then(function (cache) {
+    caches.open(CACHE).then((cache) => {
       console.log("[PWA Builder] Cached offline page during install");
       
       if (offlineFallbackPage === "blahblah.html") {
@@ -21,12 +21,12 @@ self.addEventListener("install", function (event) {
 });
 
 // If any fetch fails, it will look for the request in the cache and serve it from there first
-self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   
   event.respondWith(
     fetch(event.request)
-    .then(function (response) {
+    .then((response) => {
       console.log("[PWA Builder] add page to offline cache: " + response.url);
       
       // If request was success, add or update it in the cache
@@ -34,7 +34,7 @@ self.addEventListener("fetch", function (event) {
       
       return response;
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log("[PWA Builder] Network request Failed. Serving content from cache: " + error);
       return fromCache(event.request);
     })
@@ -45,8 +45,8 @@ function fromCache(request) {
   // Check to see if you have it in the cache
   // Return response
   // If not in the cache, then return the offline page
-  return caches.open(CACHE).then(function (cache) {
-    return cache.match(request).then(function (matching) {
+  return caches.open(CACHE).then((cache) => {
+    return cache.match(request).then((matching) => {
       if (!matching || matching.status === 404) {
         // The following validates that the request was for a navigation to a new document
         if (request.destination !== "document" || request.mode !== "navigate") {
@@ -62,7 +62,7 @@ function fromCache(request) {
 }
 
 function updateCache(request, response) {
-  return caches.open(CACHE).then(function (cache) {
+  return caches.open(CACHE).then((cache) => {
     return cache.put(request, response);
   });
 }
