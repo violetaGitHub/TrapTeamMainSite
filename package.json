@@ -5,7 +5,7 @@
   "main": "public/test.js",
   "dependencies": {
     "firebase-functions": "^3.0.2",
-    "firebase-functions-test": "^0.1.5"
+    "firebase-functions-test": "^0.1.6"
   },
   "devDependencies": {
     "mocha": "^6.1.4"
