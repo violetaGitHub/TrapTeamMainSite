@@ -1,8 +1,16 @@
-# TrapTeamMainSite
-[![Build Status](https://api.cirrus-ci.com/github/TrapTeamCCNZ/TrapTeamMainSite.svg)](https://cirrus-ci.com/github/TrapTeamCCNZ/TrapTeamMainSite)[![codebeat badge](https://codebeat.co/badges/9ca01d62-5f68-4bfa-8f47-46a2a498ea76)](https://codebeat.co/projects/github-com-trapteamccnz-trapteammainsite-master)
-[![Gitter](https://badges.gitter.im/Trap-Team-Open-Source-Foundation/community.svg)](https://gitter.im/Trap-Team-Open-Source-Foundation/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# Installation
+> `npm install --save @types/lodash`
 
-This our MAIN website that has info on all our traps and dashboards for people who have traps.
-It also gives us admin control over different things
-This is WIP and is NOT functional.
-Thank you to @ajkin for the home page template.
+# Summary
+This package contains type definitions for Lo-Dash (http://lodash.com/).
+
+# Details
+Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/lodash
+
+Additional Details
+ * Last updated: Mon, 05 Nov 2018 20:39:19 GMT
+ * Dependencies: none
+ * Global values: _
+
+# Credits
+These definitions were written by Brian Zengel <https://github.com/bczengel>, Ilya Mochalov <https://github.com/chrootsu>, Stepan Mikhaylyuk <https://github.com/stepancar>, AJ Richardson <https://github.com/aj-r>, Junyoung Clare Jang <https://github.com/ailrun>, e-cloud <https://github.com/e-cloud>, Georgii Dolzhykov <https://github.com/thorn0>, Jack Moore <https://github.com/jtmthf>, Dominique Rau <https://github.com/DomiR>.
