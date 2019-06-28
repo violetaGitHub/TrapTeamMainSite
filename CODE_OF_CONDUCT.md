@@ -90,6 +90,7 @@ EVEN IF YOU ARE AN EXPERIENCED DEVELOPER THIS STILL APPLIES TO YOU, ESPECIALLY S
 If you have push access, still use these guidelines, but:
 - a. Merge it yourself
 - b. Commit edited .md files straight to master, when they are not related to a branch/pr that you own. Otherwise, commit it to that branch/pr. 
-- c. If the change has no other related changes planned for the future, and if it is a single change (ex. add an icon tag to a page) then commit it directly to master
+- c. If the change has no other related changes planned for the future, and if it is a single change (ex. add an icon tag to a page) then commit it directly to master. 
+- d. Please commit bug fixes straight to the master branch. 
 ## TrapBux
 Please Contact us for details! support@trapteamnz.tk
