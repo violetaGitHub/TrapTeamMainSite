@@ -165,6 +165,8 @@ drift.load('cesz7uv9e69c');
             name: displayName,             
             email: user.email          
           });           
+          
+__insp.push(['identify', user.email]);
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -226,6 +228,8 @@ drift.load('cesz7uv9e69c');
              name: displayName,
              email: user.email           
           });
+__insp.push(['identify', user.email]);
+
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -684,7 +688,8 @@ drift.load('cesz7uv9e69c');
           analytics.identify(user.uid, {            
             name: displayName,             
             email: user.email           
-          });           
+          });       
+__insp.push(['identify', user.email]);    
           user.getIdToken().then(function (accessToken) {
             document.getElementById('sign-in-status').textContent = 'Signed in';
             document.getElementById('sign-in').textContent = 'Sign out';
@@ -746,6 +751,8 @@ drift.load('cesz7uv9e69c');
           // Add your own custom user variables here, ie:
           ph: phoneNumber, providerinfo: providerData
         });
+
+__insp.push(['identify', user.email]);
         user.getIdToken().then(function (accessToken) {
           document.getElementById('sign-in-status').textContent = 'Signed in';
           document.getElementById('sign-in').textContent = 'Sign out';
