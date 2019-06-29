@@ -1,0 +1,26 @@
+[debug] [2019-06-29T01:14:44.418Z] ----------------------------------------------------------------------
+[debug] [2019-06-29T01:14:44.421Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\stevi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2019-06-29T01:14:44.421Z] CLI Version:   6.11.0
+[debug] [2019-06-29T01:14:44.421Z] Platform:      win32
+[debug] [2019-06-29T01:14:44.421Z] Node Version:  v10.13.0
+[debug] [2019-06-29T01:14:44.428Z] Time:          Sat Jun 29 2019 13:14:44 GMT+1200 (New Zealand Standard Time)
+[debug] [2019-06-29T01:14:44.428Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-29T01:14:44.441Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-29T01:14:44.441Z] > authorizing via signed-in user
+[debug] [2019-06-29T01:14:44.441Z] [iam] checking project trapteam-cc for permissions ["firebase.projects.get"]
+[debug] [2019-06-29T01:14:44.442Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-06-29T01:14:44.443Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-06-29T01:14:45.025Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-29T01:14:45.031Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc:testIamPermissions  
+
+[debug] [2019-06-29T01:14:46.652Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-29T01:14:46.653Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trapteam-cc  
+ 
+[debug] [2019-06-29T01:14:48.149Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-29T01:14:48.150Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/150993996289/clients/_:getWebAppConfig  
+ 
+[debug] [2019-06-29T01:14:49.265Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: docs
+[info] +  hosting: Local server: http://localhost:5000
