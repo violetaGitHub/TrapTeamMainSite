@@ -309,6 +309,9 @@ __insp.push(['identify', user.email]);
           display: none;
         }
     }
+    #addtrap {
+      display: none;
+    }
     </style>
 </head>
 
@@ -444,7 +447,7 @@ __insp.push(['identify', user.email]);
   }
 </style>
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+<div class="demo-card-wide mdl-card mdl-shadow--2dp goopbiscuit" id='goopbiscuit'>
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text">Welcome</h2>
   </div>
@@ -453,12 +456,12 @@ __insp.push(['identify', user.email]);
   </div>
   <div class="mdl-card__actions mdl-card--border">
 
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick='$(".twixpx-home").slideUp();$(".twixpx-traps").slideDown();'>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick='$(".twixpx-home").slideUp();$(".goopbiscuit").slideUp();$(".twixpx-traps").slideDown();'>
           View Traps
         </a>
   </div>
   <div class="mdl-card__menu">
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='$(".twixpx-home").slideUp();$(".twixpx-traps").slideDown();'>
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='$(".twixpx-home").slideUp();$(".goopbiscuit").slideUp();$(".twixpx-traps").slideDown();'>
       <i class="material-icons">remove_red_eye</i>
     </button>
   </div>
@@ -549,16 +552,48 @@ __insp.push(['identify', user.email]);
           </div>
         </div>
       </div>
+ 
       <div class="twixpx-traps" style="padding: 2%;">
                 <div class=" mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col"  style="padding: 5%;">
                   <!--firebase connection required-->
                   <h1 id='header' style="margin-left: 20px;display:inline;"><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="200px;">
 Trap Manager<h1>
+                <div id="addtrap">
+                  <form action="https://script.google.com/macros/s/AKfycbzIWGUs21D1daJ8WjFZlJEPbHTrpOJ1QmKsMO5E0V3RPT-CR_c/exec"
+                    method="post">
+                    <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+                      <input class="mdl-textfield__input" type="text" id="sample1" required>
+                      <label class="mdl-textfield__label" for="sample1">Serial Number...</label>
+                    </div>
+                                        <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+                                          <input class="mdl-textfield__input" type="text" id="sample1" required>
+                                          <label class="mdl-textfield__label" for="sample1">Nickname...</label>
+                                        </div>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield" style='display:block'>
                 
+                      <label for="adr" class="mdl-textfield__label"> Address</label>
+                      <input class="mdl-textfield__input" type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+                
+                      <label for="city" class="mdl-textfield__label"> City</label>
+                      <input class="mdl-textfield__input" type="text" id="city" name="city" placeholder="New York" required>
+                    </div>
+                
+                    <div class="mdl-textfield mdl-js-textfield" style='display:block'>
+                      <input class="mdl-textfield__input" type="text" id="zip" name="zip" placeholder="10001" required>
+                      <label for="zip" class="mdl-textfield__label">Zip</label>
+                    </div>
+                    <!-- Colored raised button -->
+                    <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick='$("#addtrap").slideUp();'>
+                    </input>
+                </div>
                       <h3> <font>My Traps</font>
-                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" onclick='$("#addtrap").slideDown();'>
                         <i class="material-icons">add</i>
                       </button></h3>
+                          
                       <h1 style="margin-left: 20px;display:inline;">
                         <h1>
                 
