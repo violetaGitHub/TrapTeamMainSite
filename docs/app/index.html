@@ -23,14 +23,11 @@ limitations under the License
   </script>
 
 <!-- End Inspectlet Asynchronous Code -->
-
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/material-components-web@3.0.0/dist/material-components-web.css">
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123568344-2"></script>
-
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-123568344-2"></script>
 <!-- Start of Async Drift Code -->
-<script>
 
-</script>
 <!-- End of Async Drift Code -->
 
 <script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"></script>
@@ -38,14 +35,14 @@ limitations under the License
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
   <link rel="manifest" href="/manifest.json">
   <script src="/redir.js" charset="utf-8"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.js"></script>
   <!--TwixPages Styles - Class Every Element twixpx-{{pagename}} and add it here, as display:none; Ignore the home page with this css-->
   <style>
   .twixpx-traps {
     display: none;
   }
   </style>
-  <script src="/redir.js" charset="utf-8"></script>
+  <script async src="/redir.js" charset="utf-8"></script>
 
   <link rel="manifest" href="/firebaseappdotcommanifest.json">
   <meta charset="utf-8">
@@ -74,7 +71,7 @@ limitations under the License
   <!--
   <link rel="canonical" href="http://www.example.com/">
 -->
-  <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+  <script src="//www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
   <script src="assetsjs/authhead.min.js"></script>
 
  
@@ -120,8 +117,7 @@ limitations under the License
       display: none;
     }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="jquery-ui.min.js"></script>
+    <script async src="jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 
 </head>
@@ -279,6 +275,8 @@ limitations under the License
     </button>
   </div>
 </div>
+<div id="like_button_container"></div>
+
 <!-- Square card -->
 <style>
   .demo-card-square.mdl-card {
@@ -346,6 +344,7 @@ limitations under the License
               <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Add Trap</a><a href="#"
                 class="mdl-button mdl-js-button mdl-js-ripple-effect">Manage Traps</a>
             </div>
+
           </div>
           <div class="demo-separator mdl-cell--1-col"></div>
 
@@ -444,11 +443,11 @@ Trap Manager</h1>
                     </div>
                     <section id='MyTrapsHeader'>
                       <h3> 
-                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
-                          onclick='$("#addtrap").slideToggle();$("#MyTrapsHeader").slideToggle();'>
-                          <i class="material-icons">add</i>
-                        </button>
-                        <font>My Traps</font>
+  
+                        <button class="mdc-fab mdc-fab--extended" id="ATBtn" onclick='$("#addtrap").slideToggle();$("#MyTrapsHeader").slideToggle();'> <span class="material-icons mdc-fab__icon">add</span> <span
+                            class="mdc-fab__label">ADD</span> </button>
+                        <font style='padding-left: 10px;'>My Traps</font>
+                                    
                         </h3>
                           
                       <h1 style="margin-left: 20px;display:inline;">
@@ -648,20 +647,24 @@ Trap Manager</h1>
       </g>
     </defs>
   </svg>
-  <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="//code.getmdl.io/1.3.0/material.min.js"></script>
 
   <script>
   </script>
+      <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/npm/material-components-web@3.0.0/dist/material-components-web.js"></script>
+  <script src="//browser.sentry-cdn.com/5.4.0/bundle.min.js" crossorigin="anonymous"></script>
 
-  <script src="https://browser.sentry-cdn.com/5.4.0/bundle.min.js" crossorigin="anonymous"></script>
-
-  <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+  <script src="//cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
   <script async src="assetsjs/authfoot.min.js"></script>
 
 
     <script>
 
       </script>
+
+
+
 </body>
 
 </html>
