@@ -1,4 +1,3 @@
-
 window.LogRocket && window.LogRocket.init("nipfpt/trap-team-cc");
 
 window.bugsnag.beforeNotify = function(data) {
