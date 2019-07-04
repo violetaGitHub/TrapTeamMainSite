@@ -236,3 +236,11 @@ _:-ms-input-placeholder, :root .demo-graph {
       -ms-flex-align: center;
           align-items: center;
 }
+  #spacercardy {
+    display: none;
+  }
+@media only screen and (max-width: 600px) {
+  #spacercardy {
+    display: inline;
+  }
+}

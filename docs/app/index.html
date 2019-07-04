@@ -233,13 +233,15 @@ limitations under the License
                 <h1>
 
                   <!--Table goes Below-->
-                  <span style="width:96%;padding:100px;overflow:scroll">
+                  <span style="width:96%;overflow:scroll;">
 <!-- Wide card with share menu button -->
 <style>
   .demo-card-wide.mdl-card {
     width: 512px;
+    max-width: 90%;
     display: inline-flex;
     max-width: 95%;
+    margin-left: 0px;
   }
 
   .demo-card-wide>.mdl-card__title {
@@ -253,7 +255,7 @@ limitations under the License
   }
 </style>
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp goopbiscuit" id='goopbiscuit'>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp goopbiscuit" id='goopbiscuit' style="margin: 0px;">
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text">Welcome</h2>
   </div>
@@ -274,13 +276,14 @@ limitations under the License
     </button>
   </div>
 </div>
-
+<h5 style="height: 2000px;visibility: hidden;" id="spacercardy"> THIS IS A SPACER</h5>
 <!-- Square card -->
 <style>
   .demo-card-square.mdl-card {
     width: 320px;
     height: 320px;
         display: inline-flex;
+        max-width: 95%;
 
   }
 
@@ -408,6 +411,9 @@ Trap Manager</h1>
                   </button>
                   <font>Add a Trap</font>
                   </h3>
+                  <button class="mdc-button mdc-button--raised" id='purcahseTrap' href='https://trapteamnzcc.freshdesk.com/support/solutions/articles/43000520034-purchasing-a-trap' onclick="window.open('https://trapteamnzcc.freshdesk.com/support/solutions/articles/43000520034-purchasing-a-trap')"">
+                    <span class="mdc-button__label">Buy a Trap!</span>
+                  </button>
                   <form action="https://script.google.com/macros/s/AKfycbzIWGUs21D1daJ8WjFZlJEPbHTrpOJ1QmKsMO5E0V3RPT-CR_c/exec"
                     method="post">
                     <div class="mdl-textfield mdl-js-textfield">
@@ -442,6 +448,21 @@ Trap Manager</h1>
                     </div>
                     <section id='MyTrapsHeader'>
                       <h3> 
+                                                                            <style>
+                                                                              #MobileTraps {
+                                                                                display: none;
+                                                                              }
+                                                                            
+                                                                              @media only screen and (max-width: 600px) {
+                                                                                #trapTable {
+                                                                                  display: none;
+                                                                                }
+                                                                            
+                                                                                #MobileTraps {
+                                                                                  display: block;
+                                                                                }
+                                                                              }
+                                                                            </style>
   
                         <button class="mdc-fab mdc-fab--extended" id="ATBtn" onclick='$("#addtrap").slideToggle();$("#MyTrapsHeader").slideToggle();'> <span class="material-icons mdc-fab__icon">add</span> <span
                             class="mdc-fab__label">ADD</span> </button>
@@ -456,7 +477,7 @@ Trap Manager</h1>
                           <!--Table goes Below-->
 
                           <span style="width:96%;padding:100px;overflow:scroll">
-                            <table class="mdl-data-table mdl-shadow--2dp" style="width:80%;padding:10px;overflow:scroll">
+                            <table class="mdl-data-table mdl-shadow--2dp" style="width:80%;padding:10px;overflow:scroll" id='trapTable'>
                               <thead>
                                 <tr style="width:80%;padding:10px;overflow:scroll">
                                   <th class="mdl-data-table__cell--non-numeric">Trap</th>
@@ -523,11 +544,7 @@ Trap Manager</h1>
                             </table>
 
                           </span>
-                                                      <style>
-                                                        #MobileTraps {
-                                                          display: none;
-                                                        }
-                                                      </style>
+ 
                           <section id='MobileTraps'>
                           <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                             <div class="mdl-tabs__tab-bar">
@@ -586,7 +603,12 @@ Trap Manager</h1>
                             </div>
                           </div>
                           </section>
+
                           </section>
+<button class="mdc-fab mdc-fab--extended" id='print' onclick='window.print();'>
+  <span class="material-icons mdc-fab__icon">print</span>
+  <span class="mdc-fab__label">Print</span>
+</button>
                           
                 </div>
 
@@ -657,12 +679,11 @@ Trap Manager</h1>
 
   <script src="//cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
   <script async src="assetsjs/authfoot.min.js"></script>
+  <script async src="assetsjs/depsync.js"></script>
 
 
 
-    <script>
-
-      </script>
+  
 
 
 

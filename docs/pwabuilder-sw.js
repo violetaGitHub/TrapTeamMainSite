@@ -44,6 +44,7 @@ function fromCache(request) {
   // Check to see if you have it in the cache
   // Return response
   // If not in the cache, then return the offline page
+  alert(request);
   return caches.open(CACHE).then(cache => {
     return cache.match(request).then(matching => {
       if (!matching || matching.status === 404) {
