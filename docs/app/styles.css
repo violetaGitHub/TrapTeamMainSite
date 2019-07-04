@@ -17,6 +17,29 @@
 html, body {
   font-family: 'Noto Sans', 'Roboto', sans-serif;
 }
+
+body {
+    position: absolute;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+main {
+  overflow: scroll;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: green; 
+}
 .demo-avatar {
   width: 48px;
   height: 48px;
