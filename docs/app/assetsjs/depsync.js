@@ -5,12 +5,12 @@ window.bugsnag.beforeNotify = function(data) {
   data.metaData.sessionURL = LogRocket.sessionURL;
   return data;
 };
-LogRocket.getSessionURL(function(sessionURL) {
+LogRocket.getSessionURL((sessionURL) => {
   analytics.track("LogRocket", {
     sessionURL: sessionURL
   });
 });
-LogRocket.getSessionURL(function(sessionURL) {
+LogRocket.getSessionURL((sessionURL) => {
   drift.track("LogRocket", { sessionURL: sessionURL });
 });
 LogRocket.getSessionURL(sessionURL => {
