@@ -244,3 +244,7 @@ _:-ms-input-placeholder, :root .demo-graph {
     display: inline;
   }
 }
+
+.twixpx-specifictrap {
+  display: none;
+}
