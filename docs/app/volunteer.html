@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <!-- Uses a transparent header that draws on top of the layout's background -->
+                <style>
+                    .demo-layout-transparent {
+                        background: url("//getmdl.io/assets/demos/transparent.jpg") center / cover;
+                
+                        }
+                
+                        .demo-layout-transparent .mdl-layout__header,
+                        .demo-layout-transparent .mdl-layout__drawer-button {
+                            /* This background is dark, so we set text to white. Use 87% black instead if
+                             your background is light. */
+                            color: white;
+                        }
+                </style>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({
+                        google_ad_client: "ca-pub-4867797789380537",
+                        enable_page_level_ads: true
+                    });
+                </script>
+                
+                <!-- End Inspectlet Asynchronous Code -->
+                <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/material-components-web@3.0.0/dist/material-components-web.css">
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="//www.googletagmanager.com/gtag/js?id=UA-123568344-2"></script>
+                <!-- Start of Async Drift Code -->
+                
+                <!-- End of Async Drift Code -->
+                
+                <script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"></script>
+                <script>window.bugsnagClient = bugsnag('b68bca05c215813a122c78460ac12086');</script>
+                <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
+                <link rel="manifest" href="/manifest.json">
+                <script src="/redir.js" charset="utf-8"></script>
+                <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.js"></script>
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Trap Team EmptyMyTrap</title>
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="/images/logo.webp">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+<link rel="apple-touch-icon-precomposed" href="/images/logo.webp">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="/images/logo.webp">
+<meta name="msapplication-TileColor" content="#3372DF">
+
+<link rel="shortcut icon" href="/images/logo.webp">
+
+<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+<!--
+<link rel="canonical" href="http://www.example.com/">
+-->
+<script src="//www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script src="assetsjs/authhead.min.js"></script>
+
+
+<link rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="//code.getmdl.io/1.3.0/material.red-amber.min.css">
+    </head>
+    <body>
+
+        
+        <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--transparent">
+                <div class="mdl-layout__header-row" style="background-color: black;color:white;">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">Trap Team EmptyMyTrap</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="/app">Back to Access</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Trap Team EmptyMyTrap</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="/app">Exit EmptyMyTrap</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content" style="text-align: center;align-content: center;color:white;padding-top:100px;">
+                <h1>EmptyMyTrap Volunteers</h1>
+                <h3>Emptying Your Trap</h3>
+                <section style="background-color: white;color: black;height:100%;margin:20px;border-radius:20px;padding:20px;align-content:center;">
+                    <!-- MDL Progress Bar with Indeterminate Progress -->
+                    <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;"></div>
+                </section>
+            </main>
+        </div>
+        <script>
+            // This is the "Offline copy of pages" service worker
+
+            // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+            // Check compatibility for the browser we're running this in
+            if ("serviceWorker" in navigator) {
+                if (navigator.serviceWorker.controller) {
+                    console.log("[PWA Builder] active service worker found, no need to register");
+                } else {
+                    // Register the service worker
+                    navigator.serviceWorker
+                        .register("pwabuilder-sw.js", {
+                            scope: "./"
+                        })
+                        .then(function (reg) {
+                            console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+                        });
+                }
+            }
+
+
+            let deferredPrompt = null;
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                // Prevent Chrome 67 and earlier from automatically showing the prompt
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                deferredPrompt = e;
+            });
+
+            async function install() {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    console.log(deferredPrompt)
+                    deferredPrompt.userChoice.then(function (choiceResult) {
+
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('Your PWA has been installed');
+                        } else {
+                            console.log('User chose to not install your PWA');
+                        }
+
+                        deferredPrompt = null;
+
+                    });
+
+
+                }
+            }
+
+            install();
+
+        </script>
+        <script src="//cdn.jsdelivr.net/gh/google/material-design-lite@1.3.0/material.min.js"></script>
+                            <script src="//browser.sentry-cdn.com/5.4.0/bundle.min.js" crossorigin="anonymous"></script>
+                            
+                            <script src="//cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+                            <script async src="assetsjs/depsync.js"></script>
+    </body>
+</html>
