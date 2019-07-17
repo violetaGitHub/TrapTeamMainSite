@@ -117,9 +117,17 @@ firebase.auth().onAuthStateChanged(
   );
 function usery() {
   //App.initializeApp(firebaseConfig);
-    var starCountRef = firebase.database().ref('Trapholders/' + document.getElementById("uuid").innerHTML + '/email');
+    var starCountRef = firebase.database().ref('Trapholders/' + document.getElementById("uuid").innerHTML);
     starCountRef.on('value', function(snapshot) {
-        alert(snapshot.val());
+        var trapz = snapshot.val().Traps;
+        for (const key in trapz) {
+            console.warn(key);
+                    for (const keyer in key) {
+                       onsole.warn(keyer);
+                    }
+
+        }
+        console.error(trapz);
         alert(document.getElementById("uuid").innerHTML);
     });
 }
