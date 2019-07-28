@@ -115,21 +115,43 @@ firebase.auth().onAuthStateChanged(
       console.log(error);
     }
   );
-function usery() {
+async function useri() {
   //App.initializeApp(firebaseConfig);
     var starCountRef = firebase.database().ref('Trapholders/' + document.getElementById("uuid").innerHTML);
+    let outputs = [];
     starCountRef.on('value', function(snapshot) {
         var trapz = snapshot.val().Traps;
         for (const key in trapz) {
             console.warn(key);
-                    for (const keyer in key) {
-                       onsole.warn(keyer);
-                    }
-
+            if (trapz[key].Status == "Empty") {outputs.push(key);};
+            
+            console.log(outputs);
         }
         console.error(trapz);
-        alert(document.getElementById("uuid").innerHTML);
+        console.log(outputs);
+        if (outputs.length > 0) {
+        document.getElementById("page-major-secion").innerHTML = "";
+        let compiledHTML;
+        for (const key of outputs) {
+        compiledHTML = document.getElementById("page-major-secion").innerHTML + document.getElementById("prototype").innerHTML.replace("TrapName",key);
+        document.getElementById("page-major-secion").innerHTML = compiledHTML;
+        }
+        } else {
+  var evt = document.createEvent("MouseEvents");
+  evt.initMouseEvent("click", true, true, window,
+    0, 0, 0, 0, 0, false, false, false, false, 0, null);
+  var a = document.getElementById("gift-close"); 
+  a.dispatchEvent(evt);      
+
+        } 
+        console.log(document.getElementById("uuid").innerHTML);
     });
+}
+async function usery() {
+  useri();
+  setTimeout(function() {
+    useri();
+  }, 10000);
 }
     window.addEventListener("load", usery);
 
@@ -198,7 +220,16 @@ function usery() {
 <script src="//www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
 <script async src="assetsjs/authhead.min.js"></script>
 
-
+<style>
+.demo-list-two {
+  width: 10px;
+}
+@media (max-width: 600px) {
+  #editvo {
+    display: none;
+  }
+}
+</style>
 <link rel="stylesheet"
     href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
@@ -229,9 +260,32 @@ function usery() {
             <main class="mdl-layout__content" style="text-align: center;align-content: center;color:white;padding-top:100px;">
                 <h1>EmptyMyTrap Volunteers</h1>
                 <h3>Emptying Your Trap</h3>
-                <section style="background-color: white;color: black;height:100%;margin:20px;border-radius:20px;padding:20px;align-content:center;">
+                <section style="background-color: white;color: black;height:100%;margin:20px;border-radius:20px;padding:20px;align-content:center;" id='page-major-secion'>
                     <!-- MDL Progress Bar with Indeterminate Progress -->
-                    <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;"></div>
+                    <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;">
+                    <!-- Two Line List with secondary info and action -->
+
+                    </div>
+                </section>
+                <a href="javascript:void(0)" onclick='useri();' style='height:1px;' class="mdl-button mdl-js-button mdl-js-ripple-effect" id='gift-close'>refresh</a>
+
+                <section id='prototype' style='display:none;'>
+                <!-- Accent-colored raised button with ripple -->
+
+                  <ul class="demo-list-two mdl-list" style='display: inline;'>
+  <li class="mdl-list__item mdl-list__item--two-line">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style='display: inline;' id='editvo'>
+  Edit Your Volunteers
+</button>
+    <span class="mdl-list__item-primary-content">
+      <span>TrapName</span>
+      <span class="mdl-list__item-sub-title">This Trap is Full</span>
+    </span>
+    <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#" style='text-decoration: none;'>Empty Now   <i class="material-icons" style='padding-left: 10px;'>arrow_forward</i></a>
+    </span>
+  </li>
+</ul>
                 </section>
             </main>
         </div>
