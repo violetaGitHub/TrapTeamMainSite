@@ -5,23 +5,6 @@ Free for personal and commercial use under the GCP 1.0 license
 -->
 <html>
 <head>
-<script>
-window['_fs_debug'] = false;
-window['_fs_host'] = 'fullstory.com';
-window['_fs_org'] = 'MR5PB';
-window['_fs_namespace'] = 'FS';
-(function(m,n,e,t,l,o,g,y){
-    if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
-    g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
-    o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_host+'/s/fs.js';
-    y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
-    g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
-    g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
-    g.consent=function(a){g("consent",!arguments.length||a)};
-    g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
-    g.clearUserCookie=function(){};
-})(window,document,window['_fs_namespace'],'script','user');
-</script>
 
 <script>
   !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
@@ -110,6 +93,9 @@ setTimeout(ldinsp, 0);
 		display: block;
 		position: sticky;
 	}
+	#hero {
+		display:none;
+	}
 	}
 	#mainNav {
 		position: fixed; margin-left: 1px; opacity: 1;z-index: 100;padding: 20px; background-color: lightskyblue;
@@ -175,28 +161,33 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 			Started</a></span><br>
 				<a onclick="$('#mainNav').slideToggle();" href="javascript:void(0)" id="menuicon"
 					style="text-decoration: none; font-size: 100px;padding:10px;"><i class="fa fa-times" aria-hidden="true"></i>
-
 	</nav>
+	<div>
+	<img src="images/logo.webp" alt="" style='margin-top:50px;'/>
+	<h1>Trap Team CC</h1>
+	<p style='font-size: 20px;'>Fully Automated Pest Trapping - For You and Your Community</p>
+	</div>
 	<p></p>
 <a onclick="$('#mainNav').slideToggle();" href="javascript:void(0)" id="menuicon" style="text-decoration: none; font-size: 100px;padding-left:100px;"><i class="fa fa-bars" aria-hidden="true"></i>
-</a><br>
-	<!-- Wrapper -->
+</a>
+
 	<div id="wrapper" style="background-color: #009933;">
 					
 
 		<!-- Intro -->
 		<section class="intro" style="background-color: #009933;">
-			<header style="background-color: #009933;">
+			<header style="background-color: #009933;" id='hero'>
 				<!-- https://trapteam690333707.files.wordpress.com/2018/08/wordmark_of_tidningarnas_telegrambyrc3a5_tt1.webp -->
 					<span id="pagehide" style="visibility:hidden;margin-top:500px;"><p>Aliment</p></span>
 					<h1>
 					<img src="images/logo.webp" alt=""/><br>
-					Trap Team</h1>
+					<h1>Trap Team</h1></h1>
 					<p>Automatic pest trapping at an affordable price - For you and your community.</p>
 					<ul class="actions">
 						<li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
 					</ul>
 				</header>
+
 				<div class="content">
 					<span class="image fill" data-position="center"><img src="images/pic01.jpg" alt="" /></span>
 				</div>
