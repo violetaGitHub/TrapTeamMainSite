@@ -111,17 +111,17 @@ exports.AddTrap = functions.https.onRequest((req, res) => {
     .set(TrapNumber);
   res.status(200).send("Working, Completed NewTrap Operation.");
 });
-  
+
 exports.addAccount = functions.auth.user().onCreate(user => {
   if (user.email === null) {
     user.email = user.phoneNumber;
   }
-  
+
   const email = user.email; // The email of the user.
   const id = user.uid;
   const displayName = user.displayName; // The display name of the user.
   return admin
-  .database()
-  .ref("/Trapholders/" + id + "/email")
-  .set(email);
+    .database()
+    .ref("/Trapholders/" + id + "/email")
+    .set(email);
 });
