@@ -4,16 +4,9 @@
         <title>Trap Team EmptyMyTrap</title>
         <meta charset="UTF-8">
         <script>
-    !function () {
-      var analytics = window.analytics = window.analytics || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {
-      analytics.invoked = !0; analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"]; analytics.factory = function (t) { return function () { var e = Array.prototype.slice.call(arguments); e.unshift(t); analytics.push(e); return analytics } }; for (var t = 0; t < analytics.methods.length; t++) { var e = analytics.methods[t]; analytics[e] = analytics.factory(e) } analytics.load = function (t, e) { var n = document.createElement("script"); n.type = "text/javascript"; n.async = !0; n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(n, a); analytics._loadOptions = e }; analytics.SNIPPET_VERSION = "4.1.0";
-        analytics.load("gqbaHuIC0OV4lpzJiKF4pOdrJRIop365");
-        analytics.page();
-      }
-    }();
+    !function(){var analytics = window.analytics = window.analytics || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {analytics.invoked = !0; analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"]; analytics.factory = function (t) { return function () { var e = Array.prototype.slice.call(arguments); e.unshift(t); analytics.push(e); return analytics } }; for (var t = 0; t < analytics.methods.length; t++) { var e = analytics.methods[t]; analytics[e] = analytics.factory(e) } analytics.load = function (t, e) { var n = document.createElement("script"); n.type = "text/javascript"; n.async = !0; n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(n, a); analytics._loadOptions = e }; analytics.SNIPPET_VERSION = "4.1.0";analytics.load("gqbaHuIC0OV4lpzJiKF4pOdrJRIop365"); analytics.page();}}();
   </script>
 <script>
-  analytics.page(document.title);
 </script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase.js"></script>
@@ -23,137 +16,7 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
-    authDomain: "trapteam-cc.firebaseapp.com",
-    databaseURL: "https://trapteam-cc.firebaseio.com",
-    projectId: "trapteam-cc",
-    storageBucket: "trapteam-cc.appspot.com",
-    messagingSenderId: "150993996289",
-    appId: "1:150993996289:web:9a6a477accc058af"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // Initialize Firebase
-firebase.auth().onAuthStateChanged(
-    function(user) {
-      if (user) {
-        // User is signed in.
-        displayName = user.displayName;
-        email = user.email;
-        emailVerified = user.emailVerified;
-        photoURL = user.photoURL;
-        uid = user.uid;
-        phoneNumber = user.phoneNumber;
-        providerData = user.providerData;
-        document.getElementById("uuid").innerHTML = uid;
-        if (firebase.auth().currentUser.emailVerified) {
-          console.log("account is fine");
-        } else {
-          console.log(
-            "You Email is Not Verified. Click OK to send an email to you so you can get verified."
-          );
-          user
-            .sendEmailVerification()
-            .then(function() {
-              // Email sent.
-            })
-            .catch(function(error) {
-              // An error occured.
-            });
-        }
-        analytics.identify(user.uid, {
-          name: displayName,
-          email: user.email
-        });
-        analytics.identify(user.uid, {
-          name: displayName,
-          email: user.email
-        });        user.getIdToken().then(function(accessToken) {
-          document.getElementById("sign-in-status").textContent = "Signed in";
-          document.getElementById("sign-in").textContent = "Sign out";
-          document.getElementById(
-            "account-details"
-          ).textContent = JSON.stringify(
-            {
-              displayName: displayName,
-              email: email,
-              emailVerified: emailVerified,
-              phoneNumber: phoneNumber,
-              photoURL: photoURL,
-              uid: uid,
-              accessToken: accessToken,
-              providerData: providerData
-            },
-            null,
-            "  "
-          );
-          console.log(
-            JSON.stringify(
-              {
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              },
-              null,
-              "  "
-            )
-          );
-        });
-      } else {
-        document.location.href = "/authneeded.html";
-      }
-    },
-    function(error) {
-      console.log(error);
-    }
-  );
-async function useri() {
-  //App.initializeApp(firebaseConfig);
-    var starCountRef = firebase.database().ref('Trapholders/' + document.getElementById("uuid").innerHTML);
-    let outputs = [];
-    starCountRef.on('value', function(snapshot) {
-        var trapz = snapshot.val().Traps;
-        for (const key in trapz) {
-            console.warn(key);
-            if (trapz[key].Status == "Empty") {outputs.push(key);};
-            
-            console.log(outputs);
-        }
-        console.error(trapz);
-        console.log(outputs);
-        if (outputs.length > 0) {
-        document.getElementById("page-major-secion").innerHTML = "";
-        let compiledHTML;
-        for (const key of outputs) {
-        compiledHTML = document.getElementById("page-major-secion").innerHTML + document.getElementById("prototype").innerHTML.replace("TrapName",key);
-        document.getElementById("page-major-secion").innerHTML = compiledHTML;
-        }
-        } else {
-  var evt = document.createEvent("MouseEvents");
-  evt.initMouseEvent("click", true, true, window,
-    0, 0, 0, 0, 0, false, false, false, false, 0, null);
-  var a = document.getElementById("gift-close"); 
-  a.dispatchEvent(evt);      
-
-        } 
-        console.log(document.getElementById("uuid").innerHTML);
-    });
-}
-async function usery() {
-  useri();
-  setTimeout(function() {
-    useri();
-  }, 10000);
-}
-    window.addEventListener("load", usery);
+<script src='assetsjs/volunteer.js'>
 
 </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -184,9 +47,7 @@ async function usery() {
                 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/material-components-web@3.0.0/dist/material-components-web.css">
                 <!-- Global site tag (gtag.js) - Google Analytics -->
                 <script async src="//www.googletagmanager.com/gtag/js?id=UA-123568344-2"></script>
-                <!-- Start of Async Drift Code -->
-                
-                <!-- End of Async Drift Code -->
+              
                 
                 <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=xvjzosy3qomiycycb7msno7uh4"></script>
                 <link rel="manifest" href="/manifest.json">
@@ -218,7 +79,6 @@ async function usery() {
 <link rel="canonical" href="http://www.example.com/">
 -->
 <script src="//www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-<script async src="assetsjs/authhead.min.js"></script>
 
 <style>
 .demo-list-two {
