@@ -20,3 +20,4 @@ test_async:
   script:
    - npm install
    - node test.js
+
