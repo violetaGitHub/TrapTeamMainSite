@@ -93,10 +93,14 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
     });
 });
 
+/**
+ * Adds a trap to the database
+ */
 exports.AddTrap = functions.https.onRequest((req, res) => {
   if (req.method !== "POST") {
     console.error("Not POST: " + req.method);
     res.status(405).send("Error, Must send with POST not: " + req.method);
+    return;
   }
   var TrapNumber = req.body.number;
   var TrapName = req.body.name;
@@ -118,7 +122,7 @@ exports.addAccount = functions.auth.user().onCreate(user => {
   }
 
   const email = user.email; // The email of the user.
-  const id = user.uid;
+
   const displayName = user.displayName; // The display name of the user.
   return admin
     .database()

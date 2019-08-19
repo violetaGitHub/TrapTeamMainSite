@@ -1,3 +1,6 @@
+//VOLUNTEER PAGE (BETA)
+
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
@@ -11,6 +14,8 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize Firebase
+//AUTH CHECK
+
 firebase.auth().onAuthStateChanged(
   function(user) {
     if (user) {
@@ -89,6 +94,8 @@ firebase.auth().onAuthStateChanged(
   }
 );
 let urcount = 0;
+//GETS THE TRAPS ON THE SCREEN
+
 async function useri() {
   urcount++;
   console.log(urcount);

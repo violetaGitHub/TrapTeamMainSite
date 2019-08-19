@@ -136,7 +136,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 <link rel="icon" href="images/logo.webp" sizes="32x32">
 <link rel="stylesheet" href="assets/css/main.css" />
 <script>
-	//$('#wrapper').slideToggle();
+	//MENU
 </script>
 </head>
 <body class="is-preload" style="background-color: #009933;">
@@ -172,7 +172,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 </a>
 
 	<div id="wrapper" style="background-color: #009933;">
-					
+				<!-- MAIN -->
 
 		<!-- Intro -->
 		<section class="intro" style="background-color: #009933;">
@@ -192,7 +192,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 					<span class="image fill" data-position="center"><img src="images/pic01.jpg" alt="" /></span>
 				</div>
 			</section>
-			<!-- Section -->
+			<!-- SIMPLER -->
 			<section id="first">
 				<header>
 					<h2>Simpler Pest Trapping</h2>
@@ -214,7 +214,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 				</div>
 			</section>
 			
-			<!-- Section -->
+			<!-- WHY TT -->
 			<section>
 				<header>
 					<h2>Why Trap Team?</h2>
@@ -527,7 +527,7 @@ print 'Sorted in ' + i + ' iterations.';</code></pre>
 </section>
 -->
 
-<!-- Section -->
+<!-- CONTACT -->
 <section>
 	<header>
 		<h2>Get in touch</h2>
@@ -574,21 +574,16 @@ print 'Sorted in ' + i + ' iterations.';</code></pre>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-<!-- Smart embedded fast-load share button, and user excitement toolkit script insert link. DO NOT REMOVE OR MULTIPLE FEATURES WILL BE BROKEN! Please make sure link always stays at bottom of page.--> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b989eb1453d487b"></script>
 
 <script src="https://wchat.freshchat.com/js/widget.js"></script>
+
 <script>
-window.fcWidget.init({
-	token: "e78b1596-7b80-49d2-bdb8-31992b71e26d",
-	host: "https://wchat.freshchat.com"
-});
-</script>
-<script>
-// This is the "Offline copy of pages" service worker
+// This is the PWA
 
 // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
 // Check compatibility for the browser we're running this in
+window.fcWidget.init({token: "e78b1596-7b80-49d2-bdb8-31992b71e26d",host: "https://wchat.freshchat.com"});
 if ("serviceWorker" in navigator) {
 	if (navigator.serviceWorker.controller) {
 		console.log("[PWA Builder] active service worker found, no need to register");
@@ -638,6 +633,7 @@ install();
 
 </script>
 <script>
+	//AUTO REDIR FOR BAD DOMAINS, AND MAKES USER ALWAYS USE HTTPS
 	function hider() {
 		console.log(window.matchMedia('(display-mode: standalone)').matches);
 		
