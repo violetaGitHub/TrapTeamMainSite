@@ -1,5 +1,7 @@
 var connect = require("connect");
 var serveStatic = require("serve-static");
+
+//STARTSERVER
 connect()
   .use(serveStatic(__dirname))
   .listen(8080, () => {

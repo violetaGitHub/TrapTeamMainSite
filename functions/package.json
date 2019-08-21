@@ -5,6 +5,7 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
+
     "prettier": "^1.18.2"
     "firebase-functions": "^3.2.0",
     "firebase-admin": "8.3.0",

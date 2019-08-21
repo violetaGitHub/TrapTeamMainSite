@@ -102,7 +102,9 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
     });
 });
 
-// Creates a new trap
+/**
+ * Adds a trap to the database
+ */
 exports.AddTrap = functions.https.onRequest((req, res) => {
   if (req.method !== "POST") {
     console.error("Not POST: " + req.method);
@@ -130,7 +132,7 @@ exports.addAccount = functions.auth.user().onCreate(user => {
   }
 
   const email = user.email; // The email of the user.
-  const id = user.uid;
+
   const displayName = user.displayName; // The display name of the user.
   return admin
     .database()

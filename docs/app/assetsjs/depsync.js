@@ -1,3 +1,5 @@
+//LOADS DEPS
+
 window.LogRocket && window.LogRocket.init("nipfpt/trap-team-cc");
 
 LogRocket.getSessionURL(sessionURL => {

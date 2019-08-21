@@ -44,33 +44,17 @@ setTimeout(ldinsp, 0);
 
     gtag('config', 'UA-123568344-1');
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-      'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-NPBCWPN');</script>
-  <!-- End Google Tag Manager -->
+
 
   <script>
-    !function () {
-      var analytics = window.analytics = window.analytics || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {
-      analytics.invoked = !0; analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"]; analytics.factory = function (t) { return function () { var e = Array.prototype.slice.call(arguments); e.unshift(t); analytics.push(e); return analytics } }; for (var t = 0; t < analytics.methods.length; t++) { var e = analytics.methods[t]; analytics[e] = analytics.factory(e) } analytics.load = function (t, e) { var n = document.createElement("script"); n.type = "text/javascript"; n.async = !0; n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(n, a); analytics._loadOptions = e }; analytics.SNIPPET_VERSION = "4.1.0";
-        analytics.load("gqbaHuIC0OV4lpzJiKF4pOdrJRIop365");
-        analytics.page();
-      }
-    }();
+    //GOOGLE TAG MANAGER + OPTIMIZE + A LITE CAPTHCA SYSTEM + GA + GAINSIGHTS
+    !function () {var analytics = window.analytics = window.analytics || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {analytics.invoked = !0; analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"]; analytics.factory = function (t) { return function () { var e = Array.prototype.slice.call(arguments); e.unshift(t); analytics.push(e); return analytics } }; for (var t = 0; t < analytics.methods.length; t++) { var e = analytics.methods[t]; analytics[e] = analytics.factory(e) } analytics.load = function (t, e) { var n = document.createElement("script"); n.type = "text/javascript"; n.async = !0; n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(n, a); analytics._loadOptions = e }; analytics.SNIPPET_VERSION = "4.1.0";analytics.load("gqbaHuIC0OV4lpzJiKF4pOdrJRIop365");analytics.page();(function (w, d, s, l, i) {w[ l ] = w[ l ] || []; w[ l ].push({'gtm.start':new Date().getTime(), event: 'gtm.js'}); var f = d.getElementsByTagName(s)[ 0 ],j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src ='https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);})(window, document, 'script', 'dataLayer', 'GTM-NPBCWPN');}}(); analytics.page(document.title);
   </script>
-<script>
-  analytics.page(document.title);
-</script>
-  <!-- update the version number as needed -->
+
+  <!-- FIREBASE SDK -->
   <script defer src="/__/firebase/5.3.1/firebase-app.js"></script>
   <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/5.3.1/firebase-auth.js"></script>
+  <script defer src="/__/firebase/5.3.1/firebase.js"></script>
   <script defer src="/__/firebase/5.3.1/firebase-database.js"></script>
   <script defer src="/__/firebase/5.3.1/firebase-messaging.js"></script>
   <script defer src="/__/firebase/5.3.1/firebase-storage.js"></script>
@@ -81,10 +65,10 @@ setTimeout(ldinsp, 0);
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=4kgjzjutdzpmf3sz3zkzfpe4x4"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  
+
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#config-web-app -->
-  
+
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -114,11 +98,11 @@ setTimeout(ldinsp, 0);
 
   <!-- Custom styles for this template -->
   <link href="cover.css" rel="stylesheet">
-  
+
 </head>
 
 <body class="text-center">
-
+  <!-- FIREBASE STUFF -->
   <p id="load" style="display: none;">Firebase SDK Loading&hellip;</p>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -146,12 +130,13 @@ setTimeout(ldinsp, 0);
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
+        <!-- //\cccess stuff/loader -->
         <h3 class="masthead-brand"><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="40%"> <a>by Trap Team:<br> Log in to </a><img style="display:inline;" src="/accessbt/access.svg?alt=media" alt="//\ccess" width="40%"></h3>
 
- 
+
       </div>
     </header>
-
+<!-- AUTH CONTAINER -->
     <main role="main" class="inner cover">
       <h1 class="cover-heading">Sign In!</h1>
       <div id="firebaseui-auth-container"></div>
@@ -167,7 +152,10 @@ setTimeout(ldinsp, 0);
             Page</a>!</p>
 
       </div>
+
       <script type="text/javascript">
+
+      //AUTHSCRIPT
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
         // The start method will wait until the DOM is loaded.
@@ -227,7 +215,7 @@ setTimeout(ldinsp, 0);
   <script src="../../assets/js/vendor/popper.min.js"></script>
   <script src="../../dist/js/bootstrap.min.js"></script>
   <script>
-    // This is the "Offline copy of pages" service worker
+    // PWA
 
     // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
