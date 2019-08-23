@@ -1,0 +1,55 @@
+{
+  "JavaScript": {
+    "beautifiers": [
+      "Prettier",
+      "Pretty Diff",
+      "JS-Beautify",
+      "ESLint"
+    ]
+  },
+  "JSON": {
+    "beautifiers": [
+      "Prettier",
+      "Pretty Diff",
+      "JS-Beautify"
+    ]
+  },
+  "HTML": {
+    "beautifiers": [
+      "Pretty Diff",
+      "JS-Beautify"
+    ]
+  },
+  "CSS": {
+    "beautifiers": [
+      "Prettier",
+      "Pretty Diff",
+      "JS-Beautify"
+    ]
+  },
+  "C#": {
+    "beautifiers": [
+      "Pretty Diff"
+    ]
+  },
+  "JSX": {
+    "beautifiers": [
+      "Prettier",
+      "Pretty Diff",
+      "JS-Beautify"
+    ]
+  },
+  "SVG": {
+    "beautifiers": [
+      "Pretty Diff"
+    ],
+    "indent_style": "space",
+    "wrap_line_length": 2
+  },
+  "Vue": {
+    "beautifiers": [
+      "Prettier"
+    ],
+    "wrap_line_length": 2
+  }
+}
