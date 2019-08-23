@@ -5,15 +5,14 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
     "firebase-functions": "^3.2.0",
     "firebase-admin": "8.3.0",
     "handler-builder": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "6.1.0",
-    "eslint-plugin-promise": "4.2.1", 
+    "eslint-plugin-promise": "4.2.1",
     "prettier": "^1.18.2"
   },
   "private": true,

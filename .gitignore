@@ -1,6 +1,7 @@
 nogit/
 firebase-debug.log
 functions/serviceAccountKey.json
-functions/serviceAccountKey.json
-functions/serviceAccountKey.json
-functions/serviceAccountKey.json
+
+# Node modules themselves should generally not be committed
+node_modules
+functions/node_modules/
