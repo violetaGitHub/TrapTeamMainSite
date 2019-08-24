@@ -10,4 +10,5 @@ shell.exec("yarn add shelljs");
 shell.exec("yarn add choco");
 shell.exec("npm i -g firebase-tools");
 shell.exec("yarn install");
+shell.exec("choco install hub");
 shell.exec("firebase serve");
