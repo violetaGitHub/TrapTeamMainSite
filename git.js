@@ -8,4 +8,4 @@ shell.exec("yarn install");
 shell.exec("yarn add shelljs");
 shell.exec("npm i -g firebase-tools");
 shell.exec("yarn install");
-shell.exec("firebase deploy --token $FIREBASE_TOKEN");
+shell.exec("firebase serve");
