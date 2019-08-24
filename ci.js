@@ -5,7 +5,6 @@ shell.exec("git pull");
 shell.exec("npm install");
 shell.exec("npm i -g yarn");
 shell.exec("yarn install");
-shell.exec("yarn add shelljs");
 shell.exec("npm i -g firebase-tools");
 shell.exec("yarn install");
 shell.exec("firebase deploy --only hosting --token $FIREBASE");
