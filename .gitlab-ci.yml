@@ -4,4 +4,4 @@ job:
   script:
     - npm install
     - npm i shelljs
-    - node git.js
+    - node ci.js
