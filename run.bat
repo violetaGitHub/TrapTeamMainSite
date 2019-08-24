@@ -1,3 +1,2 @@
 git remote add githubdirry https://github.com/TrapTeamCCNZ/TrapTeamMainSite.git
-echo added GitHub
-git remote add gitlab by https
+git remote add gitlabby https://gitlab.com/trapteamccnz/TrapTeamMainSite.git
