@@ -1,4 +1,3 @@
-
 var functions = require("firebase-functions");
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
@@ -9,7 +8,7 @@ admin.initializeApp({
   // databaseURL: "https://localhost:9000"
 });
 
-var db = admin.database()
+var db = admin.database();
 
 // Toggles state of trap specified
 exports.ToggleTrap = functions.https.onRequest((req, res) => {
@@ -78,7 +77,6 @@ exports.EmptyTrap = functions.https.onRequest((req, res) => {
   res.status(200).send("Emptyed " + TrapHolder + "'s Trap.");
 });
 
-
 // Gets the trap specified's trap number
 exports.GetTrapNumber = functions.https.onRequest((req, res) => {
   if (req.method !== "GET") {
@@ -97,10 +95,10 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
         .status(200)
         .send(
           TrapName +
-          " is owned by " +
-          TrapHolder +
-          " and has Trap Number of " +
-          value
+            " is owned by " +
+            TrapHolder +
+            " and has Trap Number of " +
+            value
         );
     });
 });
@@ -110,48 +108,63 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
  */
 exports.AddTrap = functions.https.onRequest((req, res) => {
   if (req.method !== "POST") {
-    res.status(405).send({ reason: "Method Not Allowed" }) 
-    return
+    res.status(405).send({ reason: "Method Not Allowed" });
+    return;
   }
 
   // make variables to make it easy on ourselves
-  let trapID = req.body.number
-  let trapName = req.body.name
-  let trapHolder = req.body.TrapHolder
-  let trapStatus = 'Empty'
+  let trapID = req.body.number;
+  let trapName = req.body.name;
+  let trapHolder = req.body.TrapHolder;
+  let trapStatus = "Empty";
 
   // create Firebase db references
-  let userReference = db.ref(`Trapholders/${trapHolder}/Traps/${trapID}`)
-  let trapReference = db.ref(`Traps/${trapID}`)
+  let userReference = db.ref(`Trapholders/${trapHolder}/Traps/${trapID}`);
+  let trapReference = db.ref(`Traps/${trapID}`);
 
   // set the user and trap references
-  userReference.set({
-    ID: trapID,
-    Status: trapStatus
-  }, error => {
-    if (error) console.error("q1: " + error)
-    else       console.log("query 1 synced")
-  })
-  trapReference.set({
-    Name: trapName,
-    Owner: trapHolder
-  }, error => {
-    if (error) console.error("q2: " + error)
-    else       console.log("query 2 synced")
-  })
-    
-  res.status(200).contentType('json').send(JSON.stringify({
-    trap: {
-      id: trapID,
-      name: trapName,
-      owner: trapHolder,
-      status: trapStatus
+  userReference.set(
+    {
+      ID: trapID,
+      Status: trapStatus
     },
-    dbRef: {
-      user: String(userReference.path),
-      trap: String(trapReference.path)
+    error => {
+      if (error) console.error("q1: " + error);
+      else console.log("query 1 synced");
     }
-  }, undefined, 2));
+  );
+  trapReference.set(
+    {
+      Name: trapName,
+      Owner: trapHolder
+    },
+    error => {
+      if (error) console.error("q2: " + error);
+      else console.log("query 2 synced");
+    }
+  );
+
+  res
+    .status(200)
+    .contentType("json")
+    .send(
+      JSON.stringify(
+        {
+          trap: {
+            id: trapID,
+            name: trapName,
+            owner: trapHolder,
+            status: trapStatus
+          },
+          dbRef: {
+            user: String(userReference.path),
+            trap: String(trapReference.path)
+          }
+        },
+        undefined,
+        2
+      )
+    );
 });
 
 // No idea, Stevie told me to keep it
@@ -170,7 +183,7 @@ exports.addAccount = functions.auth.user().onCreate(user => {
 });
 
 exports.dbTest = functions.https.onRequest((req, res) => {
-  db.ref('/').once('value', (value => {
-    res.send(JSON.stringify(value, undefined, 2))
-  }))
-})
+  db.ref("/").once("value", value => {
+    res.send(JSON.stringify(value, undefined, 2));
+  });
+});
