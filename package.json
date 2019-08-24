@@ -2,7 +2,7 @@
   "name": "trapteam.cc",
   "version": "1.0.0",
   "description": "",
-  "main": "run.bat",
+  "main": "shell.js",
   "dependencies": {
     "connect": "^3.7.0",
     "firebase-functions": "^3.2.0",
@@ -19,7 +19,7 @@
     "mocha": "^6.2.0"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "shell.js",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },
