@@ -148,8 +148,8 @@ exports.AddTrap = functions.https.onRequest((req, res) => {
       status: trapStatus
     },
     dbRef: {
-      user: "" + userReference.path,
-      trap: "" + trapReference.path
+      user: String(userReference.path),
+      trap: String(trapReference.path)
     }
   }, undefined, 2));
 });
