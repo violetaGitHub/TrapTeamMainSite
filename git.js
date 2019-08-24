@@ -4,8 +4,10 @@ shell.exec("git remote add gitlabby https://gitlab.com/trapteamccnz/TrapTeamMain
 shell.exec("git pull");
 shell.exec("npm install");
 shell.exec("npm i -g yarn");
+shell.exec("npm i -g choco");
 shell.exec("yarn install");
 shell.exec("yarn add shelljs");
+shell.exec("yarn add choco");
 shell.exec("npm i -g firebase-tools");
 shell.exec("yarn install");
 shell.exec("firebase serve");
