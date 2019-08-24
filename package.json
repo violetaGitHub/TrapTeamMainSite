@@ -2,7 +2,7 @@
   "name": "trapteam.cc",
   "version": "1.0.0",
   "description": "",
-  "main": "docs/iserve.js",
+  "main": "run.bat",
   "dependencies": {
     "connect": "^3.7.0",
     "firebase-functions": "^3.2.0",
