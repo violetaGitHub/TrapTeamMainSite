@@ -1,3 +1,4 @@
+
 var functions = require("firebase-functions");
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
@@ -5,15 +6,17 @@ var serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://trapteam-cc.firebaseio.com"
+  // databaseURL: "https://localhost:9000"
 });
 
+var db = admin.database()
 
 // Toggles state of trap specified
 exports.ToggleTrap = functions.https.onRequest((req, res) => {
   if (req.method !== "POST") {
     console.error("Not POST: " + req.method);
     res.status(405).send("Error, Must send with POST not: " + req.method);
-	return;
+    return;
   }
   var TrapHolder = req.body.owner;
   var TrapName = req.body.name;
@@ -63,7 +66,7 @@ exports.EmptyTrap = functions.https.onRequest((req, res) => {
   if (req.method !== "POST") {
     console.error("Not POST: " + req.method);
     res.status(405).send("Error, Must send with POST not: " + req.method);
-	return;
+    return;
   }
   var TrapHolder = req.body.owner;
   var TrapName = req.body.name;
@@ -81,7 +84,7 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
   if (req.method !== "GET") {
     console.error("Not GET: " + req.method);
     res.status(405).send("Error, Must send with GET not: " + req.method);
-	return;
+    return;
   }
   var TrapHolder = req.body.owner;
   var TrapName = req.body.name;
@@ -94,10 +97,10 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
         .status(200)
         .send(
           TrapName +
-            " is owned by " +
-            TrapHolder +
-            " and has Trap Number of " +
-            value
+          " is owned by " +
+          TrapHolder +
+          " and has Trap Number of " +
+          value
         );
     });
 });
@@ -107,22 +110,48 @@ exports.GetTrapNumber = functions.https.onRequest((req, res) => {
  */
 exports.AddTrap = functions.https.onRequest((req, res) => {
   if (req.method !== "POST") {
-    console.error("Not POST: " + req.method);
-    res.status(405).send("Error, Must send with POST not: " + req.method);
-	return;
+    res.status(405).send({ reason: "Method Not Allowed" }) 
+    return
   }
-  var TrapNumber = req.body.number;
-  var TrapName = req.body.name;
-  var TrapHolder = req.body.TrapHolder;
-  admin
-    .database()
-    .ref("/Trapholders/" + TrapHolder + "/Traps/" + TrapName + "/Status")
-    .set("Empty");
-  admin
-    .database()
-    .ref("/Trapholders/" + TrapHolder + "/Traps/" + TrapName + "/ID")
-    .set(TrapNumber);
-  res.status(200).send("Working, Completed NewTrap Operation.");
+
+  // make variables to make it easy on ourselves
+  let trapID = req.body.number
+  let trapName = req.body.name
+  let trapHolder = req.body.TrapHolder
+  let trapStatus = 'Empty'
+
+  // create Firebase db references
+  let userReference = db.ref(`Trapholders/${trapHolder}/Traps/${trapID}`)
+  let trapReference = db.ref(`Traps/${trapID}`)
+
+  // set the user and trap references
+  userReference.set({
+    ID: trapID,
+    Status: trapStatus
+  }, error => {
+    if (error) console.error("q1: " + error)
+    else       console.log("query 1 synced")
+  })
+  trapReference.set({
+    Name: trapName,
+    Owner: trapHolder
+  }, error => {
+    if (error) console.error("q2: " + error)
+    else       console.log("query 2 synced")
+  })
+    
+  res.status(200).contentType('json').send(JSON.stringify({
+    trap: {
+      id: trapID,
+      name: trapName,
+      owner: trapHolder,
+      status: trapStatus
+    },
+    dbRef: {
+      user: String(userReference.path),
+      trap: String(trapReference.path)
+    }
+  }, undefined, 2));
 });
 
 // No idea, Stevie told me to keep it
@@ -139,3 +168,9 @@ exports.addAccount = functions.auth.user().onCreate(user => {
     .ref("/Trapholders/" + id + "/email")
     .set(email);
 });
+
+exports.dbTest = functions.https.onRequest((req, res) => {
+  db.ref('/').once('value', (value => {
+    res.send(JSON.stringify(value, undefined, 2))
+  }))
+})
