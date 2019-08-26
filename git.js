@@ -1,12 +1,13 @@
 var shell = require('shelljs');
 shell.exec("git remote add githubdirry https://github.com/TrapTeamCCNZ/TrapTeamMainSite.git");
 shell.exec("git remote add gitlabby https://gitlab.com/trapteamccnz/TrapTeamMainSite.git");
-shell.exec("git pull");
+shell.exec("git stash stasha");
+shell.exec("git unstash stasha");
 shell.exec("npm install git-lab-cli -g");
 shell.exec("npm install");
 shell.exec("npm i -g yarn");
 shell.exec("npm i -g choco");
-shell.exec("yarn install");
+shell.exec("npm install -g concurrently");
 shell.exec("yarn add shelljs");
 shell.exec("yarn add choco");
 shell.exec("npm i -g firebase-tools");
