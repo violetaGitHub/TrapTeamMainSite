@@ -53,14 +53,14 @@ module.exports.prepare = function (cordovaProject, options) {
     gradlePropertiesParser.configure(gradlePropertiesUserConfig);
 
     // Update own www dir with project's www assets and plugins' assets and js-files
-    return Q.when(updateWww(cordovaProject, this.locations)).then(function () {
+    return Q.when(updateWww(cordovaProject, this.locations)).then(() => {
         // update project according to config.xml changes.
         return updateProjectAccordingTo(self._config, self.locations);
-    }).then(function () {
+    }).then(() => {
         updateIcons(cordovaProject, path.relative(cordovaProject.root, self.locations.res));
         updateSplashes(cordovaProject, path.relative(cordovaProject.root, self.locations.res));
         updateFileResources(cordovaProject, path.relative(cordovaProject.root, self.locations.root));
-    }).then(function () {
+    }).then(() => {
         events.emit('verbose', 'Prepared android project successfully');
     });
 };
@@ -79,7 +79,7 @@ module.exports.clean = function (options) {
     var projectConfig = new ConfigParser(this.locations.configXml);
 
     var self = this;
-    return Q().then(function () {
+    return Q().then(() => {
         cleanWww(projectRoot, self.locations);
         cleanIcons(projectRoot, projectConfig, path.relative(projectRoot, self.locations.res));
         cleanSplashes(projectRoot, projectConfig, path.relative(projectRoot, self.locations.res));
@@ -212,7 +212,7 @@ function updateProjectAccordingTo (platformConfig, locations) {
 
     // Java file paths shouldn't be hard coded
     var javaPattern = path.join(locations.javaSrc, manifestId.replace(/\./g, '/'), '*.java');
-    var java_files = shell.ls(javaPattern).filter(function (f) {
+    var java_files = shell.ls(javaPattern).filter((f) => {
         return shell.grep(/extends\s+CordovaActivity/g, f);
     });
 
@@ -254,14 +254,14 @@ function updateProjectAccordingTo (platformConfig, locations) {
 function default_versionCode (version) {
     var nums = version.split('-')[0].split('.');
     var versionCode = 0;
-    if (+nums[0]) {
-        versionCode += +nums[0] * 10000;
+    if (Number(nums[0])) {
+        versionCode += Number(nums[0]) * 10000;
     }
-    if (+nums[1]) {
-        versionCode += +nums[1] * 100;
+    if (Number(nums[1])) {
+        versionCode += Number(nums[1]) * 100;
     }
-    if (+nums[2]) {
-        versionCode += +nums[2];
+    if (Number(nums[2])) {
+        versionCode += Number(nums[2]);
     }
 
     events.emit('verbose', 'android-versionCode not found in config.xml. Generating a code based on version in config.xml (' + version + '): ' + versionCode);
@@ -296,7 +296,7 @@ function updateSplashes (cordovaProject, platformResourcesDir) {
     var resourceMap = mapImageResources(cordovaProject.root, platformResourcesDir, 'drawable', 'screen.png');
 
     var hadMdpi = false;
-    resources.forEach(function (resource) {
+    resources.forEach((resource) => {
         if (!resource.density) {
             return;
         }
@@ -627,7 +627,7 @@ function cleanIcons (projectRoot, projectConfig, platformResourcesDir) {
  */
 function mapImageResources (rootDir, subDir, type, resourceName) {
     var pathMap = {};
-    shell.ls(path.join(rootDir, subDir, type + '-*')).forEach(function (drawableFolder) {
+    shell.ls(path.join(rootDir, subDir, type + '-*')).forEach((drawableFolder) => {
         var imagePath = path.join(subDir, path.basename(drawableFolder), resourceName);
         pathMap[imagePath] = null;
     });
@@ -644,7 +644,7 @@ function updateFileResources (cordovaProject, platformDir) {
     }
 
     var resourceMap = {};
-    files.forEach(function (res) {
+    files.forEach((res) => {
         var targetPath = path.join(platformDir, res.target);
         resourceMap[targetPath] = res.src;
     });
@@ -660,7 +660,7 @@ function cleanFileResources (projectRoot, projectConfig, platformDir) {
         events.emit('verbose', 'Cleaning resource files at ' + platformDir);
 
         var resourceMap = {};
-        files.forEach(function (res) {
+        files.forEach((res) => {
             var filePath = path.join(platformDir, res.target);
             resourceMap[filePath] = null;
         });

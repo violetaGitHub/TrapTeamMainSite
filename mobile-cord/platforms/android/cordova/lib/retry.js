@@ -42,12 +42,12 @@ module.exports.retryPromise = function (attemptsLeft, promiseFunction) {
 
     return promiseFunction.apply(undefined, promiseFunctionArguments).then(
         // on success pass results through
-        function onFulfilled (value) {
+        (value) => {
             return value;
         },
 
         // on rejection either retry, or throw the error
-        function onRejected (error) {
+        (error) => {
             attemptsLeft -= 1;
 
             if (attemptsLeft < 1) {

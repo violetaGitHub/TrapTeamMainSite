@@ -33,14 +33,14 @@ module.exports.run = function () {
     var d = Q.defer();
     var adb = child_process.spawn('adb', ['logcat'], { cwd: os.tmpdir() });
 
-    adb.stdout.on('data', function (data) {
+    adb.stdout.on('data', (data) => {
         var lines = data ? data.toString().split('\n') : [];
-        var out = lines.filter(function (x) { return x.indexOf('nativeGetEnabledTags') < 0; });
+        var out = lines.filter((x) => { return x.indexOf('nativeGetEnabledTags') < 0; });
         console.log(out.join('\n'));
     });
 
     adb.stderr.on('data', console.error);
-    adb.on('close', function (code) {
+    adb.on('close', (code) => {
         if (code > 0) {
             d.reject('Failed to run logcat command.');
         } else d.resolve();

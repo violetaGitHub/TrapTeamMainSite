@@ -52,7 +52,7 @@ function noop() {}
 // used for unimplemented methods
 //------------------------------------------------------------------------------
 console.useLogger = function (value) {
-    if (arguments.length) UseLogger = !!value;
+    if (arguments.length) UseLogger = Boolean(value);
 
     if (UseLogger) {
         if (logger.useConsole()) {
@@ -180,7 +180,7 @@ function wrappedOrigCall(orgFunc, newFunc) {
 // with one that calls both
 //------------------------------------------------------------------------------
 for (var key in console) {
-    if (typeof WinConsole[key] == "function") {
+    if (typeof WinConsole[key] === "function") {
         console[key] = wrappedOrigCall(WinConsole[key], console[key]);
     }
 }

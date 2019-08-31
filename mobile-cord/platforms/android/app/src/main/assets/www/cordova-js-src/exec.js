@@ -61,7 +61,7 @@ var cordova = require('cordova'),
 
 var messagesFromNative = [];
 var isProcessing = false;
-var resolvedPromise = typeof Promise == 'undefined' ? null : Promise.resolve();
+var resolvedPromise = typeof Promise === 'undefined' ? null : Promise.resolve();
 var nextTick = resolvedPromise ? function(fn) { resolvedPromise.then(fn); } : function(fn) { setTimeout(fn); };
 
 function androidExec(success, fail, service, action, args) {
@@ -109,7 +109,7 @@ function androidExec(success, fail, service, action, args) {
 }
 
 androidExec.init = function() {
-    bridgeSecret = +prompt('', 'gap_init:' + nativeToJsBridgeMode);
+    bridgeSecret = Number(prompt('', 'gap_init:' + nativeToJsBridgeMode));
     channel.onNativeReady.fire();
 };
 
@@ -123,7 +123,7 @@ function pollOnce(opt_fromOnlineEvent) {
         // We know there's nothing to retrieve, so no need to poll.
         return;
     }
-    var msgs = nativeApiProvider.get().retrieveJsMessages(bridgeSecret, !!opt_fromOnlineEvent);
+    var msgs = nativeApiProvider.get().retrieveJsMessages(bridgeSecret, Boolean(opt_fromOnlineEvent));
     if (msgs) {
         messagesFromNative.push(msgs);
         // Process sync since we know we're already top-of-stack.
@@ -199,7 +199,7 @@ function buildPayload(payload, message) {
     } else if (payloadKind == 'N') {
         payload.push(null);
     } else if (payloadKind == 'n') {
-        payload.push(+message.slice(1));
+        payload.push(Number(message.slice(1)));
     } else if (payloadKind == 'A') {
         var data = message.slice(1);
         payload.push(base64.toArrayBuffer(data));
@@ -209,7 +209,7 @@ function buildPayload(payload, message) {
         var multipartMessages = message.slice(1);
         while (multipartMessages !== "") {
             var spaceIdx = multipartMessages.indexOf(' ');
-            var msgLen = +multipartMessages.slice(0, spaceIdx);
+            var msgLen = Number(multipartMessages.slice(0, spaceIdx));
             var multipartMessage = multipartMessages.substr(spaceIdx + 1, msgLen);
             multipartMessages = multipartMessages.slice(spaceIdx + msgLen + 1);
             buildPayload(payload, multipartMessage);
@@ -229,7 +229,7 @@ function processMessage(message) {
         var success = firstChar == 'S';
         var keepCallback = message.charAt(1) == '1';
         var spaceIdx = message.indexOf(' ', 2);
-        var status = +message.slice(2, spaceIdx);
+        var status = Number(message.slice(2, spaceIdx));
         var nextSpaceIdx = message.indexOf(' ', spaceIdx + 1);
         var callbackId = message.slice(spaceIdx + 1, nextSpaceIdx);
         var payloadMessage = message.slice(nextSpaceIdx + 1);
@@ -274,7 +274,7 @@ function popMessageFromQueue() {
     }
 
     var spaceIdx = messageBatch.indexOf(' ');
-    var msgLen = +messageBatch.slice(0, spaceIdx);
+    var msgLen = Number(messageBatch.slice(0, spaceIdx));
     var message = messageBatch.substr(spaceIdx + 1, msgLen);
     messageBatch = messageBatch.slice(spaceIdx + msgLen + 1);
     if (messageBatch) {

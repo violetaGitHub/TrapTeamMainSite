@@ -42,15 +42,15 @@ module.exports.run = function (runOptions) {
         if (runOptions.device) return module.exports.listDevices();
         if (runOptions.emulator) return module.exports.listEmulators();
         // if no --device or --emulator flag is specified, list both devices and emulators
-        return module.exports.listDevices().then(function () {
+        return module.exports.listDevices().then(() => {
             return module.exports.listEmulators();
         });
     }
 
-    var useDevice = !!runOptions.device;
+    var useDevice = Boolean(runOptions.device);
 
     return require('./list-devices').run()
-        .then(function (devices) {
+        .then((devices) => {
             if (devices.length > 0 && !(runOptions.emulator)) {
                 useDevice = true;
                 // we also explicitly set device flag in options as we pass
@@ -58,15 +58,15 @@ module.exports.run = function (runOptions) {
                 runOptions.device = true;
                 return check_reqs.check_ios_deploy();
             }
-        }).then(function () {
+        }).then(() => {
             if (!runOptions.nobuild) {
                 return build.run(runOptions);
             } else {
                 return Q.resolve();
             }
-        }).then(function () {
+        }).then(() => {
             return build.findXCodeProjectIn(projectPath);
-        }).then(function (projectName) {
+        }).then((projectName) => {
             var appPath = path.join(projectPath, 'build', 'emulator', projectName + '.app');
             var buildOutputDir = path.join(projectPath, 'build', 'device');
 
@@ -74,14 +74,14 @@ module.exports.run = function (runOptions) {
             // we're running on device/emulator
             if (useDevice) {
                 return module.exports.checkDeviceConnected()
-                    .then(function () {
+                    .then(() => {
                         // Unpack IPA
                         var ipafile = path.join(buildOutputDir, projectName + '.ipa');
 
                         // unpack the existing platform/ios/build/device/appname.ipa (zipfile), will create a Payload folder
                         return superspawn.spawn('unzip', [ '-o', '-qq', ipafile ], { cwd: buildOutputDir, printCommand: true, stdio: 'inherit' });
                     })
-                    .then(function () {
+                    .then(() => {
                         // Uncompress IPA (zip file)
                         var appFileInflated = path.join(buildOutputDir, 'Payload', projectName + '.app');
                         var appFile = path.join(buildOutputDir, projectName + '.app');
@@ -96,7 +96,7 @@ module.exports.run = function (runOptions) {
 
                         return null;
                     })
-                    .then(function () {
+                    .then(() => {
                         appPath = path.join(projectPath, 'build', 'device', projectName + '.app');
                         var extraArgs = [];
                         if (runOptions.argv) {
@@ -104,7 +104,7 @@ module.exports.run = function (runOptions) {
                             extraArgs = module.exports.filterSupportedArgs(runOptions.argv.slice(2));
                         }
                         return module.exports.deployToDevice(appPath, runOptions.target, extraArgs);
-                    }, function () {
+                    }, () => {
                         // if device connection check failed use emulator then
                         return module.exports.deployToSim(appPath, runOptions.target);
                     });
@@ -132,7 +132,7 @@ function filterSupportedArgs (args) {
     var sargs = ['--device', '--emulator', '--nobuild', '--list', '--target', '--debug', '--release'];
     var re = new RegExp(sargs.join('|'));
 
-    args.forEach(function (element) {
+    args.forEach((element) => {
         // supported args not found, we add
         // we do a regex search because --target can be "--target=XXX"
         if (element.search(re) === -1) {
@@ -178,11 +178,11 @@ function deployToSim (appPath, target) {
     if (!target) {
         // Select target device for emulator
         return require('./list-emulator-images').run()
-            .then(function (emulators) {
+            .then((emulators) => {
                 if (emulators.length > 0) {
                     target = emulators[0];
                 }
-                emulators.forEach(function (emulator) {
+                emulators.forEach((emulator) => {
                     if (emulator.indexOf('iPhone') === 0) {
                         target = emulator;
                     }
@@ -206,7 +206,7 @@ function iossimLaunch (appPath, devicetypeid, log, exit) {
     var params = ['launch', appPath, '--devicetypeid', devicetypeid, '--log', log, exit];
 
     return superspawn.spawn(f, params, { cwd: projectPath, printCommand: true })
-        .progress(function (stdio) {
+        .progress((stdio) => {
             if (stdio.stderr) {
                 events.emit('error', `[ios-sim] ${stdio.stderr}`);
             }
@@ -214,16 +214,16 @@ function iossimLaunch (appPath, devicetypeid, log, exit) {
                 events.emit('log', `[ios-sim] ${stdio.stdout.trim()}`);
             }
         })
-        .then(function (result) {
+        .then((result) => {
             events.emit('log', 'Simulator successfully started via `ios-sim`.');
         });
 }
 
 function listDevices () {
     return require('./list-devices').run()
-        .then(function (devices) {
+        .then((devices) => {
             events.emit('log', 'Available iOS Devices:');
-            devices.forEach(function (device) {
+            devices.forEach((device) => {
                 events.emit('log', '\t' + device);
             });
         });
@@ -231,9 +231,9 @@ function listDevices () {
 
 function listEmulators () {
     return require('./list-emulator-images').run()
-        .then(function (emulators) {
+        .then((emulators) => {
             events.emit('log', 'Available iOS Simulators:');
-            emulators.forEach(function (emulator) {
+            emulators.forEach((emulator) => {
                 events.emit('log', '\t' + emulator);
             });
         });

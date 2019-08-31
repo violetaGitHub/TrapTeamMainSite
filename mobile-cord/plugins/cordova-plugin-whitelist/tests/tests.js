@@ -22,19 +22,19 @@ exports.defineAutoTests = function () {
 
     var isAndroid = (cordova.platformId === "android");
 
-    describe('Whitelist API (cordova.whitelist)', function () {
+    describe('Whitelist API (cordova.whitelist)', () => {
 
-        it("should exist", function () {
+        it("should exist", () => {
             expect(cordova.whitelist).toBeDefined();
         });
 
-        describe("Match function (cordova.whitelist.match) that checks URLs against patterns", function () {
+        describe("Match function (cordova.whitelist.match) that checks URLs against patterns", () => {
             function expectMatchWithResult(result) {
                 return (function (url, patterns, description) {
                     description = description || ((result ? "should accept " : "should reject ") + url + " for " + JSON.stringify(patterns));
                     this.result = result;
 
-                    describe("Match function", function () {
+                    describe("Match function", () => {
                         if (!isAndroid) {
                             pending("Whitelist Plugin only exists for Android");
                         }
@@ -45,21 +45,21 @@ exports.defineAutoTests = function () {
                         var originalTimeout,
                             cb;
 
-                        beforeEach(function (done) {
+                        beforeEach((done) => {
                             originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
                             jasmine.DEFAULT_TIMEOUT_INTERVAL = 7500;
                             
-                            cb = jasmine.createSpy('spy').and.callFake(function () {
+                            cb = jasmine.createSpy('spy').and.callFake(() => {
                                 done();
                             });
                             cordova.whitelist.match(url, patterns, cb);
                         });
 
-                        afterEach(function () {
+                        afterEach(() => {
                             jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
                         });
 
-                        it(description, function () {
+                        it(description, () => {
                             expect(cb).toHaveBeenCalledWith(result);
                         });
                     });
@@ -69,7 +69,7 @@ exports.defineAutoTests = function () {
             var itShouldMatch = expectMatchWithResult(true);
             var itShouldNotMatch = expectMatchWithResult(false);
 
-            it("should exist", function () {
+            it("should exist", () => {
                 expect(cordova.whitelist.match).toBeDefined();
                 expect(typeof cordova.whitelist.match).toBe("function");
             });
@@ -151,12 +151,12 @@ exports.defineAutoTests = function () {
             itShouldNotMatch('http://www.apache.org/Foo/bar',   ['*://*.apache.org/foo/*']);
         });
 
-        describe("Test function (cordova.whitelist.test) that checks against config.xml", function () {
+        describe("Test function (cordova.whitelist.test) that checks against config.xml", () => {
             function expectTestWithResult(result) {
                 return (function (url, description) {
                     description = description || ((result ? "should accept " : "should reject ") + url);
 
-                    describe("Test function", function () {
+                    describe("Test function", () => {
                         if (!isAndroid) {
                             pending("Whitelist Plugin only exists for Android");
                         }
@@ -164,20 +164,20 @@ exports.defineAutoTests = function () {
                         var cb,
                             originalTimeout;
 
-                        beforeEach(function (done) {
+                        beforeEach((done) => {
                             originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
                             jasmine.DEFAULT_TIMEOUT_INTERVAL = 7500;
-                            cb = jasmine.createSpy('spy').and.callFake(function (){
+                            cb = jasmine.createSpy('spy').and.callFake(() => {
                                 done();
                             });
                             cordova.whitelist.test(url, cb);
                         });
 
-                        afterEach(function () {
+                        afterEach(() => {
                             jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
                         });
 
-                        it(description, function () {
+                        it(description, () => {
                             expect(cb).toHaveBeenCalledWith(result);
                         });
                     });
@@ -187,7 +187,7 @@ exports.defineAutoTests = function () {
             var itShouldAccept = expectTestWithResult(true);
             var itShouldReject = expectTestWithResult(false);
 
-            it("should exist", function () {
+            it("should exist", () => {
                 expect(cordova.whitelist.test).toBeDefined();
                 expect(typeof cordova.whitelist.test).toBe("function");
             });

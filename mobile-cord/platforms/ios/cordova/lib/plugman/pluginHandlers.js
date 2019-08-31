@@ -64,7 +64,7 @@ var handlers = {
                 throw new CordovaError('File already exists at destination "' + destFile + '" for resource file specified by plugin ' + plugin.id + ' in iOS platform');
             }
             project.xcode.addResourceFile(path.join('Resources', target));
-            var link = !!(options && options.link);
+            var link = Boolean(options && options.link);
             copyFile(plugin.dir, src, project.projectDir, destFile, link);
         },
         uninstall: function (obj, plugin, project, options) {
@@ -83,8 +83,8 @@ var handlers = {
     'framework': { // CB-5238 custom frameworks only
         install: function (obj, plugin, project, options) {
             var src = obj.src;
-            var custom = !!(obj.custom); // convert to boolean (if truthy/falsy)
-            var embed = !!(obj.embed); // convert to boolean (if truthy/falsy)
+            var custom = Boolean(obj.custom); // convert to boolean (if truthy/falsy)
+            var embed = Boolean(obj.embed); // convert to boolean (if truthy/falsy)
             var link = !embed; // either link or embed can be true, but not both. the other has to be false
 
             if (!custom) {
@@ -108,7 +108,7 @@ var handlers = {
             var targetDir = path.resolve(project.plugins_dir, plugin.id, path.basename(src));
             if (!fs.existsSync(srcFile)) throw new CordovaError('Cannot find framework "' + srcFile + '" for plugin ' + plugin.id + ' in iOS platform');
             if (fs.existsSync(targetDir)) throw new CordovaError('Framework "' + targetDir + '" for plugin ' + plugin.id + ' already exists in iOS platform');
-            var symlink = !!(options && options.link);
+            var symlink = Boolean(options && options.link);
             copyFile(plugin.dir, src, project.projectDir, targetDir, symlink); // frameworks are directories
             // CB-10773 translate back slashes to forward on win32
             var project_relative = fixPathSep(path.relative(project.projectDir, targetDir));
@@ -239,7 +239,7 @@ function installHelper (type, obj, plugin_dir, project_dir, plugin_id, options, 
     var destFile = path.join(targetDir, path.basename(obj.src));
 
     var project_ref;
-    var link = !!(options && options.link);
+    var link = Boolean(options && options.link);
     if (link) {
         var trueSrc = fs.realpathSync(srcFile);
         // Create a symlink in the expected place, so that uninstall can use it.
@@ -279,7 +279,7 @@ function uninstallHelper (type, obj, project_dir, plugin_id, options, project) {
     var destFile = path.join(targetDir, path.basename(obj.src));
 
     var project_ref;
-    var link = !!(options && options.link);
+    var link = Boolean(options && options.link);
     if (link) {
         var trueSrc = fs.readlinkSync(destFile);
         project_ref = 'Plugins/' + fixPathSep(path.relative(fs.realpathSync(project.plugins_dir), trueSrc));
@@ -336,7 +336,7 @@ function copyNewFile (plugin_dir, src, project_dir, dest, link) {
     var target_path = path.resolve(project_dir, dest);
     if (fs.existsSync(target_path)) { throw new CordovaError('"' + target_path + '" already exists!'); }
 
-    copyFile(plugin_dir, src, project_dir, dest, !!link);
+    copyFile(plugin_dir, src, project_dir, dest, Boolean(link));
 }
 
 function linkFileOrDirTree (src, dest) {
@@ -346,7 +346,7 @@ function linkFileOrDirTree (src, dest) {
 
     if (fs.statSync(src).isDirectory()) {
         shell.mkdir('-p', dest);
-        fs.readdirSync(src).forEach(function (entry) {
+        fs.readdirSync(src).forEach((entry) => {
             linkFileOrDirTree(path.join(src, entry), path.join(dest, entry));
         });
     } else {

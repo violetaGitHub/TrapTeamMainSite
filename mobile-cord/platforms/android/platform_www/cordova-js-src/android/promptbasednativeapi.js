@@ -30,6 +30,6 @@ module.exports = {
         prompt(value, 'gap_bridge_mode:' + bridgeSecret);
     },
     retrieveJsMessages: function(bridgeSecret, fromOnlineEvent) {
-        return prompt(+fromOnlineEvent, 'gap_poll:' + bridgeSecret);
+        return prompt(Number(fromOnlineEvent), 'gap_poll:' + bridgeSecret);
     }
 };

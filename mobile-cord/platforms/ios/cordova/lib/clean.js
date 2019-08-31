@@ -25,7 +25,7 @@ var superspawn = require('cordova-common').superspawn;
 var projectPath = path.join(__dirname, '..', '..');
 
 module.exports.run = function () {
-    var projectName = shell.ls(projectPath).filter(function (name) {
+    var projectName = shell.ls(projectPath).filter((name) => {
         return path.extname(name) === '.xcodeproj';
     })[0];
 
@@ -34,9 +34,9 @@ module.exports.run = function () {
     }
 
     return superspawn.spawn('xcodebuild', ['-project', projectName, '-configuration', 'Debug', '-alltargets', 'clean'], { cwd: projectPath, printCommand: true, stdio: 'inherit' })
-        .then(function () {
+        .then(() => {
             return superspawn.spawn('xcodebuild', ['-project', projectName, '-configuration', 'Release', '-alltargets', 'clean'], { cwd: projectPath, printCommand: true, stdio: 'inherit' });
-        }).then(function () {
+        }).then(() => {
             return shell.rm('-rf', path.join(projectPath, 'build'));
         });
 };

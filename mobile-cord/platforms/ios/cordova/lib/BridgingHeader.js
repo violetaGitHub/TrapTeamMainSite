@@ -56,7 +56,7 @@ BridgingHeader.prototype.write = function () {
 };
 
 BridgingHeader.prototype.__stringifyForBridgingHeader = function (bridgingHeaders) {
-    return bridgingHeaders.map(function (obj) {
+    return bridgingHeaders.map((obj) => {
         return obj.code;
     }).join('');
 };
@@ -119,7 +119,7 @@ BridgingHeader.prototype.__parseForBridgingHeader = function (text) {
 };
 
 function preg_quote (str, delimiter) {
-    return (str + '').replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + (delimiter || '') + '-]', 'g'), '\\$&');
+    return (String(str)).replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + (delimiter || '') + '-]', 'g'), '\\$&');
 }
 
 module.exports.BridgingHeader = BridgingHeader;

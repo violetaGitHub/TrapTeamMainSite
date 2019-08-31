@@ -100,7 +100,7 @@ Api.createPlatform = function (destination, config, options, events) {
     events = setupEvents(events);
     var result;
     try {
-        result = require('../../lib/create').create(destination, config, options, events).then(function (destination) {
+        result = require('../../lib/create').create(destination, config, options, events).then((destination) => {
             var PlatformApi = require(path.resolve(destination, 'cordova/Api'));
             return new PlatformApi(PLATFORM, destination, events);
         });
@@ -131,7 +131,7 @@ Api.updatePlatform = function (destination, options, events) {
     events = setupEvents(events);
     var result;
     try {
-        result = require('../../lib/create').update(destination, options, events).then(function (destination) {
+        result = require('../../lib/create').update(destination, options, events).then((destination) => {
             var PlatformApi = require(path.resolve(destination, 'cordova/Api'));
             return new PlatformApi('android', destination, events);
         });
@@ -208,14 +208,14 @@ Api.prototype.addPlugin = function (plugin, installOptions) {
         installOptions.variables.PACKAGE_NAME = project.getPackageName();
     }
 
-    return Q().then(function () {
+    return Q().then(() => {
         return PluginManager.get(self.platform, self.locations, project).addPlugin(plugin, installOptions);
-    }).then(function () {
+    }).then(() => {
         if (plugin.getFrameworks(this.platform).length === 0) return;
         selfEvents.emit('verbose', 'Updating build files since android plugin contained <framework>');
         // This should pick the correct builder, not just get gradle
         require('./lib/builders/builders').getBuilder().prepBuildFiles();
-    }.bind(this))
+    })
         // CB-11022 Return truthy value to prevent running prepare after
         .thenResolve(true);
 };
@@ -242,12 +242,12 @@ Api.prototype.removePlugin = function (plugin, uninstallOptions) {
 
     return PluginManager.get(this.platform, this.locations, project)
         .removePlugin(plugin, uninstallOptions)
-        .then(function () {
+        .then(() => {
             if (plugin.getFrameworks(this.platform).length === 0) return;
 
             selfEvents.emit('verbose', 'Updating build files since android plugin contained <framework>');
             require('./lib/builders/builders').getBuilder().prepBuildFiles();
-        }.bind(this))
+        })
         // CB-11022 Return truthy value to prevent running prepare after
         .thenResolve(true);
 };
@@ -300,11 +300,11 @@ Api.prototype.removePlugin = function (plugin, uninstallOptions) {
 Api.prototype.build = function (buildOptions) {
     var self = this;
 
-    return require('./lib/check_reqs').run().then(function () {
+    return require('./lib/check_reqs').run().then(() => {
         return require('./lib/build').run.call(self, buildOptions);
-    }).then(function (buildResults) {
+    }).then((buildResults) => {
         // Cast build result to array of build artifacts
-        return buildResults.apkPaths.map(function (apkPath) {
+        return buildResults.apkPaths.map((apkPath) => {
             return {
                 buildType: buildResults.buildType,
                 buildMethod: buildResults.buildMethod,
@@ -329,7 +329,7 @@ Api.prototype.build = function (buildOptions) {
  */
 Api.prototype.run = function (runOptions) {
     var self = this;
-    return require('./lib/check_reqs').run().then(function () {
+    return require('./lib/check_reqs').run().then(() => {
         return require('./lib/run').run.call(self, runOptions);
     });
 };
@@ -348,9 +348,9 @@ Api.prototype.clean = function (cleanOptions) {
         cleanOptions = {};
     }
 
-    return require('./lib/check_reqs').run().then(function () {
+    return require('./lib/check_reqs').run().then(() => {
         return require('./lib/build').runClean.call(self, cleanOptions);
-    }).then(function () {
+    }).then(() => {
         return require('./lib/prepare').clean.call(self, cleanOptions);
     });
 };

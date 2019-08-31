@@ -71,10 +71,10 @@ module.exports.get_target = function () {
 
 // Returns a promise. Called only by build and clean commands.
 module.exports.check_ant = function () {
-    return superspawn.spawn('ant', ['-version']).then(function (output) {
+    return superspawn.spawn('ant', ['-version']).then((output) => {
         // Parse Ant version from command output
         return /version ((?:\d+\.)+(?:\d+))/i.exec(output)[1];
-    }).catch(function (err) {
+    }).catch((err) => {
         if (err) {
             throw new CordovaError('Failed to run `ant -version`. Make sure you have `ant` on your $PATH.');
         }
@@ -144,8 +144,8 @@ module.exports.check_gradle = function () {
 // Returns a promise.
 module.exports.check_java = function () {
     var javacPath = forgivingWhichSync('javac');
-    var hasJavaHome = !!process.env['JAVA_HOME'];
-    return Q().then(function () {
+    var hasJavaHome = Boolean(process.env['JAVA_HOME']);
+    return Q().then(() => {
         if (hasJavaHome) {
             // Windows java installer doesn't add javac to PATH, nor set JAVA_HOME (ugh).
             if (!javacPath) {
@@ -157,9 +157,9 @@ module.exports.check_java = function () {
                 var find_java = '/usr/libexec/java_home';
                 var default_java_error_msg = 'Failed to find \'JAVA_HOME\' environment variable. Try setting it manually.';
                 if (fs.existsSync(find_java)) {
-                    return superspawn.spawn(find_java).then(function (stdout) {
+                    return superspawn.spawn(find_java).then((stdout) => {
                         process.env['JAVA_HOME'] = stdout.trim();
-                    }).catch(function (err) {
+                    }).catch((err) => {
                         if (err) {
                             throw new CordovaError(default_java_error_msg);
                         }
@@ -193,7 +193,7 @@ module.exports.check_java = function () {
                 }
             }
         }
-    }).then(function () {
+    }).then(() => {
         return Q.denodeify(child_process.exec)('javac -version')
             .then(outputs => {
                 // outputs contains two entries: stdout and stderr
@@ -217,11 +217,11 @@ module.exports.check_java = function () {
 
 // Returns a promise.
 module.exports.check_android = function () {
-    return Q().then(function () {
+    return Q().then(() => {
         var androidCmdPath = forgivingWhichSync('android');
         var adbInPath = forgivingWhichSync('adb');
         var avdmanagerInPath = forgivingWhichSync('avdmanager');
-        var hasAndroidHome = !!process.env['ANDROID_HOME'] && fs.existsSync(process.env['ANDROID_HOME']);
+        var hasAndroidHome = Boolean(process.env['ANDROID_HOME']) && fs.existsSync(process.env['ANDROID_HOME']);
         function maybeSetAndroidHome (value) {
             if (!hasAndroidHome && fs.existsSync(value)) {
                 hasAndroidHome = true;
@@ -342,7 +342,7 @@ module.exports.check_android_target = function (originalError) {
     //   Google Inc.:Google APIs:20
     //   Google Inc.:Glass Development Kit Preview:20
     var desired_api_level = module.exports.get_target();
-    return android_sdk.list_targets().then(function (targets) {
+    return android_sdk.list_targets().then((targets) => {
         if (targets.indexOf(desired_api_level) >= 0) {
             return targets;
         }
@@ -362,7 +362,7 @@ module.exports.check_android_target = function (originalError) {
 
 // Returns a promise.
 module.exports.run = function () {
-    return Q.all([this.check_java(), this.check_android()]).then(function (values) {
+    return Q.all([this.check_java(), this.check_android()]).then((values) => {
         console.log('Checking Java JDK and Android SDK versions');
         console.log('ANDROID_SDK_ROOT=' + process.env['ANDROID_SDK_ROOT'] + ' (recommended setting)');
         console.log('ANDROID_HOME=' + process.env['ANDROID_HOME'] + ' (DEPRECATED)');
@@ -420,16 +420,16 @@ module.exports.check_all = function () {
     ];
 
     // Then execute requirement checks one-by-one
-    return checkFns.reduce(function (promise, checkFn, idx) {
+    return checkFns.reduce((promise, checkFn, idx) => {
         // Update each requirement with results
         var requirement = requirements[idx];
-        return promise.then(checkFn).then(function (version) {
+        return promise.then(checkFn).then((version) => {
             requirement.installed = true;
             requirement.metadata.version = version;
-        }, function (err) {
+        }, (err) => {
             requirement.metadata.reason = err instanceof Error ? err.message : err;
         });
-    }, Q()).then(function () {
+    }, Q()).then(() => {
         // When chain is completed, return requirements array to upstream API
         return requirements;
     });
