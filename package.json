@@ -2,7 +2,7 @@
   "name": "trapteam.cc",
   "version": "1.0.0",
   "description": "",
-  "main": "git.js",
+  "main": "main.js",
   "dependencies": {
     "choco": "^0.2.1",
     "connect": "^3.7.0",
@@ -15,6 +15,7 @@
     "snyk": "^1.221.1"
   },
   "devDependencies": {
+    "electron": "^6.0.6",
     "eslint": "^6.2.2",
     "eslint-plugin-promise": "^4.2.1",
     "mocha": "^6.2.0"
@@ -22,7 +23,8 @@
   "scripts": {
     "test": "node git.js",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "start": "electron ."
   },
   "author": "Steviebeenz <bowyers.nz@gmail.com>",
   "license": "ISC",
