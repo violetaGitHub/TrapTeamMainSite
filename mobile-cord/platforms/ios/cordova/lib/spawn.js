@@ -37,7 +37,7 @@ module.exports = function (cmd, args, opt_cwd) {
     try {
         var child = proc.spawn(cmd, args, { cwd: opt_cwd, stdio: 'inherit' });
 
-        child.on('exit', function (code) {
+        child.on('exit', (code) => {
             if (code) {
                 d.reject('Error code ' + code + ' for command: ' + cmd + ' with args: ' + args);
             } else {

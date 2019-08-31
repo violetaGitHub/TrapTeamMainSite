@@ -76,7 +76,7 @@ module.exports = {
 
         // Let native code know we are all done on the JS side.
         // Native code will then un-hide the WebView.
-        channel.onCordovaReady.subscribe(function() {
+        channel.onCordovaReady.subscribe(() => {
             exec(onMessageFromNative, null, APP_PLUGIN_NAME, 'messageChannel', []);
             exec(null, null, APP_PLUGIN_NAME, "show", []);
         });

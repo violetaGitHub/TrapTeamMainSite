@@ -64,7 +64,7 @@ function parseOpts (options, resolvedTarget, projectRoot) {
 
     if (options.argv.keystore) { packageArgs.keystore = path.relative(projectRoot, path.resolve(options.argv.keystore)); }
 
-    ['alias', 'storePassword', 'password', 'keystoreType'].forEach(function (flagName) {
+    ['alias', 'storePassword', 'password', 'keystoreType'].forEach((flagName) => {
         if (options.argv[flagName]) { packageArgs[flagName] = options.argv[flagName]; }
     });
 
@@ -89,7 +89,7 @@ function parseOpts (options, resolvedTarget, projectRoot) {
                 events.emit('log', 'Reading the keystore from: ' + packageArgs.keystore);
             }
 
-            ['alias', 'storePassword', 'password', 'keystoreType'].forEach(function (key) {
+            ['alias', 'storePassword', 'password', 'keystoreType'].forEach((key) => {
                 packageArgs[key] = packageArgs[key] || androidInfo[key];
             });
         }
@@ -117,7 +117,7 @@ module.exports.runClean = function (options) {
     var opts = parseOpts(options, null, this.root);
     var builder = builders.getBuilder();
 
-    return builder.prepEnv(opts).then(function () {
+    return builder.prepEnv(opts).then(() => {
         return builder.clean(opts);
     });
 };
@@ -138,12 +138,12 @@ module.exports.run = function (options, optResolvedTarget) {
     var opts = parseOpts(options, optResolvedTarget, this.root);
     var builder = builders.getBuilder();
 
-    return builder.prepEnv(opts).then(function () {
+    return builder.prepEnv(opts).then(() => {
         if (opts.prepEnv) {
             events.emit('verbose', 'Build file successfully prepared.');
             return;
         }
-        return builder.build(opts).then(function () {
+        return builder.build(opts).then(() => {
             var apkPaths = builder.findOutputApks(opts.buildType, opts.arch);
             events.emit('log', 'Built the following apk(s): \n\t' + apkPaths.join('\n\t'));
             return {
@@ -160,29 +160,29 @@ module.exports.run = function (options, optResolvedTarget) {
  */
 module.exports.detectArchitecture = function (target) {
     function helper () {
-        return Adb.shell(target, 'cat /proc/cpuinfo').then(function (output) {
+        return Adb.shell(target, 'cat /proc/cpuinfo').then((output) => {
             return /intel/i.exec(output) ? 'x86' : 'arm';
         });
     }
     // It sometimes happens (at least on OS X), that this command will hang forever.
     // To fix it, either unplug & replug device, or restart adb server.
-    return helper().timeout(1000, new CordovaError('Device communication timed out. Try unplugging & replugging the device.')).then(null, function (err) {
-        if (/timed out/.exec('' + err)) {
+    return helper().timeout(1000, new CordovaError('Device communication timed out. Try unplugging & replugging the device.')).then(null, (err) => {
+        if (/timed out/.exec(String(err))) {
             // adb kill-server doesn't seem to do the trick.
             // Could probably find a x-platform version of killall, but I'm not actually
             // sure that this scenario even happens on non-OSX machines.
             events.emit('verbose', 'adb timed out while detecting device/emulator architecture. Killing adb and trying again.');
-            return spawn('killall', ['adb']).then(function () {
-                return helper().then(null, function () {
+            return spawn('killall', ['adb']).then(() => {
+                return helper().then(null, () => {
                     // The double kill is sadly often necessary, at least on mac.
                     events.emit('warn', 'adb timed out a second time while detecting device/emulator architecture. Killing adb and trying again.');
-                    return spawn('killall', ['adb']).then(function () {
-                        return helper().then(null, function () {
+                    return spawn('killall', ['adb']).then(() => {
+                        return helper().then(null, () => {
                             return Q.reject(new CordovaError('adb timed out a third time while detecting device/emulator architecture. Try unplugging & replugging the device.'));
                         });
                     });
                 });
-            }, function () {
+            }, () => {
                 // For non-killall OS's.
                 return Q.reject(err);
             });
@@ -192,7 +192,7 @@ module.exports.detectArchitecture = function (target) {
 };
 
 module.exports.findBestApkForArchitecture = function (buildResults, arch) {
-    var paths = buildResults.apkPaths.filter(function (p) {
+    var paths = buildResults.apkPaths.filter((p) => {
         var apkName = path.basename(p);
         if (buildResults.buildType === 'debug') {
             return /-debug/.exec(apkName);
@@ -247,7 +247,7 @@ PackageInfo.prototype = {
     toProperties: function () {
         var self = this;
         var result = '';
-        Object.keys(self).forEach(function (key) {
+        Object.keys(self).forEach((key) => {
             result += self[key].name;
             result += '=';
             result += self[key].value.replace(/\\/g, '\\\\');

@@ -98,7 +98,7 @@ AndroidManifest.prototype.getActivity = function () {
     };
 };
 
-['minSdkVersion', 'maxSdkVersion', 'targetSdkVersion'].forEach(function (sdkPrefName) {
+['minSdkVersion', 'maxSdkVersion', 'targetSdkVersion'].forEach((sdkPrefName) => {
     // Copy variable reference to avoid closure issues
     var prefName = sdkPrefName;
 

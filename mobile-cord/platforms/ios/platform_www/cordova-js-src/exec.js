@@ -38,7 +38,7 @@ function massageArgsJsToNative(args) {
         return args;
     }
     var ret = [];
-    args.forEach(function(arg, i) {
+    args.forEach((arg, i) => {
         if (utils.typeName(arg) == 'ArrayBuffer') {
             ret.push({
                 'CDVType': 'ArrayBuffer',
@@ -73,7 +73,7 @@ function convertMessageToArgsNativeToJs(message) {
     if (!message || !message.hasOwnProperty('CDVType')) {
         args.push(message);
     } else if (message.CDVType == 'MultiPart') {
-        message.messages.forEach(function(e) {
+        message.messages.forEach((e) => {
             args.push(massageMessageNativeToJs(e));
         });
     } else {
@@ -158,7 +158,7 @@ function handleBridgeChange() {
             execProxy(callbacks.success, callbacks.fail, service, action, actionArgs);
             
             commandString = commandQueue.shift();
-        };
+        }
         return true;
     }
     
@@ -188,7 +188,7 @@ function pokeNative() {
     // created, but since unload events fire only once, it doesn't work in the normal
     // case of iframe reuse (where unload will have already fired due to the attempted
     // navigation of the page).
-    failSafeTimerId = setTimeout(function() {
+    failSafeTimerId = setTimeout(() => {
         if (commandQueue.length) {
             // CB-10106 - flush the queue on bridge change
             if (!handleBridgeChange()) {
@@ -214,7 +214,7 @@ iOSExec.nativeFetchMessages = function() {
 };
 
 iOSExec.nativeCallback = function(callbackId, status, message, keepCallback, debug) {
-    return iOSExec.nativeEvalAndFetch(function() {
+    return iOSExec.nativeEvalAndFetch(() => {
         var success = status === 0 || status === 1;
         var args = convertMessageToArgsNativeToJs(message);
         function nc2() {
@@ -245,7 +245,7 @@ function cordovaExec() {
 
 function execProxy() {
     cordovaExec().apply(null, arguments);
-};
+}
 
 execProxy.nativeFetchMessages = function() {
     return cordovaExec().nativeFetchMessages.apply(null, arguments);

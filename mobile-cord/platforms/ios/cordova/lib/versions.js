@@ -24,7 +24,7 @@ var Q = require('q');
 
 exports.get_apple_ios_version = function () {
     var d = Q.defer();
-    child_process.exec('xcodebuild -showsdks', function (error, stdout, stderr) {
+    child_process.exec('xcodebuild -showsdks', (error, stdout, stderr) => {
         if (error) {
             d.reject(stderr);
         } else {
@@ -32,7 +32,7 @@ exports.get_apple_ios_version = function () {
         }
     });
 
-    return d.promise.then(function (output) {
+    return d.promise.then((output) => {
         var regex = /[0-9]*\.[0-9]*/;
         var versions = [];
         var regexIOS = /^iOS \d+/;
@@ -45,14 +45,14 @@ exports.get_apple_ios_version = function () {
         versions.sort();
         console.log(versions[0]);
         return Q();
-    }, function (stderr) {
+    }, (stderr) => {
         return Q.reject(stderr);
     });
 };
 
 exports.get_apple_osx_version = function () {
     var d = Q.defer();
-    child_process.exec('xcodebuild -showsdks', function (error, stdout, stderr) {
+    child_process.exec('xcodebuild -showsdks', (error, stdout, stderr) => {
         if (error) {
             d.reject(stderr);
         } else {
@@ -60,7 +60,7 @@ exports.get_apple_osx_version = function () {
         }
     });
 
-    return d.promise.then(function (output) {
+    return d.promise.then((output) => {
         var regex = /[0-9]*\.[0-9]*/;
         var versions = [];
         var regexOSX = /^macOS \d+/;
@@ -73,14 +73,14 @@ exports.get_apple_osx_version = function () {
         versions.sort();
         console.log(versions[0]);
         return Q();
-    }, function (stderr) {
+    }, (stderr) => {
         return Q.reject(stderr);
     });
 };
 
 exports.get_apple_xcode_version = function () {
     var d = Q.defer();
-    child_process.exec('xcodebuild -version', function (error, stdout, stderr) {
+    child_process.exec('xcodebuild -version', (error, stdout, stderr) => {
         var versionMatch = /Xcode (.*)/.exec(stdout);
         if (error || !versionMatch) {
             d.reject(stderr);
@@ -98,7 +98,7 @@ exports.get_apple_xcode_version = function () {
  */
 exports.get_ios_deploy_version = function () {
     var d = Q.defer();
-    child_process.exec('ios-deploy --version', function (error, stdout, stderr) {
+    child_process.exec('ios-deploy --version', (error, stdout, stderr) => {
         if (error) {
             d.reject(stderr);
         } else {
@@ -115,7 +115,7 @@ exports.get_ios_deploy_version = function () {
  */
 exports.get_cocoapods_version = function () {
     var d = Q.defer();
-    child_process.exec('pod --version', function (error, stdout, stderr) {
+    child_process.exec('pod --version', (error, stdout, stderr) => {
         if (error) {
             d.reject(stderr);
         } else {
@@ -132,7 +132,7 @@ exports.get_cocoapods_version = function () {
  */
 exports.get_ios_sim_version = function () {
     var d = Q.defer();
-    child_process.exec('ios-sim --version', function (error, stdout, stderr) {
+    child_process.exec('ios-sim --version', (error, stdout, stderr) => {
         if (error) {
             d.reject(stderr);
         } else {
@@ -168,7 +168,7 @@ exports.get_tool_version = function (toolName) {
  */
 exports.compareVersions = function (version1, version2) {
     function parseVer (version) {
-        return version.split('.').map(function (value) {
+        return version.split('.').map((value) => {
             // try to convert version segment to Number
             var parsed = Number(value);
             // Number constructor is strict enough and will return NaN

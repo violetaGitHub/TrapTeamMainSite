@@ -32,15 +32,15 @@ var events = require('cordova-common').events;
  * @param lookHarder When true, try restarting adb if no devices are found.
  */
 module.exports.list = function (lookHarder) {
-    return Adb.devices().then(function (list) {
+    return Adb.devices().then((list) => {
         if (list.length === 0 && lookHarder) {
             // adb kill-server doesn't seem to do the trick.
             // Could probably find a x-platform version of killall, but I'm not actually
             // sure that this scenario even happens on non-OSX machines.
-            return spawn('killall', ['adb']).then(function () {
+            return spawn('killall', ['adb']).then(() => {
                 events.emit('verbose', 'Restarting adb to see if more devices are detected.');
                 return Adb.devices();
-            }, function () {
+            }, () => {
                 // For non-killall OS's.
                 return list;
             });
@@ -50,7 +50,7 @@ module.exports.list = function (lookHarder) {
 };
 
 module.exports.resolveTarget = function (target) {
-    return this.list(true).then(function (device_list) {
+    return this.list(true).then((device_list) => {
         if (!device_list || !device_list.length) {
             return Promise.reject(new CordovaError('Failed to deploy to device, no devices found.'));
         }
@@ -61,7 +61,7 @@ module.exports.resolveTarget = function (target) {
             return Promise.reject(new CordovaError('ERROR: Unable to find target \'' + target + '\'.'));
         }
 
-        return build.detectArchitecture(target).then(function (arch) {
+        return build.detectArchitecture(target).then((arch) => {
             return { target: target, arch: arch, isEmulator: false };
         });
     });
@@ -73,12 +73,12 @@ module.exports.resolveTarget = function (target) {
  * Returns a promise.
  */
 module.exports.install = function (target, buildResults) {
-    return Promise.resolve().then(function () {
+    return Promise.resolve().then(() => {
         if (target && typeof target === 'object') {
             return target;
         }
         return module.exports.resolveTarget(target);
-    }).then(function (resolvedTarget) {
+    }).then((resolvedTarget) => {
         var apk_path = build.findBestApkForArchitecture(buildResults, resolvedTarget.arch);
         var manifest = new AndroidManifest(path.join(__dirname, '../../app/src/main/AndroidManifest.xml'));
         var pkgName = manifest.getPackageId();
@@ -86,7 +86,7 @@ module.exports.install = function (target, buildResults) {
         events.emit('log', 'Using apk: ' + apk_path);
         events.emit('log', 'Package name: ' + pkgName);
 
-        return Adb.install(resolvedTarget.target, apk_path, { replace: true }).catch(function (error) {
+        return Adb.install(resolvedTarget.target, apk_path, { replace: true }).catch((error) => {
             // CB-9557 CB-10157 only uninstall and reinstall app if the one that
             // is already installed on device was signed w/different certificate
             if (!/INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES/.test(error.toString())) { throw error; }
@@ -96,15 +96,15 @@ module.exports.install = function (target, buildResults) {
 
             // This promise is always resolved, even if 'adb uninstall' fails to uninstall app
             // or the app doesn't installed at all, so no error catching needed.
-            return Adb.uninstall(resolvedTarget.target, pkgName).then(function () {
+            return Adb.uninstall(resolvedTarget.target, pkgName).then(() => {
                 return Adb.install(resolvedTarget.target, apk_path, { replace: true });
             });
-        }).then(function () {
+        }).then(() => {
             // unlock screen
             return Adb.shell(resolvedTarget.target, 'input keyevent 82');
-        }).then(function () {
+        }).then(() => {
             return Adb.start(resolvedTarget.target, launchName);
-        }).then(function () {
+        }).then(() => {
             events.emit('log', 'LAUNCH SUCCESS');
         });
     });

@@ -18,7 +18,7 @@
  specific language governing permissions and limitations
  under the License.
 */
-;(function() {
+(function() {
 var PLATFORM_VERSION_BUILD_LABEL = '5.0.1';
 // file: src/scripts/require.js
 
@@ -94,7 +94,7 @@ if (typeof module === 'object' && typeof require === 'function') {
 }
 
 // file: src/cordova.js
-define("cordova", function(require, exports, module) {
+define("cordova", (require, exports, module) => {
 
 // Workaround for Windows 10 in hosted environment case
 // http://www.w3.org/html/wg/drafts/html/master/browsers.html#named-access-on-the-window-object
@@ -218,7 +218,7 @@ var cordova = {
             if (bNoDetach) {
                 documentEventHandlers[type].fire(evt);
             } else {
-                setTimeout(function () {
+                setTimeout(() => {
                     // Fire deviceready on listeners that were registered before cordova.js was loaded.
                     if (type === 'deviceready') {
                         document.dispatchEvent(evt);
@@ -233,7 +233,7 @@ var cordova = {
     fireWindowEvent: function (type, data) {
         var evt = createEvent(type, data);
         if (typeof windowEventHandlers[type] !== 'undefined') {
-            setTimeout(function () {
+            setTimeout(() => {
                 windowEventHandlers[type].fire(evt);
             }, 0);
         } else {
@@ -310,7 +310,7 @@ var cordova = {
         }
     },
     addConstructor: function (func) {
-        channel.onCordovaReady.subscribe(function () {
+        channel.onCordovaReady.subscribe(() => {
             try {
                 func();
             } catch (e) {
@@ -325,7 +325,7 @@ module.exports = cordova;
 });
 
 // file: src/common/argscheck.js
-define("cordova/argscheck", function(require, exports, module) {
+define("cordova/argscheck", (require, exports, module) => {
 
 var utils = require('cordova/utils');
 
@@ -389,7 +389,7 @@ moduleExports.enableChecks = true;
 });
 
 // file: src/common/base64.js
-define("cordova/base64", function(require, exports, module) {
+define("cordova/base64", (require, exports, module) => {
 
 var base64 = exports;
 
@@ -455,7 +455,7 @@ function uint8ToBase64 (rawData) {
 });
 
 // file: src/common/builder.js
-define("cordova/builder", function(require, exports, module) {
+define("cordova/builder", (require, exports, module) => {
 
 var utils = require('cordova/utils');
 
@@ -477,7 +477,7 @@ function clobber (obj, key, value) {
     }
     // Getters can only be overridden by getters.
     if (needsProperty || obj[key] !== value) {
-        utils.defineGetter(obj, key, function () {
+        utils.defineGetter(obj, key, () => {
             return value;
         });
     }
@@ -485,7 +485,7 @@ function clobber (obj, key, value) {
 
 function assignOrWrapInDeprecateGetter (obj, key, value, message) {
     if (message) {
-        utils.defineGetter(obj, key, function () {
+        utils.defineGetter(obj, key, () => {
             console.log(message);
             delete obj[key];
             clobber(obj, key, value);
@@ -497,7 +497,7 @@ function assignOrWrapInDeprecateGetter (obj, key, value, message) {
 }
 
 function include (parent, objects, clobber, merge) {
-    each(objects, function (obj, key) {
+    each(objects, (obj, key) => {
         try {
             var result = obj.path ? require(obj.path) : {};
 
@@ -573,7 +573,7 @@ exports.replaceHookForTesting = function () {};
 });
 
 // file: src/common/channel.js
-define("cordova/channel", function(require, exports, module) {
+define("cordova/channel", (require, exports, module) => {
 
 var utils = require('cordova/utils');
 var nextGuid = 1;
@@ -732,7 +732,7 @@ Channel.prototype.subscribe = function (eventListenerOrFunction, eventListener) 
 
     if (!guid) {
         // First time any channel has seen this subscriber
-        guid = '' + nextGuid++;
+        guid = String(nextGuid++);
     }
     handleEvent.observer_guid = guid;
     eventListenerOrFunction.observer_guid = guid;
@@ -835,7 +835,7 @@ module.exports = channel;
 });
 
 // file: /Users/dpogue/Coding/cordova-ios/cordova-js-src/exec.js
-define("cordova/exec", function(require, exports, module) {
+define("cordova/exec", (require, exports, module) => {
 
 /*global require, module, atob, document */
 
@@ -856,7 +856,7 @@ function massageArgsJsToNative(args) {
         return args;
     }
     var ret = [];
-    args.forEach(function(arg, i) {
+    args.forEach((arg, i) => {
         if (utils.typeName(arg) == 'ArrayBuffer') {
             ret.push({
                 'CDVType': 'ArrayBuffer',
@@ -891,7 +891,7 @@ function convertMessageToArgsNativeToJs(message) {
     if (!message || !message.hasOwnProperty('CDVType')) {
         args.push(message);
     } else if (message.CDVType == 'MultiPart') {
-        message.messages.forEach(function(e) {
+        message.messages.forEach((e) => {
             args.push(massageMessageNativeToJs(e));
         });
     } else {
@@ -976,7 +976,7 @@ function handleBridgeChange() {
             execProxy(callbacks.success, callbacks.fail, service, action, actionArgs);
             
             commandString = commandQueue.shift();
-        };
+        }
         return true;
     }
     
@@ -1006,7 +1006,7 @@ function pokeNative() {
     // created, but since unload events fire only once, it doesn't work in the normal
     // case of iframe reuse (where unload will have already fired due to the attempted
     // navigation of the page).
-    failSafeTimerId = setTimeout(function() {
+    failSafeTimerId = setTimeout(() => {
         if (commandQueue.length) {
             // CB-10106 - flush the queue on bridge change
             if (!handleBridgeChange()) {
@@ -1032,7 +1032,7 @@ iOSExec.nativeFetchMessages = function() {
 };
 
 iOSExec.nativeCallback = function(callbackId, status, message, keepCallback, debug) {
-    return iOSExec.nativeEvalAndFetch(function() {
+    return iOSExec.nativeEvalAndFetch(() => {
         var success = status === 0 || status === 1;
         var args = convertMessageToArgsNativeToJs(message);
         function nc2() {
@@ -1063,7 +1063,7 @@ function cordovaExec() {
 
 function execProxy() {
     cordovaExec().apply(null, arguments);
-};
+}
 
 execProxy.nativeFetchMessages = function() {
     return cordovaExec().nativeFetchMessages.apply(null, arguments);
@@ -1082,7 +1082,7 @@ module.exports = execProxy;
 });
 
 // file: src/common/exec/proxy.js
-define("cordova/exec/proxy", function(require, exports, module) {
+define("cordova/exec/proxy", (require, exports, module) => {
 
 // internal map of proxy function
 var CommandProxyMap = {};
@@ -1112,7 +1112,7 @@ module.exports = {
 });
 
 // file: src/common/init.js
-define("cordova/init", function(require, exports, module) {
+define("cordova/init", (require, exports, module) => {
 
 var channel = require('cordova/channel');
 var cordova = require('cordova');
@@ -1131,7 +1131,7 @@ function logUnfiredChannels (arr) {
     }
 }
 
-window.setTimeout(function () {
+window.setTimeout(() => {
     if (channel.onDeviceReady.state !== 2) {
         console.log('deviceready has not fired after 5 seconds.');
         logUnfiredChannels(platformInitChannelsArray);
@@ -1153,7 +1153,7 @@ function replaceNavigator (origNavigator) {
                 newNavigator[key] = origNavigator[key].bind(origNavigator);
             } else {
                 (function (k) {
-                    utils.defineGetterSetter(newNavigator, key, function () {
+                    utils.defineGetterSetter(newNavigator, key, () => {
                         return origNavigator[k];
                     });
                 })(key);
@@ -1188,7 +1188,7 @@ channel.onDeviceReady = cordova.addStickyDocumentEventHandler('deviceready');
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
     channel.onDOMContentLoaded.fire();
 } else {
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', () => {
         channel.onDOMContentLoaded.fire();
     }, false);
 }
@@ -1209,8 +1209,8 @@ platform.bootstrap && platform.bootstrap();
 
 // Wrap in a setTimeout to support the use-case of having plugin JS appended to cordova.js.
 // The delay allows the attached modules to be defined before the plugin loader looks for them.
-setTimeout(function () {
-    pluginloader.load(function () {
+setTimeout(() => {
+    pluginloader.load(() => {
         channel.onPluginsReady.fire();
     });
 }, 0);
@@ -1218,7 +1218,7 @@ setTimeout(function () {
 /**
  * Create all cordova objects once native side is ready.
  */
-channel.join(function () {
+channel.join(() => {
     modulemapper.mapModules(window);
 
     platform.initialize && platform.initialize();
@@ -1229,7 +1229,7 @@ channel.join(function () {
     // Fire onDeviceReady event once page has fully loaded, all
     // constructors have run and cordova info has been received from native
     // side.
-    channel.join(function () {
+    channel.join(() => {
         require('cordova').fireDocumentEvent('deviceready');
     }, channel.deviceReadyChannelsArray);
 
@@ -1238,7 +1238,7 @@ channel.join(function () {
 });
 
 // file: src/common/modulemapper.js
-define("cordova/modulemapper", function(require, exports, module) {
+define("cordova/modulemapper", (require, exports, module) => {
 
 var builder = require('cordova/builder');
 var moduleMap = define.moduleMap; // eslint-disable-line no-undef
@@ -1338,7 +1338,7 @@ exports.reset();
 });
 
 // file: /Users/dpogue/Coding/cordova-ios/cordova-js-src/platform.js
-define("cordova/platform", function(require, exports, module) {
+define("cordova/platform", (require, exports, module) => {
 
 module.exports = {
     id: 'ios',
@@ -1354,7 +1354,7 @@ module.exports = {
 });
 
 // file: /Users/dpogue/Coding/cordova-ios/cordova-js-src/plugin/ios/console.js
-define("cordova/plugin/ios/console", function(require, exports, module) {
+define("cordova/plugin/ios/console", (require, exports, module) => {
 
 //------------------------------------------------------------------------------
 
@@ -1389,7 +1389,7 @@ function noop() {}
 // used for unimplemented methods
 //------------------------------------------------------------------------------
 console.useLogger = function (value) {
-    if (arguments.length) UseLogger = !!value;
+    if (arguments.length) UseLogger = Boolean(value);
 
     if (UseLogger) {
         if (logger.useConsole()) {
@@ -1517,7 +1517,7 @@ function wrappedOrigCall(orgFunc, newFunc) {
 // with one that calls both
 //------------------------------------------------------------------------------
 for (var key in console) {
-    if (typeof WinConsole[key] == "function") {
+    if (typeof WinConsole[key] === "function") {
         console[key] = wrappedOrigCall(WinConsole[key], console[key]);
     }
 }
@@ -1525,7 +1525,7 @@ for (var key in console) {
 });
 
 // file: /Users/dpogue/Coding/cordova-ios/cordova-js-src/plugin/ios/logger.js
-define("cordova/plugin/ios/logger", function(require, exports, module) {
+define("cordova/plugin/ios/logger", (require, exports, module) => {
 
 //------------------------------------------------------------------------------
 // The logger module exports the following properties/functions:
@@ -1623,18 +1623,18 @@ logger.level = function (value) {
  * browser 'console' object.
  */
 logger.useConsole = function (value) {
-    if (arguments.length) UseConsole = !!value;
+    if (arguments.length) UseConsole = Boolean(value);
 
     if (UseConsole) {
-        if (typeof console == "undefined") {
+        if (typeof console === "undefined") {
             throw new Error("global console object is not defined");
         }
 
-        if (typeof console.log != "function") {
+        if (typeof console.log !== "function") {
             throw new Error("global console object does not have a log function");
         }
 
-        if (typeof console.useLogger == "function") {
+        if (typeof console.useLogger === "function") {
             if (console.useLogger()) {
                 throw new Error("console and logger are too intertwingly");
             }
@@ -1652,7 +1652,7 @@ logger.useConsole = function (value) {
  */
 logger.useLogger = function (value) {
     // Enforce boolean
-    if (arguments.length) UseLogger = !!value;
+    if (arguments.length) UseLogger = Boolean(value);
     return UseLogger;
 };
 
@@ -1791,7 +1791,7 @@ function __format(formatString, args) {
     if (formatString === null || formatString === undefined) return [""];
     if (arguments.length == 1) return [formatString.toString()];
 
-    if (typeof formatString != "string")
+    if (typeof formatString !== "string")
         formatString = formatString.toString();
 
     var pattern = /(.*?)%(.)(.*)/;
@@ -1864,7 +1864,7 @@ document.addEventListener("deviceready", logger.__onDeviceReady, false);
 });
 
 // file: src/common/pluginloader.js
-define("cordova/pluginloader", function(require, exports, module) {
+define("cordova/pluginloader", (require, exports, module) => {
 
 var modulemapper = require('cordova/modulemapper');
 
@@ -1885,7 +1885,7 @@ function injectIfNecessary (id, url, onload, onerror) {
     if (id in define.moduleMap) { // eslint-disable-line no-undef
         onload();
     } else {
-        exports.injectScript(url, function () {
+        exports.injectScript(url, () => {
             if (id in define.moduleMap) { // eslint-disable-line no-undef
                 onload();
             } else {
@@ -1965,7 +1965,7 @@ exports.load = function (callback) {
         console.log('Could not find cordova.js script tag. Plugin loading may fail.');
         pathPrefix = '';
     }
-    injectIfNecessary('cordova/plugin_list', pathPrefix + 'cordova_plugins.js', function () {
+    injectIfNecessary('cordova/plugin_list', pathPrefix + 'cordova_plugins.js', () => {
         var moduleList = require('cordova/plugin_list');
         handlePluginsObject(pathPrefix, moduleList, callback);
     }, callback);
@@ -1974,7 +1974,7 @@ exports.load = function (callback) {
 });
 
 // file: src/common/urlutil.js
-define("cordova/urlutil", function(require, exports, module) {
+define("cordova/urlutil", (require, exports, module) => {
 
 /**
  * For already absolute URLs, returns what is passed in.
@@ -1989,7 +1989,7 @@ exports.makeAbsolute = function makeAbsolute (url) {
 });
 
 // file: src/common/utils.js
-define("cordova/utils", function(require, exports, module) {
+define("cordova/utils", (require, exports, module) => {
 
 var utils = exports;
 

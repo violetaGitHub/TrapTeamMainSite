@@ -80,7 +80,7 @@ Podfile.prototype.__parseForDeclarations = function (text) {
     var declarationsPostRE = new RegExp('target\\s+\'[^\']+\'\\s+do');
     var declarationRE = new RegExp('^\\s*[^#]');
 
-    return arr.reduce(function (acc, line) {
+    return arr.reduce((acc, line) => {
         switch (acc.state) {
         case 0:
             if (declarationsPreRE.exec(line)) {
@@ -101,10 +101,10 @@ Podfile.prototype.__parseForDeclarations = function (text) {
         return acc;
     }, { state: 0, lines: [] })
         .lines
-        .filter(function (line) {
+        .filter((line) => {
             return declarationRE.exec(line);
         })
-        .reduce(function (obj, line) {
+        .reduce((obj, line) => {
             obj[line] = line;
             return obj;
         }, {});
@@ -115,12 +115,12 @@ Podfile.prototype.__parseForSources = function (text) {
     var arr = text.split('\n');
 
     var sourceRE = new RegExp('source \'(.*)\'');
-    return arr.filter(function (line) {
+    return arr.filter((line) => {
         var m = sourceRE.exec(line);
 
         return (m !== null);
     })
-        .reduce(function (obj, line) {
+        .reduce((obj, line) => {
             var m = sourceRE.exec(line);
             if (m !== null) {
                 var source = m[1];
@@ -142,12 +142,12 @@ Podfile.prototype.__parseForPods = function (text) {
     var podRE = new RegExp('pod \'([^\']*)\'\\s*(?:,\\s*\'([^\']*)\'\\s*)?,?\\s*(.*)');
 
     // only grab lines that don't have the pod spec'
-    return arr.filter(function (line) {
+    return arr.filter((line) => {
         var m = podRE.exec(line);
 
         return (m !== null);
     })
-        .reduce(function (obj, line) {
+        .reduce((obj, line) => {
             var m = podRE.exec(line);
 
             if (m !== null) {
@@ -263,7 +263,7 @@ Podfile.prototype.removeDeclaration = function (declaration) {
 };
 
 Podfile.proofDeclaration = function (declaration) {
-    var list = Object.keys(Podfile.declarationRegexpMap).filter(function (key) {
+    var list = Object.keys(Podfile.declarationRegexpMap).filter((key) => {
         var regexp = new RegExp(Podfile.declarationRegexpMap[key]);
         return regexp.test(declaration);
     });
@@ -294,7 +294,7 @@ Podfile.prototype.write = function () {
     var self = this;
 
     var podsString =
-    Object.keys(this.pods).map(function (key) {
+    Object.keys(this.pods).map((key) => {
         var name = key;
         var json = self.pods[key];
 
@@ -317,13 +317,13 @@ Podfile.prototype.write = function () {
                 list.push('\'' + json.spec + '\'');
             }
 
-            var options = ['tag', 'branch', 'commit', 'git', 'podspec'].filter(function (tag) {
+            var options = ['tag', 'branch', 'commit', 'git', 'podspec'].filter((tag) => {
                 return tag in json;
-            }).map(function (tag) {
+            }).map((tag) => {
                 return ':' + tag + ' => \'' + json[tag] + '\'';
             });
             if ('configurations' in json) {
-                options.push(':configurations => [' + json['configurations'].split(',').map(function (conf) { return '\'' + conf.trim() + '\''; }).join(',') + ']');
+                options.push(':configurations => [' + json['configurations'].split(',').map((conf) => { return '\'' + conf.trim() + '\''; }).join(',') + ']');
             }
             if ('options' in json) {
                 options = [json.options];
@@ -336,13 +336,13 @@ Podfile.prototype.write = function () {
     }).join('\n');
 
     var sourcesString =
-    Object.keys(this.sources).map(function (key) {
+    Object.keys(this.sources).map((key) => {
         var source = self.sources[key];
         return util.format('source \'%s\'', source);
     }).join('\n');
 
     var declarationString =
-    Object.keys(this.declarations).map(function (key) {
+    Object.keys(this.declarations).map((key) => {
         var declaration = self.declarations[key];
         return declaration;
     }).join('\n');
@@ -394,17 +394,17 @@ Podfile.prototype.install = function (requirementsCheckerFunction) {
     }
 
     return requirementsCheckerFunction()
-        .then(function (toolOptions) {
+        .then((toolOptions) => {
             return self.before_install(toolOptions);
         })
-        .then(function (toolOptions) {
+        .then((toolOptions) => {
             if (toolOptions.ignore) {
                 events.emit('verbose', '==== pod install start ====\n');
                 events.emit('verbose', toolOptions.ignoreMessage);
                 return Q.resolve();
             } else {
                 return superspawn.spawn('pod', ['install', '--verbose'], opts)
-                    .progress(function (stdio) {
+                    .progress((stdio) => {
                         if (stdio.stderr) { console.error(stdio.stderr); }
                         if (stdio.stdout) {
                             if (first) {
@@ -416,10 +416,10 @@ Podfile.prototype.install = function (requirementsCheckerFunction) {
                     });
             }
         })
-        .then(function () { // done
+        .then(() => { // done
             events.emit('verbose', '==== pod install end ====\n');
         })
-        .fail(function (error) {
+        .fail((error) => {
             throw error;
         });
 };

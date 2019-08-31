@@ -90,7 +90,7 @@ function check_cocoapod_tool (toolChecker) {
  */
 module.exports.check_cocoapods_repo_size = function () {
     return check_cocoapod_tool()
-        .then(function (toolOptions) {
+        .then((toolOptions) => {
             // check size of ~/.cocoapods repo
             let commandString = util.format('du -sh %s/.cocoapods', process.env.HOME);
             let command = shell.exec(commandString, { silent: true });
@@ -103,7 +103,7 @@ module.exports.check_cocoapods_repo_size = function () {
                 return Q.reject(util.format('%s (%s)', COCOAPODS_REPO_NOT_FOUND_MESSAGE, command.output));
             }
         })
-        .then(function (repoSize, toolOptions) {
+        .then((repoSize, toolOptions) => {
             if (toolOptions.ignore || COCOAPODS_SYNCED_MIN_SIZE <= repoSize) { // success, expected size
                 return Q.resolve(toolOptions);
             } else {
@@ -120,7 +120,7 @@ module.exports.check_cocoapods = function (toolChecker) {
     return check_cocoapod_tool(toolChecker)
         // check whether the cocoapods repo has been synced through `pod repo` command
         // a value of '0 repos' means it hasn't been synced
-        .then(function (toolOptions) {
+        .then((toolOptions) => {
             let code = shell.exec('pod repo | grep -e "^0 repos"', { silent: true }).code;
             let repoIsSynced = (code !== 0);
 
@@ -152,7 +152,7 @@ function checkTool (tool, minVersion, message, toolFriendlyName) {
     }
 
     // check if tool version is greater than specified one
-    return versions.get_tool_version(tool).then(function (version) {
+    return versions.get_tool_version(tool).then((version) => {
         version = version.trim();
         return versions.compareVersions(version, minVersion) >= 0 ?
             Q.resolve({ 'version': version }) :
@@ -202,26 +202,26 @@ module.exports.check_all = function () {
     ];
 
     // Then execute requirement checks one-by-one
-    return checkFns.reduce(function (promise, checkFn, idx) {
-        return promise.then(function () {
+    return checkFns.reduce((promise, checkFn, idx) => {
+        return promise.then(() => {
             // If fatal requirement is failed,
             // we don't need to check others
             if (fatalIsHit) return Q();
 
             let requirement = requirements[idx];
             return checkFn()
-                .then(function (version) {
+                .then((version) => {
                     requirement.installed = true;
                     requirement.metadata.version = version;
                     result.push(requirement);
-                }, function (err) {
+                }, (err) => {
                     if (requirement.isFatal) fatalIsHit = true;
                     requirement.metadata.reason = err;
                     result.push(requirement);
                 });
         });
     }, Q())
-        .then(function () {
+        .then(() => {
             // When chain is completed, return requirements array to upstream API
             return result;
         });

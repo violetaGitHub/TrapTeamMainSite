@@ -115,18 +115,18 @@ logger.level = function (value) {
  * browser 'console' object.
  */
 logger.useConsole = function (value) {
-    if (arguments.length) UseConsole = !!value;
+    if (arguments.length) UseConsole = Boolean(value);
 
     if (UseConsole) {
-        if (typeof console == "undefined") {
+        if (typeof console === "undefined") {
             throw new Error("global console object is not defined");
         }
 
-        if (typeof console.log != "function") {
+        if (typeof console.log !== "function") {
             throw new Error("global console object does not have a log function");
         }
 
-        if (typeof console.useLogger == "function") {
+        if (typeof console.useLogger === "function") {
             if (console.useLogger()) {
                 throw new Error("console and logger are too intertwingly");
             }
@@ -144,7 +144,7 @@ logger.useConsole = function (value) {
  */
 logger.useLogger = function (value) {
     // Enforce boolean
-    if (arguments.length) UseLogger = !!value;
+    if (arguments.length) UseLogger = Boolean(value);
     return UseLogger;
 };
 
@@ -283,7 +283,7 @@ function __format(formatString, args) {
     if (formatString === null || formatString === undefined) return [""];
     if (arguments.length == 1) return [formatString.toString()];
 
-    if (typeof formatString != "string")
+    if (typeof formatString !== "string")
         formatString = formatString.toString();
 
     var pattern = /(.*?)%(.)(.*)/;

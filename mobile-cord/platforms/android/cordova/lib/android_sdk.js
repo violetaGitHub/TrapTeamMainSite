@@ -43,7 +43,7 @@ function sort_by_largest_numerical_suffix (a, b) {
 }
 
 module.exports.print_newest_available_sdk_target = function () {
-    return module.exports.list_targets().then(function (targets) {
+    return module.exports.list_targets().then((targets) => {
         targets.sort(sort_by_largest_numerical_suffix);
         console.log(targets[0]);
     });
@@ -85,14 +85,14 @@ module.exports.list_targets_with_avdmanager = function () {
 };
 
 module.exports.list_targets = function () {
-    return module.exports.list_targets_with_avdmanager().catch(function (err) {
+    return module.exports.list_targets_with_avdmanager().catch((err) => {
         // If there's an error, like avdmanager could not be found, we can try
         // as a last resort, to run `android`, in case this is a super old
         // SDK installation.
         if (err && (err.code === 'ENOENT' || (err.stderr && err.stderr.match(/not recognized/)))) {
             return module.exports.list_targets_with_android();
         } else throw err;
-    }).then(function (targets) {
+    }).then((targets) => {
         if (targets.length === 0) {
             return Promise.reject(new Error('No android targets (SDKs) installed!'));
         }

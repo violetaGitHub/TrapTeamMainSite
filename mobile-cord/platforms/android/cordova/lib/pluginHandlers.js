@@ -29,9 +29,9 @@ var handlers = {
             var dest = getInstallDestination(obj);
 
             if (options && options.force) {
-                copyFile(plugin.dir, obj.src, project.projectDir, dest, !!(options && options.link));
+                copyFile(plugin.dir, obj.src, project.projectDir, dest, Boolean(options && options.link));
             } else {
-                copyNewFile(plugin.dir, obj.src, project.projectDir, dest, !!(options && options.link));
+                copyNewFile(plugin.dir, obj.src, project.projectDir, dest, Boolean(options && options.link));
             }
         },
         uninstall: function (obj, plugin, project, options) {
@@ -49,7 +49,7 @@ var handlers = {
     'lib-file': {
         install: function (obj, plugin, project, options) {
             var dest = path.join('app/libs', path.basename(obj.src));
-            copyFile(plugin.dir, obj.src, project.projectDir, dest, !!(options && options.link));
+            copyFile(plugin.dir, obj.src, project.projectDir, dest, Boolean(options && options.link));
         },
         uninstall: function (obj, plugin, project, options) {
             var dest = path.join('app/libs', path.basename(obj.src));
@@ -59,7 +59,7 @@ var handlers = {
     'resource-file': {
         install: function (obj, plugin, project, options) {
             var dest = path.join('app', 'src', 'main', obj.target);
-            copyFile(plugin.dir, obj.src, project.projectDir, dest, !!(options && options.link));
+            copyFile(plugin.dir, obj.src, project.projectDir, dest, Boolean(options && options.link));
         },
         uninstall: function (obj, plugin, project, options) {
             var dest = path.join('app', 'src', 'main', obj.target);
@@ -77,7 +77,7 @@ var handlers = {
 
             if (obj.custom) {
                 var subRelativeDir = project.getCustomSubprojectRelativeDir(plugin.id, src);
-                copyNewFile(plugin.dir, src, project.projectDir, subRelativeDir, !!(options && options.link));
+                copyNewFile(plugin.dir, src, project.projectDir, subRelativeDir, Boolean(options && options.link));
                 subDir = path.resolve(project.projectDir, subRelativeDir);
             } else {
                 obj.type = 'sys';
@@ -233,7 +233,7 @@ function copyNewFile (plugin_dir, src, project_dir, dest, link) {
     var target_path = path.resolve(project_dir, dest);
     if (fs.existsSync(target_path)) { throw new CordovaError('"' + target_path + '" already exists!'); }
 
-    copyFile(plugin_dir, src, project_dir, dest, !!link);
+    copyFile(plugin_dir, src, project_dir, dest, Boolean(link));
 }
 
 function symlinkFileOrDirTree (src, dest) {
@@ -243,7 +243,7 @@ function symlinkFileOrDirTree (src, dest) {
 
     if (fs.statSync(src).isDirectory()) {
         shell.mkdir('-p', dest);
-        fs.readdirSync(src).forEach(function (entry) {
+        fs.readdirSync(src).forEach((entry) => {
             symlinkFileOrDirTree(path.join(src, entry), path.join(dest, entry));
         });
     } else {
