@@ -1,3 +1,4 @@
+/*
 var shell = require('shelljs');
 shell.exec("git remote add githubdirry https://github.com/TrapTeamCCNZ/TrapTeamMainSite.git");
 shell.exec("git remote add gitlabby https://gitlab.com/trapteamccnz/TrapTeamMainSite.git");
@@ -31,3 +32,4 @@ console.log("DONE");
 shell.exec("lab merge-request");
 shell.exec("firebase serve");
 console.log("DONE");
+*/
