@@ -8,6 +8,5 @@ It also gives us admin control over different things
 This is WIP and is NOT functional.
 Thank you to @ajkin for the home page template.
 
-
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FTrapTeamCCNZ%2FTrapTeamMainSite.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FTrapTeamCCNZ%2FTrapTeamMainSite?ref=badge_large)
