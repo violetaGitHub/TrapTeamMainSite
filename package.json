@@ -20,7 +20,7 @@
     "mocha": "^6.2.0"
   },
   "scripts": {
-    "test": "git.js",
+    "test": "node git.js",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },

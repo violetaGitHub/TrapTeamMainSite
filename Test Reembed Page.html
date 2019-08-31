@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body id='hi'>
+  
+  <iframe id="myFrame" src="https://google.com" style="height:380px;width:100%"></iframe>
+  
+  <p>Click the "Tryit" button to hide the first H1 element in the iframe (another document).</p>
+  
+  <button onclick="myFunction()">Try it</button>
+  
+  <script>
+  function myFunction() {
+    var iframe = document.getElementById("myFrame");
+    var hi = document.getElementById("hi");
+    var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0];
+    hi.innerhtml = elmnt.innerhtml;
+  }
+</script>
+
+</body>
+</html>
