@@ -5,3 +5,6 @@ functions/serviceAccountKey.json
 # Node modules themselves should generally not be committed
 node_modules
 functions/node_modules/
+
+# Local Netlify folder
+.netlify
