@@ -12,6 +12,7 @@
   firebase.initializeApp(firebaseConfig);
 
 // Instantiate the GoTrue auth client with an optional configuration
+netlifyIdentity.open();
 
 auth = new GoTrue({
   APIUrl: "https://trapteam-cc.netlify.com/.netlify/identity",
@@ -20,13 +21,13 @@ auth = new GoTrue({
 function loggy() {
     try {
         
-firebase.auth().createUserWithEmailAndPassword(auth.currentUser().email, auth.currentUser().created_at).catch(function(error) {
+firebase.auth().createUserWithEmailAndPassword(auth.currentUser().email, auth.currentUser().created_at).catch((error) => {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
   // ...
 });
-firebase.auth().signInWithEmailAndPassword(auth.currentUser().email, auth.currentUser().created_at).catch(function(error) {
+firebase.auth().signInWithEmailAndPassword(auth.currentUser().email, auth.currentUser().created_at).catch((error) => {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
