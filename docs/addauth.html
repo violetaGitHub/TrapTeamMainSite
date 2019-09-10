@@ -132,21 +132,15 @@ setTimeout(ldinsp, 0);
     <header class="masthead mb-auto">
       <div class="inner">
         <!-- //\cccess stuff/loader -->
-        <h3 class="masthead-brand"><img src="/accessbt/access.svg?alt=media" alt="//\ccess" width="40%"> <a>by Trap Team:<br> Log in to </a><img style="display:inline;" src="/accessbt/access.svg?alt=media" alt="//\ccess" width="40%"></h3>
+        <h3 class="masthead-brand">Add Your Accounts</h3>
 
 
       </div>
     </header>
 <!-- AUTH CONTAINER -->
     <main role="main" class="inner cover">
-      <h1 class="cover-heading">Sign In!</h1>
-      <button
-          class="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-google firebaseui-id-idp-button"
-          data-provider-id="google.com" data-upgraded=",MaterialButton"  id='msauth'><span class="firebaseui-idp-icon-wrapper"><img
-              class="firebaseui-idp-icon" alt="" 
-              src="//cdn1.iconfinder.com/data/icons/flat-and-simple-part-1/128/microsoft-512.png"></span><span
-            class="firebaseui-idp-text firebaseui-idp-text-long">Sign in with Microsoft</span><span
-            class="firebaseui-idp-text firebaseui-idp-text-short">Microsoft</span></button>
+      <h1 class="cover-heading">Add Extra Auth Providers</h1>
+      
       <div id="firebaseui-auth-container"></div>
       <div id="loader">Loading...</div>
 
@@ -156,8 +150,7 @@ setTimeout(ldinsp, 0);
 
     <footer class="mastfoot mt-auto">
       <div class="inner">
-        <p>What is This? <a href="/" class="effex">Visit Our Home
-            Page</a>!</p>
+        <p> <a href="/app" class="effex">Back to Main App</a>!</p>
       </div>
 
       <script type="text/javascript">
@@ -184,13 +177,13 @@ setTimeout(ldinsp, 0);
           // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
           signInFlow: 'popup',
             credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO,
-          signInSuccessUrl: '/accessbt',
+          signInSuccessUrl: '/addauth.html',
           signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
             //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-                        'microsoft.com',
+
 
             firebase.auth.GithubAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -205,33 +198,8 @@ setTimeout(ldinsp, 0);
 
         ui.start('#firebaseui-auth-container', uiConfig);
 
-        function lasboto() {
-          var provider = new firebase.auth.OAuthProvider('microsoft.com');
-          firebase.auth().signInWithPopup(provider)
-            .then(function (result) {
-              alert(result);
-            })
-            .catch(function (error) {
-              // Handle error.
-              if (error.code == "auth/account-exists-with-different-credential") {
-                alert("You already have an account here with us. Please sign in with another service (like Email/Password or Google) to connect this account. ");
-              } else {
-                console.log(error);
-                alert("An Error Occured:" + error);
-                document.location.reload();
-              }
-              
-            });
-        }
-        document.getElementById("msauth").addEventListener("click", lasboto);
-
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-              document.location.href = '/app';
-            } else {
-              console.log("SIGN IN");
-            }
-          });
+        
+        
       </script>
     </footer>
   </div>

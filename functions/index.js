@@ -78,6 +78,16 @@ exports.EmptyTrap = functions.https.onRequest((req, res) => {
   res.status(200).send("Emptyed " + TrapHolder + "'s Trap.");
 });
 
+exports.Noob = functions.https.onRequest((req, res) => {
+  if (req.method !== "POST") {
+    console.error("Not POST: " + req.method);
+    res.status(405).send("Error, Must send with POST not: " + req.method);
+    return;
+  }
+  console.log(req.body);
+  res.status(200).send("Error, Must send with POST not: " + req.method);
+});
+
 
 // Gets the trap specified's trap number
 exports.GetTrapNumber = functions.https.onRequest((req, res) => {

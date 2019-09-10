@@ -133,7 +133,7 @@ async function useri() {
         useri();
         console.log("FUNCTION REPEATED");
       }
-      console.log("MCCI");
+
     }
     console.log(document.getElementById("uuid").innerHTML);
   });
