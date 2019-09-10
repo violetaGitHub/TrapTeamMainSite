@@ -1,6 +1,5 @@
 //VOLUNTEER PAGE (BETA)
 
-
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyBHB7H6L2TgZeDJKS4ENC_fkdWtS_99T_E",
@@ -133,7 +132,6 @@ async function useri() {
         useri();
         console.log("FUNCTION REPEATED");
       }
-
     }
     console.log(document.getElementById("uuid").innerHTML);
   });
